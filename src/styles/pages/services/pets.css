@@ -1,0 +1,76 @@
+
+
+.service-pets-info {
+    min-height: 50vh;
+    width: 90%;
+    margin: 5rem auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    background-color: rgba(var(--color-secondary-rgb), .4);
+    border-radius: .3rem;
+
+    @media (min-width: 1024px) {
+        width: 80%;
+    }
+
+
+    article {
+        h4 {
+            font-family: var(--font-playfair-boldItalic);
+            text-shadow: .1rem 0 0 var(--color-senary);
+
+            font-size: 2.5rem;
+
+        }
+
+        p {
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--color-quinary);
+        }
+
+        strong {
+            color: var(--color-senary);
+        }
+    }
+}
+
+.service-pets-extras{
+    width: 90%;
+    margin: 5rem auto;
+     @media (min-width: 992px) {
+        width: 80%;
+    }
+}
+
+.pets-extras{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+    align-items: center;
+
+    figure{
+        max-width: 90%;
+        @media (min-width: 768px) {
+            max-width: 33%;
+        }
+        img{
+            height: 20rem;
+             /* max-width: 30rem;  */
+        }
+        figcaption{
+            margin-top: 1.5rem;
+            color: var(--color-quinary);
+        }
+    }
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        justify-content: space-around;
+        
+    }
+}

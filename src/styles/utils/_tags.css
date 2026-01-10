@@ -1,0 +1,85 @@
+html {
+    /* Esto hace que 1rem sea igual a 10px */
+    font-size: 62.5%;
+
+    scrollbar-width: thin;
+    scrollbar-color: rgba(193, 164, 119) rgba(44, 58, 71) ;
+
+}
+
+body {
+    font-family: var(--font-playfair-regular);
+    font-weight: 600;
+    letter-spacing: .2rem;
+    background-color: var(--color-quaternary);
+
+}
+
+/* ESTO PORQ UELA LIBRERIA AOS DESBODAR EN X EN MOBILE... */
+html,
+body {
+    overflow-x: hidden;
+    /* Asegura que el ancho siempre sea el de la pantalla */
+    width: 100%;
+    position: relative;
+}
+
+/* --- Títulos (Headings) --- */
+
+h1 {
+    font-size: 4.2rem;
+    /* Equivalente a 42px - Título principal de página */
+}
+
+h2 {
+    font-size: 3.2rem;
+    /* Equivalente a 32px - Títulos de sección importantes */
+}
+
+h3 {
+    font-size: 2.4rem;
+    /* Equivalente a 24px - Subtítulos */
+}
+
+h4 {
+    font-size: 1.8rem;
+    /* Equivalente a 18px - Títulos menores o para destacar */
+}
+
+h5 {
+    font-size: 1.6rem;
+    /* Equivalente a 16px - Puede ser usado para etiquetas o títulos muy pequeños */
+}
+
+h6 {
+    font-size: 1.6rem;
+    /* Equivalente a 16px - Similar a h5, a menudo el mismo tamaño que el texto del párrafo */
+}
+
+
+/* --- Párrafos (Paragraphs) --- */
+
+p {
+    font-size: 1.6rem;
+    /* Equivalente a 16px - Tamaño estándar para el texto del cuerpo, muy legible */
+}
+
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+a {
+    cursor: pointer;
+    font-size: 1.6rem;
+}
+
+button {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}

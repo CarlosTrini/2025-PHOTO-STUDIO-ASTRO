@@ -1,0 +1,140 @@
+---
+import Layout from "@layouts/Layout.astro";
+import "@styles/pages/services/homeServices.css";
+import { routes } from "@utils/constants/routes";
+
+const serviceRoutes = routes.filter((router) => router.basePath == "/services");
+---
+
+<Layout>
+    <main class="t-100vh t-padding-header main-services-page">
+        <h2 class="t-page-titles services-title-page">Nuestros servicios</h2>
+
+        <section class="services-container">
+            {
+                serviceRoutes.map((routes) =>
+                    routes.routes.map((route) => (
+                        route.path !== '' &&
+                        <article class="service-card">
+                            <figure>
+                                <img
+                                    src={route?.imgSrc ? route.imgSrc : '/img/services-menu.jpg'}
+                                    alt={`Sesión fotográfica de ${route.name}`}
+                                    loading="lazy"
+                                    width="400"
+                                    height="300"
+                                />
+                            </figure>
+                            <h3>
+                                <a href={`${routes.basePath}${route.path}`}>{route.name}</a>
+                            </h3>
+                        </article>
+                    )),
+                )
+            }
+            <!-- <article class="service-card">
+                <figure>
+                    <img
+                        src="/img/photo-three.jpg"
+                        alt="Sesión fotográfica de familia en exteriores"
+                        loading="lazy"
+                        width="400"
+                        height="300"
+                    />
+                </figure>
+                <h3><a>Familia</a></h3>
+            </article> -->
+
+            <!-- <article class="service-card">
+                <figure>
+                    <img
+                        src="/img/photo-three.jpg"
+                        alt="Descripción específica del segundo servicio"
+                        loading="lazy"
+                        width="400"
+                        height="300"
+                    />
+                </figure>
+                <h3>Título Servicio 2</h3>
+            </article>
+
+            <article class="service-card">
+                <figure>
+                    <img
+                        src="/img/photo-three.jpg"
+                        alt="Descripción específica del tercer servicio"
+                        loading="lazy"
+                        width="400"
+                        height="300"
+                    />
+                </figure>
+                <h3>Título Servicio 3</h3>
+            </article>
+
+             <article class="service-card">
+                <figure>
+                    <img
+                        src="/img/photo-three.jpg"
+                        alt="Sesión fotográfica de familia en exteriores"
+                        loading="lazy"
+                        width="400"
+                        height="300"
+                    />
+                </figure>
+                <h3>Familia</h3>
+            </article>
+
+            <article class="service-card">
+                <figure>
+                    <img
+                        src="/img/photo-three.jpg"
+                        alt="Descripción específica del segundo servicio"
+                        loading="lazy"
+                        width="400"
+                        height="300"
+                    />
+                </figure>
+                <h3>Título Servicio 2</h3>
+            </article>
+
+            <article class="service-card">
+                <figure>
+                    <img
+                        src="/img/photo-three.jpg"
+                        alt="Descripción específica del tercer servicio"
+                        loading="lazy"
+                        width="400"
+                        height="300"
+                    />
+                </figure>
+                <h3>Título Servicio 3</h3>
+            </article>
+
+               <article class="service-card">
+                <figure>
+                    <img
+                        src="/img/photo-three.jpg"
+                        alt="Sesión fotográfica de familia en exteriores"
+                        loading="lazy"
+                        width="400"
+                        height="300"
+                    />
+                </figure>
+                <h3>Familia</h3>
+            </article>
+
+            <article class="service-card">
+                <figure>
+                    <img
+                        src="/img/photo-three.jpg"
+                        alt="Descripción específica del segundo servicio"
+                        loading="lazy"
+                        width="400"
+                        height="300"
+                    />
+                </figure>
+                <h3>Título Servicio 2</h3>
+            </article> -->
+        </section>
+    </main>
+</Layout>

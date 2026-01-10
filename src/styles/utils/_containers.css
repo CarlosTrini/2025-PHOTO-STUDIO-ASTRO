@@ -1,0 +1,95 @@
+.t-page-size {
+  width: 90%;
+  max-width: 1600px;
+  margin: 0 auto;
+
+  @media (max-width: 639px) {
+    /* xs */
+    width: 95%;
+  }
+
+  @media (min-width: 640px) {
+    /* sm */
+    width: 90%;
+  }
+
+  @media (min-width: 768px) {
+    /* md */
+    width: 85%;
+  }
+
+  @media (min-width: 1024px) {
+    /* lg */
+    width: 80%;
+  }
+
+  @media (min-width: 1280px) {
+    /* xl */
+    width: 75%;
+  }
+
+  @media (min-width: 1536px) {
+    /* 2xl */
+    width: 70%;
+    max-width: 1500px;
+  }
+}
+
+
+/* CONTENEDORES CON WIDTHS ESPECIFICAS Y CENTRADAS */
+.t-container-75 {
+  margin-right: auto;
+  margin-left: auto;
+  width: 75%;
+}
+
+.t-container-80 {
+  margin-right: auto;
+  margin-left: auto;
+  width: 80%;
+}
+
+.t-container-85 {
+  margin-right: auto;
+  margin-left: auto;
+  width: 85%;
+}
+
+.t-container-90 {
+  margin-right: auto;
+  margin-left: auto;
+  width: 90%;
+}
+
+.t-container-95 {
+  margin-right: auto;
+  margin-left: auto;
+  width: 95%;
+}
+
+
+/* CONTENEDORES CON PADDINGS Y CENTRADOS (DIFERENCIA CON EL DE ARRIBA... EJEMPLO DE USO: ) */
+.t-padding-75 {
+  padding: 0 calc((100vw - 75vw) /2);
+  margin: auto;
+}
+
+.t-padding-80 {
+  padding: 0 calc((100vw - 80vw) /2);
+  margin: auto;
+}
+
+.t-padding-85 {
+  padding: 0 calc((100vw - 85vw) /2);
+  margin: auto;
+}
+
+.t-padding-90 {
+  padding: 0 calc((100vw - 90vw) /2);
+  margin: auto;
+}
+
+.t-padding-95 {
+  padding: 0 calc((100vw - 95vw) /2);
+  margin: auto;
+}

@@ -1,0 +1,170 @@
+@import "tailwindcss";
+@import './utils/_tags.css';
+@import './utils/_generics.css';
+@import './utils/_fonts.css';
+@import './utils/_containers.css';
+@import './utils/_colors.css';
+
+
+/* LOS COLORES Y FUENTES PUEDEN CAMBIAR SEGÚN EL PROYECTO */
+
+:root {
+    /* LIGHT MODE */
+
+    --color-white: #faf7f7;
+    --color-dark: #141414;
+    --color-white-full: #faf7f7;
+    --color-dark-full: #000000;
+
+    /* Color Theme Swatches in RGBA */
+    --color-primary: rgba(248, 247, 242);
+    --color-secondary: rgba(169, 189, 207);
+    --color-tertiary: rgba(193, 164, 119);
+    --color-quaternary: rgba(215, 224, 232);
+    --color-quinary: rgba(44, 58, 71);
+    --color-senary:rgb(134, 94, 245);
+    /* 
+    --color-octonary: ; */
+
+    /* solo valores rgb para usar con transparencias en otro lugar */
+    --color-primary-rgb: 248, 247, 242;
+    --color-secondary-rgb: 169, 189, 207;
+    --color-tertiary-rgb: 193, 164, 119;
+    --color-quaternary-rgb: 215, 224, 232;
+    --color-quinary-rgb: 44, 58, 71;
+    --color-senary-rgb:134, 94, 245;
+
+
+    /*FONT*/
+    --font-playfair-italic: PlayfairDisplay-Italic;
+    --font-playfair-regular: PlayfairDisplay-Regular;
+    --font-playfair-bold: PlayfairDisplay-Bold;
+    --font-playfair-boldItalic: PlayfairDisplay-BoldItalic;
+    --font-playfair-medium: PlayfairDisplay-Medium;
+    --font-playfair-mediumItalic: PlayfairDisplay-MediumItalic;
+    --font-satisfy-regular: Satisfy-Regular;
+
+    /* paddings solo para left y right */
+    --padding-75: calc((100vw - 75vw) /2);
+    --padding-80: calc((100vw - 80vw) /2);
+    --padding-85: calc((100vw - 85vw) /2);
+    --padding-90: calc((100vw - 90vw) /2);
+    --padding-95: calc((100vw - 95vw) /2);
+}
+
+
+
+
+/* DARK MODE */
+body[data-theme="dark"] {
+    /* --color-primary: rgba(30, 41, 54, 1);
+    --color-secondary: rgba(0, 102, 204, 1);
+    --color-tertiary: rgba(0, 150, 210, 1);
+    --color-quaternary: rgba(0, 190, 212, 1);
+    --color-quinary: rgba(18, 18, 18, 1); */
+    --color-white: #141414;
+    --color-dark: #faf7f7;
+}
+
+
+
+@font-face {
+
+    font-family: 'PlayfairDisplay-Italic';
+    src: url('/fonts/PlayfairDisplay-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+
+    font-family: 'PlayfairDisplay-Regular';
+    src: url('/fonts/PlayfairDisplay-Regular.ttf') format('truetype');
+    font-weight: 400;
+    /* font-style: normal; */
+}
+
+@font-face {
+
+    font-family: 'PlayfairDisplay-Bold';
+    src: url('/fonts/PlayfairDisplay-Bold.ttf') format('truetype');
+    font-weight: 700;
+    /* font-style: normal; */
+}
+
+@font-face {
+
+    font-family: 'PlayfairDisplay-BoldItalic';
+    src: url('/fonts/PlayfairDisplay-BoldItalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+
+    font-family: 'PlayfairDisplay-Medium';
+    src: url('/fonts/PlayfairDisplay-Medium.ttf') format('truetype');
+    font-weight: 500;
+    /* font-style: normal; */
+}
+
+@font-face {
+
+    font-family: 'PlayfairDisplay-MediumItalic';
+    src: url('/fonts/PlayfairDisplay-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+
+
+
+@font-face {
+    font-family: 'Spectral-Regular';
+    src: url('/fonts/Spectral-Regular.ttf') format('truetype');
+    weight: 400;
+}
+
+@font-face {
+    font-family: 'Spectral-Italic';
+    src: url('/fonts/Spectral-Italic.ttf') format('truetype');
+    weight: 400;
+    style: italic;
+}
+
+@font-face {
+    font-family: 'Spectral-Light';
+    src: url('/fonts/Spectral-Light.ttf') format('truetype');
+    weight: 300;
+    /* style: normal; */
+}
+
+@font-face {
+    font-family: 'Spectral-LightItalic';
+    src: url('/fonts/Spectral-LightItalic.ttf') format('truetype');
+    weight: 300;
+    style: italic;
+}
+
+@font-face {
+    font-family: 'Spectral-SemiBold';
+    src: url('/fonts/Spectral-SemiBold.ttf') format('truetype');
+    weight: 600;
+    /* style: normal; */
+}
+
+@font-face {
+    font-family: 'Spectral-SemiBoldItalic';
+    src: url('/fonts/Spectral-SemiBoldItalic.ttf') format('truetype');
+    weight: 600;
+    style: italic;
+}
+
+
+@font-face {
+
+    font-family: 'Satisfy-Regular';
+    src: url('/fonts/Satisfy-Regular.ttf') format('truetype');
+    font-weight: 400;
+    /* font-style: normal; */
+}

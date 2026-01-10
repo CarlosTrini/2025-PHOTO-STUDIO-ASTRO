@@ -1,0 +1,100 @@
+BREAKPOINTS
+
+    /* Extra min: móviles (hasta 399px) */
+    /* --breakpoint-xs: (min: 400); */
+
+    /* Small: móviles modernos en landscape y tablets pequeñas */
+    /* --breakpoint-sm: (min-width: 640px); */
+
+    /* Medium: tablets (ej. iPad) */
+    /* --breakpoint-md: (min-width: 768px); */
+
+    /* Large: laptops y escritorios pequeños */
+    /* --breakpoint-lg: (min-width: 1024px); */
+
+    /* Extra large: escritorios estándar */
+    /* --breakpoint-xl: (min-width: 1280px); */
+
+    /* 2x large: pantallas grandes */
+    /* --breakpoint-2xl: (min-width: 1536px); */
+
+
+
+template base ==>
+
+https://demo.templatemonster.com/es/demo/79876.html
+https://www.design.com/es-es/creador/logo/constructor-de-piedra-de-concreto-6047622?text=Trazos+%26+Concreto&layoutOrientation=auto-1-1&isSearch=True&searchImpressionId=6e92fcfd-35dc-430d-8f5c-6c276312ef4c
+
+https://www.carlavidalphotography.es/servicios/fallas
+https://www.estheraguilerafotografia.com/lang/es/web/
+
+
+
+https://github.com/claudiabdm/astro-carousel?tab=readme-ov-file
+
+pixabay (img menus)=> jarmoluk
+pixabay (img menus)=> Atlantios
+snapitostudio
+JerzyGórecki
+Sunriseforever
+JoakimMosebach
+GerDukes
+kisistvan77
+ohalek00
+Pezibear
+lovechicco
+PIX1861
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const servicesContent = [
+  {
+    category: "comuniones",
+    title: "Su gran pequeño paso",
+    reflection: "Hay edades que son un puente; instantes de inocencia pura que merecen ser guardados antes de que el tiempo los convierta en madurez."
+  },
+  {
+    category: "familia",
+    title: "El refugio de lo eterno",
+    reflection: "La familia no es solo un grupo de personas, es el lugar donde la vida comienza y el amor no tiene fin. Fotografiamos el hilo invisible que os une."
+  },
+  {
+    category: "mascotas",
+    title: "Almas sin palabras",
+    reflection: "Un vínculo que no necesita voz para ser profundo. Capturar su mirada es entender que el amor más puro suele venir en cuatro patas."
+  },
+  {
+    category: "eventos",
+    title: "El eco de la celebración",
+    reflection: "Cuando las luces se apagan y la música cesa, solo la fotografía tiene el poder de devolvernos al centro de la risa y el abrazo compartido."
+  },
+  {
+    category: "empresa",
+    title: "La esencia de tu visión",
+    reflection: "Detrás de cada proyecto hay una intención y un esfuerzo humano. No solo mostramos lo que haces, sino el alma y el propósito que sostienen tu marca."
+  },
+  {
+    category: "maternidad",
+    title: "El milagro de la espera",
+    reflection: "Dos corazones latiendo en un mismo cuerpo; un tiempo de espera que es, en sí mismo, la forma más hermosa y efímera de la creación."
+  },
+  {
+    category: "parejas",
+    title: "Dos mundos en uno",
+    reflection: "Más allá del posado, buscamos la complicidad que solo existe cuando el ruido del mundo desaparece y solo quedáis vosotros dos."
+  }
+];

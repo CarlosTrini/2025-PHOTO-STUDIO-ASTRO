@@ -1,0 +1,50 @@
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.t-d-show{
+    display: block;
+}
+
+.t-d-none{
+    display: none;
+}
+
+
+
+.t-100vh {
+    min-height: 100vh;
+}
+.t-overflowY-hidden {
+    overflow-y: hidden!important;
+    scroll-behavior: none!important;
+}
+
+.t-padding-header{
+    padding-top: 9rem;
+
+    @media (min-width: 1024px) {
+        padding-top: 9.5rem;
+    }
+}
+
+.t-page-titles {
+    width: fit-content;
+    margin:0 auto;
+    text-align: center;
+    font-size: 2.8rem;
+    font-family: var(--font-playfair-boldItalic);
+
+
+    @media (min-width: 992px) {
+        font-size: 3.2rem;
+    }
+}

@@ -1,0 +1,134 @@
+---
+import Layout from "@layouts/Layout.astro";
+import "@styles/pages/home.css";
+---
+
+<Layout title="test" description="test description">
+
+  <section class="hero">
+    <!-- Slider main container -->
+    <div class="swiper swiper-hero">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide slide-hero">
+          <div class="hero-text">
+            <div>
+              <h2>Bodas</h2>
+              <p>Capturando momentos inolvidables</p>
+            </div>
+          </div>
+          <figure class="hero-img">
+            <img src="/img/photo-one.jpg" alt="Imagen de portada uno" />
+          </figure>
+        </div>
+
+        <div class="swiper-slide slide-hero">
+          <div class="hero-text">
+            <div>
+              <h2>Sesiones en estudio</h2>
+              <p>Capturando momentos inolvidables</p>
+            </div>
+          </div>
+          <figure class="hero-img">
+            <img src="/img/photo-two.jpg" alt="Imagen de portada uno" />
+          </figure>
+        </div>
+
+        <div class="swiper-slide slide-hero">
+          <div class="hero-text">
+            <div>
+              <h2>Sesiones en exterior</h2>
+              <p>Capturando momentos inolvidables</p>
+            </div>
+          </div>
+          <figure class="hero-img">
+            <img src="/img/photo-three.jpg" alt="Imagen de portada uno" />
+          </figure>
+        </div>
+
+        <div class="swiper-slide slide-hero">
+          <div class="hero-text">
+            <div>
+              <h2>Comuniones</h2>
+              <p>Capturando momentos inolvidables</p>
+            </div>
+          </div>
+          <figure class="hero-img">
+            <img src="/img/photo-five.jpg" alt="Imagen de portada uno" />
+          </figure>
+        </div>
+
+        <div class="swiper-slide slide-hero">
+          <div class="hero-text">
+            <div>
+              <h2>Y más...</h2>
+              <p>Capturando momentos inolvidables</p>
+            </div>
+          </div>
+          <figure class="hero-img">
+            <img src="/img/photo-four.jpg" alt="Imagen de portada uno" />
+          </figure>
+        </div>
+        ...
+      </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- If we need navigation buttons -->
+      <!-- <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div> -->
+
+      <!-- If we need scrollbar -->
+      <!-- <div class="swiper-scrollbar"></div> -->
+    </div>
+  </section>
+
+  <!-- BANNER  -->
+  <section class="banner">
+    <p class="bann-title" data-aos="fade-right">Te agradecemos por estar con nosotros</p>
+
+    <figure class="bann-img" >
+      <img src="/img/banner.jpg" alt="" data-aos="fade-up-left">
+      <figcaption data-aos="fade-up-right">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos dolorum distinctio quasi, est optio autem accusamus perferendis quo nemo, qui suscipit nisi quam, perspiciatis hic error ex! Officia minus quibusdam, mollitia debitis harum, maxime, deserunt magnam consectetur tenetur fugit nemo adipisci inventore? Corrupti minima suscipit et voluptas deserunt saepe rerum!
+        </p>
+      </figcaption>
+    </figure>
+  </section>
+</Layout>
+
+<script>
+  import Swiper from "swiper/bundle";
+  // @ts-ignore: no type declarations for this side-effect CSS import
+  import "swiper/css/bundle";
+  const swiper = new Swiper(".swiper-hero", {
+    // Optional parameters
+    // direction: "vertical",
+    effect: "fade",
+    fadeEffect: {
+      crossFade: true,
+    },
+    loop: true,
+    autoplay: {
+      delay: 2500,
+    },
+
+    // If we need pagination
+    pagination: {
+      el: ".swiper-pagination",
+    },
+
+    // Navigation arrows
+    // navigation: {
+    //   nextEl: '.swiper-button-next',
+    //   prevEl: '.swiper-button-prev',
+    // },
+
+    // And if we need scrollbar
+    // scrollbar: {
+    //   el: ".swiper-scrollbar",
+    // },
+  });
+</script>

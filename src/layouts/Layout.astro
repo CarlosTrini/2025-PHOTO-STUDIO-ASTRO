@@ -1,0 +1,51 @@
+---
+import BaseHead from "@components/BaseHead.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import "@styles/layout/layout.css";
+
+const {
+	title = "",
+	description = "",
+	image = "/images/portada.png",
+} = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} image={image} />
+	</head>
+	<Header />
+	<body>
+		<slot />
+	</body>
+	<Footer />
+</html>
+
+<script>
+	// import { allAboutTheme } from "@helpers/siteTheme";
+	// import { checkLogo } from "@helpers/logoTheme";
+	import { initToggleMobileMenu } from "@helpers/navMobile";
+	import {
+		initToggleDesktopMenu,
+		initHeaderScroll,
+	} from "@helpers/navDesktop";
+	import AOS from "aos";
+	import "aos/dist/aos.css";
+
+	window.addEventListener("DOMContentLoaded", () => {
+		// allAboutTheme();
+		// checkLogo();
+		initToggleMobileMenu(); // PARA EL MENU MOBILE
+		initToggleDesktopMenu(); // PARA EL MENU DESKTOP
+		initHeaderScroll(); // Ejecución inicial
+		AOS.init(
+			// {
+			// disable: "mobile",
+			// disable: window.innerWidth < 1024
+		// }
+	);
+	});
+
+	window.addEventListener("scroll", initHeaderScroll);
+</script>

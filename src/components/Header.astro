@@ -1,0 +1,137 @@
+---
+import {routes} from '@utils/constants/routes';
+import "@styles/components/header.css";
+
+---
+
+<header class="header-container header-opacity" id="headerContainer">
+    <div class="logo-hamb_container">
+        <h1 class="h-logo_container">
+            <a href="/">
+                <img src="/img/logo-white.png" alt="" id="logoSite" />
+            </a>
+        </h1>
+        <button class="hamburguer-menu" id="mobileMenuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <!-- NAV MOBILE -->
+    <div class="nav-container__mobile hidden-menu" id="navMenu">
+        <nav class="main-nav">
+            <ul class="h-links_container">
+                {
+                    routes.map((section) => {
+                        return section.routes.length == 1 ? (
+                            <li>
+                                <a
+                                    class="link-item"
+                                    href={`${section.basePath}${section.routes[0].path}`}
+                                >
+                                    {section.routes[0].name}
+                                </a>
+                            </li>
+                        ) : (
+                            <>
+                                <p class="section-nav-title">
+                                    {section.section.toLocaleUpperCase()}
+                                </p>
+                                {section.routes.map((route) => (
+                                    <li>
+                                        <a
+                                            class=" link-item_sub link-item"
+                                            href={`${section.basePath}${route.path}`}
+                                        >
+                                            {route.name}
+                                        </a>
+                                    </li>
+                                ))}
+                            </>
+                        );
+                    })
+                }
+            </ul>
+        </nav>
+    </div>
+
+    <!-- NAV DESKTOP -->
+    <div class="nav_container__desktop">
+        <nav class="">
+            <ul class="ul-container" id="menuContainerDesktop">
+                {
+                    routes.map((section, idx) => {
+                        return section.type === "link" ? (
+                            <li>
+                                <a
+                                    class="drop-title"
+                                    href={`${section.basePath}${section.routes[0].path}`}
+                                >
+                                    {section.routes[0].name}
+                                </a>
+                            </li>
+                        ) : section.type === "dropdown" ? (
+                            <li class="">
+                                <p class="drop-title" data-droptrigger={idx}>
+                                    {section.section}
+                                </p>
+                                <ul
+                                    class={`drop-content hidden-drop ${section.containerClass}`}
+                                    data-dropcontent={idx}
+                                >
+                                    {section.routes.map((route) => (
+                                        <li>
+                                            <a
+                                                class=" link-drop"
+                                                href={`${section.basePath}${route.path}`}
+                                            >
+                                                {route.name}
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </li>
+                        ) : section.type === "box" ? (
+                            <li class="">
+                                <p class=" drop-title" data-droptrigger={idx}>
+                                    {section.section}
+                                </p>
+                                <div
+                                    class={`box-content hidden-drop ${section.containerClass}`}
+                                    data-dropcontent={idx}
+                                >
+                                    {section.illustration &&
+                                        section.illustration != "" && (
+                                            <figure>
+                                                <img
+                                                    src={section.illustration}
+                                                    alt="imagen galeria"
+                                                    width="50px"
+                                                    height="50px"
+                                                />
+                                            </figure>
+                                        )}
+                                 
+                                    <ul class="">
+                                        {section.routes.map((route) => (
+                                            route.show &&
+                                            <li>
+                                                <a
+                                                    class=" link-drop"
+                                                    href={`${section.basePath}${route.path}`}
+                                                >
+                                                    {route.name}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </li>
+                        ) : null;
+                    })
+                }
+            </ul>
+        </nav>
+    </div>
+</header>

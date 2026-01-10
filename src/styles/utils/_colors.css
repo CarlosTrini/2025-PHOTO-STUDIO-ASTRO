@@ -1,0 +1,94 @@
+/* BACKGROUND COLORS */
+
+.t-bg-primary {
+    background-color: var(--color-primary);
+}
+
+.t-bg-secondary {
+    background-color: var(--color-secondary);
+}
+
+.t-bg-tertiary {
+    background-color: var(--color-tertiary);
+}
+
+.t-bg-quaternary {
+    background-color: var(--color-quaternary);
+}
+
+.t-bg-quinary {
+    background-color: var(--color-quinary);
+}
+
+.t-bg-senary {
+    background-color: var(--color-senary);
+    }
+    
+    /* 
+.t-bg-octonary {
+    background-color: var(--color-octonary);
+} */
+
+.t-bg-white {
+    background-color: var(--color-white);
+}
+
+.t-bg-dark {
+    background-color: var(--color-dark);
+}
+
+.t-bg-white-full {
+    background-color: var(--color-white-full);
+}
+
+.t-bg-dark-full {
+    background-color: var(--color-dark-full);
+}
+
+
+/* TEXT COLORS */
+
+.t-text-white {
+    color: var(--color-white);
+}
+
+.t-text-dark {
+    color: var(--color-dark);
+}
+
+.t-text-white-full {
+    color: var(--color-white-full);
+}
+
+.t-text-dark-full {
+    color: var(--color-dark-full);
+}
+
+.t-text-primary {
+    color: var(--color-primary);
+}
+
+.t-text-secondary {
+    color: var(--color-secondary);
+}
+
+.t-text-tertiary {
+    color: var(--color-tertiary);
+}
+
+.t-text-quaternary {
+    color: var(--color-quaternary);
+}
+
+.t-text-quinary {
+    color: var(--color-quinary);
+}
+
+.t-text-senary {
+    color: var(--color-senary);
+    }
+    
+    /* 
+.t-text-octonary {
+    color: var(--color-octonary);
+} */

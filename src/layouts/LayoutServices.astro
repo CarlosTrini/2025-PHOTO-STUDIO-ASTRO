@@ -14,7 +14,7 @@ const { pageTitle, heroImage, bannerTitle, bannerSubtitle, detailsInfo } = Astro
 ---
 
 <Layout>
-    <section class="hero-services">
+      <section class="hero-services">
         <figure class="hero-services__figure">
             <img
                 src={heroImage}
@@ -69,4 +69,26 @@ const { pageTitle, heroImage, bannerTitle, bannerSubtitle, detailsInfo } = Astro
             </ul>
         </section>
     </main>
+    
 </Layout>
+
+<script>
+    import GLightbox from "glightbox";
+    import "glightbox/dist/css/glightbox.css";
+    import Swiper from "swiper/bundle";
+
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3,
+        grid: {
+            rows: 2,
+        },
+        spaceBetween: 30,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+    });
+
+    const lightbox = GLightbox({ selector: ".glightbox" });
+    const lightbox2 = GLightbox({ selector: ".glightbox-pets" });
+</script>

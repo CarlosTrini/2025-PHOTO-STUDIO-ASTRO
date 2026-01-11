@@ -1,0 +1,47 @@
+---
+import Layout from "@layouts/Layout.astro";
+import "@styles/pages/gallery/homeGallery.css";
+import { routes } from "@utils/constants/routes";
+
+const galleryRoutes = routes.filter((router) => router.basePath == "/gallery");
+---
+
+<Layout>
+    <main class="t-100vh t-padding-header main-gallery-page">
+        <h1 class="t-page-titles gallery-title-page">GALERÍA</h1>
+
+        <section class="gallery-container">
+            {
+                galleryRoutes.map((routes) =>
+                    routes.routes.map(
+                        (route) =>
+                            route.path !== "" && (
+                                <article class="gallery-card">
+                                    <figure>
+                                        <img
+                                            src={
+                                                route?.imgSrc
+                                                    ? route.imgSrc
+                                                    : "/img/services-menu.jpg"
+                                            }
+                                            alt={`Sesión fotográfica de ${route.name}`}
+                                            loading="lazy"
+                                            width="400"
+                                            height="300"
+                                        />
+                                    </figure>
+                                    <h3>
+                                        <a
+                                            href={`${routes.basePath}${route.path}`}
+                                        >
+                                            {route.name}
+                                        </a>
+                                    </h3>
+                                </article>
+                            ),
+                    ),
+                )
+            }
+        </section>
+    </main>
+</Layout>

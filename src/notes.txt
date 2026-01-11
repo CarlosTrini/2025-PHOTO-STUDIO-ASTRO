@@ -31,6 +31,8 @@ https://www.estheraguilerafotografia.com/lang/es/web/
 
 
 https://github.com/claudiabdm/astro-carousel?tab=readme-ov-file
+https://linxtion.com/demo/react-image-gallery/
+https://www.npmjs.com/package/react-image-gallery
 
 pixabay (img menus)=> jarmoluk
 pixabay (img menus)=> Atlantios
@@ -44,7 +46,8 @@ ohalek00
 Pezibear
 lovechicco
 PIX1861
-
+AchimF
+fotoblend
 
 
 

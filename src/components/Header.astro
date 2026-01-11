@@ -1,7 +1,6 @@
 ---
-import {routes} from '@utils/constants/routes';
+import { routes } from "@utils/constants/routes";
 import "@styles/components/header.css";
-
 ---
 
 <header class="header-container header-opacity" id="headerContainer">
@@ -112,19 +111,21 @@ import "@styles/components/header.css";
                                                 />
                                             </figure>
                                         )}
-                                 
+
                                     <ul class="">
-                                        {section.routes.map((route) => (
-                                            route.show &&
-                                            <li>
-                                                <a
-                                                    class=" link-drop"
-                                                    href={`${section.basePath}${route.path}`}
-                                                >
-                                                    {route.name}
-                                                </a>
-                                            </li>
-                                        ))}
+                                        {section.routes.map(
+                                            (route) =>
+                                                route.show && (
+                                                    <li>
+                                                        <a
+                                                            class=" link-drop"
+                                                            href={`${section.basePath}${route.path}`}
+                                                        >
+                                                            {route.name}
+                                                        </a>
+                                                    </li>
+                                                ),
+                                        )}
                                     </ul>
                                 </div>
                             </li>

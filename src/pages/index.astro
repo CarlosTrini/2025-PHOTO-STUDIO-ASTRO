@@ -4,7 +4,6 @@ import "@styles/pages/home.css";
 ---
 
 <Layout title="test" description="test description">
-
   <section class="hero">
     <!-- Slider main container -->
     <div class="swiper swiper-hero">
@@ -86,13 +85,20 @@ import "@styles/pages/home.css";
 
   <!-- BANNER  -->
   <section class="banner">
-    <p class="bann-title" data-aos="fade-right">Te agradecemos por estar con nosotros</p>
+    <p class="bann-title" data-aos="fade-right">
+      Te agradecemos por estar con nosotros
+    </p>
 
-    <figure class="bann-img" >
-      <img src="/img/banner.jpg" alt="" data-aos="fade-up-left">
+    <figure class="bann-img">
+      <img src="/img/banner.jpg" alt="" data-aos="fade-up-left" />
       <figcaption data-aos="fade-up-right">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos dolorum distinctio quasi, est optio autem accusamus perferendis quo nemo, qui suscipit nisi quam, perspiciatis hic error ex! Officia minus quibusdam, mollitia debitis harum, maxime, deserunt magnam consectetur tenetur fugit nemo adipisci inventore? Corrupti minima suscipit et voluptas deserunt saepe rerum!
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos dolorum
+          distinctio quasi, est optio autem accusamus perferendis quo nemo, qui
+          suscipit nisi quam, perspiciatis hic error ex! Officia minus
+          quibusdam, mollitia debitis harum, maxime, deserunt magnam consectetur
+          tenetur fugit nemo adipisci inventore? Corrupti minima suscipit et
+          voluptas deserunt saepe rerum!
         </p>
       </figcaption>
     </figure>
@@ -102,7 +108,7 @@ import "@styles/pages/home.css";
 <script>
   import Swiper from "swiper/bundle";
   // @ts-ignore: no type declarations for this side-effect CSS import
-  import "swiper/css/bundle";
+  // import "swiper/css/bundle";
   const swiper = new Swiper(".swiper-hero", {
     // Optional parameters
     // direction: "vertical",

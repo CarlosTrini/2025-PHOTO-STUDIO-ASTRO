@@ -22,7 +22,7 @@ export const routes: RouterI[] = [
         routes: [{ name: "Inicio", path: "", show: true, imgSrc: null }],
     },
     {
-        section: "Servicios",
+        section: "Sesiones",
         basePath: "/services",
         type: "box",
         containerClass: "box-services",

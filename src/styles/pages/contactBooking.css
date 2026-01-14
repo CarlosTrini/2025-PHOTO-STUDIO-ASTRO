@@ -1,0 +1,149 @@
+.contact-main-page {
+    background: linear-gradient(rgba(var(--color-quinary-rgb), .6), rgba(var(--color-senary-rgb), .7)), url('/img/photo-six.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+
+.contact-title-page {
+    h2 {
+
+
+        font-family: var(--font-playfair-boldItalic);
+        color: var(--color-primary);
+        width: 100%;
+        text-align: center;
+        font-size: 4.5rem;
+        text-shadow: .3rem 0 0 var(--color-secondary);
+
+
+        @media (min-width: 640px) {
+            font-size: 4.8rem;
+        }
+
+        @media (min-width: 820px) {
+            max-height: 35vh;
+            font-size: 5rem;
+
+        }
+    }
+
+    p {
+        width: 80%;
+        margin: 2rem auto 0 auto;
+        text-align: center;
+        font-size: 1.6rem;
+        color: var(--color-primary);
+        text-align: center;
+    }
+
+}
+
+
+.contact-page-content {
+    width: 95%;
+    margin: 0 auto;
+    padding: 4rem 0;
+    background-color: black;
+    /* min-height: 50vh; */
+
+    @media (min-width: 1024px) {
+
+        width: 90%;
+        max-width: 150rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        /* gap: 1rem; */
+    }
+}
+
+.location-figure {
+
+    width: 100%;
+    max-width: 50rem;
+    margin: 1rem auto 2rem auto;
+    border-radius: .5rem;
+    overflow: hidden;
+    background-color: var(--color-tertiary);
+    padding: 1rem;
+
+    @media (min-width: 1024px) {
+        width: 50%;
+        min-height: 60vh;
+        /* max-height: 60rem; */
+        margin: 0;
+    }
+
+    img {
+        width: 100%;
+        height: inherit;
+        min-height: 60vh;
+        max-height: 60rem;
+        object-fit: cover;
+    }
+}
+
+
+.tabs-contact-container {
+    width: 100%;
+    background: red;
+    padding: 1rem;
+
+    @media (min-width: 1024px) {
+        width: 50%;
+        min-height: 60rem;
+
+    }
+}
+
+/* CLASES PARA TABS */
+.tabs-container {
+    background-color: blue;
+    position: relative;
+    overflow: hidden;
+    min-height: inherit;
+    background-color: rgb(240, 233, 233);
+}
+
+.tabs-content {
+    position: relative;
+}
+
+.tabs-titles {
+    display: flex;
+    justify-content: flex-start;
+    list-style: none !important;
+    gap: 1rem;
+
+    .tab-title {
+        padding: 1rem 1rem 0 0;
+    }
+
+}
+
+
+
+.hidden-tab {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    transform: translateY(105%);
+    /* opacity: 0;
+    height: 0;
+    width: 0; */
+    transition: all 0.3s ease-in-out;
+}
+
+.visible-tab {
+    visibility: visible;
+    transform: translateY(0);
+    /* opacity: 1;
+    height: auto;
+    width: 100%; */
+    transition: all 0.3s ease-in-out;
+}

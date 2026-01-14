@@ -58,13 +58,13 @@ export const routes: RouterI[] = [
         ],
     },
     {
-        section: "Contáctanos",
-        basePath: "/contact",
-        type: "dropdown",
-        containerClass: "drop-contact",
+        section: "Contáctanos/Reserva",
+        basePath: "/contact-booking",
+        type: "link",
+        // containerClass: "drop-contact",
+        containerClass: '',
         routes: [
-            { name: "Contacto", path: "/form", show: true, imgSrc: null },
-            { name: "Reserva", path: "/booking", show: true, imgSrc: null },
+            { name: "Contacto/Reserva", path: "", show: true, imgSrc: null }
         ],
     },
     {

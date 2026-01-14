@@ -1,0 +1,100 @@
+---
+import FormContact from "@components/FormContact";
+import Layout from "@layouts/Layout.astro";
+import "@styles/pages/contactBooking.css";
+---
+
+<Layout>
+    <main class={`contact-main-page`}>
+        <section class={`t-padding-header  contact-title-page`}>
+            <h2 class={`t-page-titles`}>Deseamos conocerte</h2>
+            <p class={``}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Incidunt repudiandae, ipsa iure saepe deserunt consequatur
+                consectetur autem illum fugit vitae?
+            </p>
+        </section>
+
+        <section class={`contact-page-content`}>
+            <!-- UBICACIÓN -->
+            <figure class={`location-figure`}>
+                <img
+                    src="/img/location.png"
+                    alt="imagen de fondo ilustrariva de contacto y reserva"
+                />
+            </figure>
+            <!-- TABS -->
+            <section class={`tabs-contact-container`}>
+                <div class={`tabs-container`}>
+                    <ul class={`tabs-titles`}>
+                        <li data-tabtitle="contact" class={`tab-title`}>
+                            <p>Contáctanos</p>
+                        </li>
+                        <li data-tabtitle="booking" class={`tab-title`}>
+                            <p>Reserva</p>
+                        </li>
+                    </ul>
+
+                    <div class="tabs-content">
+                        <div data-tabcontainer="contact" class={`visible-tab`}>
+                            <h2>CONTACTO</h2>
+                            <FormContact typeForm="contact" />
+                        </div>
+                        <div data-tabcontainer="booking" class={`hidden-tab`}>
+                            <h2>RESERVA</h2>
+                            <FormContact typeForm="booking" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+</Layout>
+
+<script>
+    const tabsCache = new Map();
+    const initTabs = () => {
+        const tabTitles = Array.from(
+            document.querySelectorAll("[data-tabtitle]"),
+        ) as HTMLElement[];
+
+        tabTitles.forEach((tabTitle) => {
+            const tabId = tabTitle.dataset.tabtitle;
+            const tabContainer = document.querySelector(
+                `[data-tabcontainer="${tabId}"]`,
+            ) as HTMLElement;
+
+            if (tabContainer && tabId) {
+                // guardar la referencia al nodo del DOM en el cache
+                tabsCache.set(tabId, {
+                    tab: tabTitle,
+                    container: tabContainer,
+                });
+
+                //asignar el evento
+                tabTitle.addEventListener("click", () => openTab(tabId));
+                // tabTitle.addEventListener("mouseenter", () => openTab(tabId));
+            }
+        });
+    };
+
+    const openTab = (tabId: string) => {
+        closeTabs();
+        let tabItem = tabsCache.get(tabId);
+        if (!tabItem) return;
+
+        tabItem.container.classList.toggle(`hidden-tab`);
+        tabItem.container.classList.toggle(`visible-tab`);
+    };
+
+    function closeTabs() {
+        tabsCache.forEach((tab) => {
+            tab.container.classList.remove("visible-tab");
+            tab.container.classList.add("hidden-tab");
+        });
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+        initTabs();
+    });
+</script>

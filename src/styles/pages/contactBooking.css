@@ -44,27 +44,31 @@
 
 
 .contact-page-content {
-    width: 95%;
+
+    width: 85%;
     margin: 0 auto;
     padding: 4rem 0;
-    background-color: black;
     /* min-height: 50vh; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 3rem;
 
-    @media (min-width: 1024px) {
 
+    @media (min-width: 1200px) {
+        flex-direction: row;
         width: 90%;
         max-width: 150rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
+        gap: 0;
         /* gap: 1rem; */
     }
 }
 
 .location-figure {
-
+    order: 1;
     width: 100%;
-    max-width: 50rem;
+    max-width: 60rem;
     margin: 1rem auto 2rem auto;
     border-radius: .5rem;
     overflow: hidden;
@@ -72,10 +76,16 @@
     padding: 1rem;
 
     @media (min-width: 1024px) {
-        width: 50%;
+        /* width: 70%; */
         min-height: 60vh;
         /* max-height: 60rem; */
         margin: 0;
+    }
+
+    @media (min-width: 1200px) {
+        max-width: 50rem;
+        order: 0;
+
     }
 
     img {
@@ -90,27 +100,77 @@
 
 .tabs-contact-container {
     width: 100%;
-    background: red;
-    padding: 1rem;
+    max-width: 60rem;
+    background: rgba(var(--color-senary-rgb), .1);
+    backdrop-filter: blur(1rem);
+    border: .1rem solid var(--color-primary);
+    /* padding: 1rem; */
+
+
+    @media (min-width: 1200px) {
+        max-width: 55rem;
+    }
 
     @media (min-width: 1024px) {
-        width: 50%;
-        min-height: 60rem;
+        /* width: 70%; */
+        min-height: 50vh;
+        /* max-height: 60rem; */
 
     }
 }
 
+.form-contact-container {
+
+
+
+
+    h2 {
+        text-align: end;
+        color: var(--color-primary);
+        font-family: var(--font-playfair-boldItalic);
+    }
+
+
+    label {
+        color: var(--color-primary);
+        margin-bottom: .5rem;
+    }
+
+    input {
+        margin-bottom: 2rem;
+
+
+    }
+
+    select {
+        /* color: var(--color-primary) !important; */
+        margin-bottom: 3rem;
+
+
+        option {
+            color: var(--color-quinary);
+            font-size: 1.9rem !important;
+        }
+    }
+}
+
+.form-content {
+    width: 80%;
+    margin: 0 auto;
+}
+
 /* CLASES PARA TABS */
 .tabs-container {
-    background-color: blue;
     position: relative;
     overflow: hidden;
     min-height: inherit;
-    background-color: rgb(240, 233, 233);
+
 }
 
 .tabs-content {
     position: relative;
+
+
 }
 
 .tabs-titles {
@@ -118,13 +178,38 @@
     justify-content: flex-start;
     list-style: none !important;
     gap: 1rem;
+    border-bottom: .2rem solid var(--color-primary);
+    width: 95%;
+    margin: 0 auto 1rem auto;
+
+
 
     .tab-title {
-        padding: 1rem 1rem 0 0;
+        transition: all .3s ease-in-out;
+
+
+        &:hover {
+            background-color: rgba(var(--color-secondary-rgb), .4);
+            transition: all .3s ease-in-out;
+        }
+
+        p {
+            font-family: var(--font-playfair-boldItalic);
+            font-size: 2rem !important;
+            color: var(--color-primary);
+            padding: 1.5rem;
+            text-align: center;
+
+        }
     }
 
 }
 
+
+.tab-selected {
+    background-color: rgba(var(--color-senary-rgb), .8);
+
+}
 
 
 .hidden-tab {

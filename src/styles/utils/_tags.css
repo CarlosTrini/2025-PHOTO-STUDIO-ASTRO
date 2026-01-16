@@ -3,7 +3,7 @@ html {
     font-size: 62.5%;
 
     scrollbar-width: thin;
-    scrollbar-color: rgba(193, 164, 119) rgba(44, 58, 71) ;
+    scrollbar-color: rgba(193, 164, 119) rgba(44, 58, 71);
 
 }
 
@@ -82,4 +82,14 @@ button {
     &:hover {
         transform: scale(1.05);
     }
+}
+
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    box-shadow: none;
+    border: none;
+    /* solo si quieres eliminarlo completamente */
 }

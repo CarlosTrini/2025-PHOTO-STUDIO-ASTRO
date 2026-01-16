@@ -27,7 +27,10 @@ import "@styles/pages/contactBooking.css";
             <section class={`tabs-contact-container`}>
                 <div class={`tabs-container`}>
                     <ul class={`tabs-titles`}>
-                        <li data-tabtitle="contact" class={`tab-title`}>
+                        <li
+                            data-tabtitle="contact"
+                            class={`tab-title tab-selected`}
+                        >
                             <p>Contáctanos</p>
                         </li>
                         <li data-tabtitle="booking" class={`tab-title`}>
@@ -35,12 +38,18 @@ import "@styles/pages/contactBooking.css";
                         </li>
                     </ul>
 
-                    <div class="tabs-content">
-                        <div data-tabcontainer="contact" class={`visible-tab`}>
+                    <div class="tabs-content form-content">
+                        <div
+                            data-tabcontainer="contact"
+                            class={`visible-tab form-contact-container`}
+                        >
                             <h2>CONTACTO</h2>
                             <FormContact typeForm="contact" client:load />
                         </div>
-                        <div data-tabcontainer="booking" class={`hidden-tab`}>
+                        <div
+                            data-tabcontainer="booking"
+                            class={`hidden-tab form-contact-container`}
+                        >
                             <h2>RESERVA</h2>
                             <FormContact typeForm="booking" />
                         </div>
@@ -86,12 +95,14 @@ import "@styles/pages/contactBooking.css";
 
         tabItem.container.classList.toggle(`hidden-tab`);
         tabItem.container.classList.toggle(`visible-tab`);
+        tabItem.tab.classList.toggle(`tab-selected`);
     };
 
     function closeTabs() {
         tabsCache.forEach((tab) => {
             tab.container.classList.remove("visible-tab");
             tab.container.classList.add("hidden-tab");
+            tab.tab.classList.remove("tab-selected");
         });
     }
 

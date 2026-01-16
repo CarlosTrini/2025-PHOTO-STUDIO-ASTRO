@@ -24,6 +24,17 @@
     min-height: 100vh;
 }
 
+/* .form-input {
+    display: flex;
+    align-items: center;
+
+    svg {
+        display: inline-block;
+        background-color: var(--color-quinary);
+        padding: 1rem .7rem;
+        border-radius: .4rem
+    }
+} */
 
 .t-input {
     label {
@@ -32,7 +43,8 @@
         font-family: var(--font-playfair-boldItalic);
 
         span {
-            color: rgb(196, 2, 2);
+            color: rgb(126, 14, 14);
+            font-size: 2.5rem;
         }
     }
 
@@ -43,14 +55,16 @@
         padding: 1rem .7rem;
         border-radius: .4rem;
         width: 100%;
+
     }
 
     select {
         width: fit-content;
-        padding: 1rem .7rem .5rem .7rem;
+        padding: 1rem;
         font-size: 1.6rem;
-        background-color: transparent !important;
-        border-bottom: .5rem solid var(--color-quaternary);
+        background-color: var(--color-quaternary) !important;
+        color: rgba(var(--color-quinary-rgb), .8);
+        /* border-bottom: .5rem solid var(--color-quaternary); */
     }
 
     option {

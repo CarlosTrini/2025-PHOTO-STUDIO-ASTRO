@@ -47,10 +47,28 @@
 
     select {
         width: fit-content;
-        padding: 1rem .7rem;
+        padding: 1rem .7rem .5rem .7rem;
         font-size: 1.6rem;
-        background-color: var(--color-quaternary);
+        background-color: transparent !important;
+        border-bottom: .5rem solid var(--color-quaternary);
     }
+
+    option {
+        font-family: var(--font-playfair-boldItalic);
+        font-size: 1.4rem;
+        background-color: rgba(var(--color-secondary-rgb), .5);
+
+        &:hover {
+            background-color: rgba(var(--color-quinary-rgb), .5) !important;
+        }
+
+        &:checked {
+            background-color: rgba(var(--color-quinary-rgb), .5) !important;
+            color: var(--color-primary);
+        }
+    }
+
+
 
 }
 

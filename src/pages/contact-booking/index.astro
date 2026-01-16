@@ -38,7 +38,7 @@ import "@styles/pages/contactBooking.css";
                     <div class="tabs-content">
                         <div data-tabcontainer="contact" class={`visible-tab`}>
                             <h2>CONTACTO</h2>
-                            <FormContact typeForm="contact" />
+                            <FormContact typeForm="contact" client:load />
                         </div>
                         <div data-tabcontainer="booking" class={`hidden-tab`}>
                             <h2>RESERVA</h2>
@@ -52,6 +52,7 @@ import "@styles/pages/contactBooking.css";
 </Layout>
 
 <script>
+    // ESTO TIENE CHANCE DE CONVERTIRSE A COMPONENTES...
     const tabsCache = new Map();
     const initTabs = () => {
         const tabTitles = Array.from(

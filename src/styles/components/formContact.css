@@ -1,4 +1,60 @@
 /* CLASES PARA EL TAB DE 'CONTÁCTANOS' */
 
-
 /* CLASES PARA EL TAB DE 'RESERVA' */
+
+
+
+
+
+
+
+
+
+
+/* CLASES EN    COMUN */
+
+.buttons-form {
+    width: 90%;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: 1024px) {
+        width: 60%;
+    }
+
+    button {
+        padding: .7rem .5rem;
+        font-size: 1.6rem;
+        border-radius: .4rem;
+        color: var(--color-primary);
+        display: flex;
+        gap: .5rem;
+        align-items: center;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+
+
+    @media (min-width: 980px) {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .send-btn-form {
+        margin-bottom: 1rem;
+        background-color: rgba(var(--color-senary-rgb), .5);
+
+        @media (min-width: 980px) {
+            margin-bottom: 0;
+        }
+    }
+
+    .cancel-btn-form {
+        background-color: rgba(var(--color-quinary-rgb), .6);
+    }
+}

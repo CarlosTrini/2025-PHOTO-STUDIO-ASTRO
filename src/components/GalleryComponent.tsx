@@ -30,6 +30,7 @@ const GalleryComponent: React.FC<GalleryProps> = ({ nameGallery }) => {
     const [dataGallery, setDataGallery] = React.useState<DataGalleryResponse | null>(null);
     const [thumbnailPosition, setThumbnailPosition] = React.useState<'bottom' | 'top' | 'left' | 'right'>('bottom');
 
+
     const getInfoGallery = async () => {
         try {
             // const response = await fetch(
@@ -44,7 +45,7 @@ const GalleryComponent: React.FC<GalleryProps> = ({ nameGallery }) => {
                         thumbnail: "/img/photo-one.jpg",
                         originalAlt: "Fotografía Uno",
                         thumbnailAlt: "Miniatura Uno",
-                        description: "Descripción de la foto uno",
+                        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat provident fugit iure",
                     },
                     {
                         original: "/img/photo-two.jpg",

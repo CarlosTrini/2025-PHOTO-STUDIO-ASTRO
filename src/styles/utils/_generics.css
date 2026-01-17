@@ -63,6 +63,7 @@
         padding: 1rem;
         font-size: 1.6rem;
         background-color: var(--color-quaternary) !important;
+        border-radius: .4rem;
         color: rgba(var(--color-quinary-rgb), .8);
         /* border-bottom: .5rem solid var(--color-quaternary); */
     }
@@ -82,7 +83,15 @@
         }
     }
 
-
+    textarea {
+        background-color: var(--color-quaternary) !important;
+        width: 100%;
+        height: 15rem;
+        resize: vertical;
+        padding: 1rem;
+        font-size: 1.3rem;
+        border-radius: .4rem;
+    }
 
 }
 

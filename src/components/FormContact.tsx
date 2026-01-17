@@ -1,46 +1,82 @@
 import React, { useEffect, useState } from 'react';
 import '@styles/components/formContact.css';
+import { regexValidateFn, type ValidationType } from '@helpers/regexValidate';
 
 interface Props {
-    typeForm: 'contact' | 'booking';
+    formType: 'contact' | 'booking';
 }
 
-const FormContact: React.FC<Props> = ({ typeForm }) => {
+interface ServicesSelectProps {
+    value: string;
+    selectValueElement: (valueSelected: React.ChangeEvent<HTMLSelectElement>) => void;
+}
+
+interface TextAreaProps {
+    value: string;
+    handleChangeValue: (valueDetails: React.ChangeEvent<HTMLTextAreaElement>) => void;
+}
+
+
+interface FormInputsValues {
+    value: string;
+    error: string;
+    regex: ValidationType[];
+}
+
+type FormInputsState = Record<string, FormInputsValues>;
+
+
+const formDataInit = {
+    contactName: {
+        value: '',
+        error: '',
+        regex: ['notEmptyText']
+    },
+    contactEmail: {
+        value: '',
+        error: '',
+        regex: ['notEmptyText', 'email']
+    },
+    contactNumber: {
+        value: '',
+        error: '',
+        regex: ['notEmptyText', 'phone']
+    },
+    contactTypeSelect: {
+        value: 'general',
+        error: '',
+        regex: ['notEmptyText']
+    },
+    contactServicesSelect: {
+        value: '',
+        error: '',
+        regex: []
+    },
+    contactComments: {
+        value: '',
+        error: '',
+        regex: []
+    },
+} as FormInputsState;
+
+
+
+const FormContact: React.FC<Props> = ({ formType }) => {
 
     const [showServices, setShowServices] = useState(false);
 
-    const [formInputs, setFormInputs] = useState({
-        contactName: {
-            value: '',
-            error: ''
-        },
-        contactEmail: {
-            value: '',
-            error: ''
-        },
-        contactNumber: {
-            value: '',
-            error: ''
-        },
-        contactTypeSelect: {
-            value: 'general',
-            error: ''
-        },
-        contactServicesSelect: {
-            value: 'general',
-            error: ''
-        },
-    });
+    const [formInputs, setFormInputs] = useState<FormInputsState>(formDataInit);
 
 
-    const handleChageInput = (input: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
+    const handleChageInput = (input: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
         setFormInputs({
             ...formInputs,
             [input.target.name]: {
+                ...formInputs[input.target.name],
                 error: '',
                 value: input.target.value
             }
-        });
+        } as FormInputsState);
     };
 
 
@@ -49,7 +85,66 @@ const FormContact: React.FC<Props> = ({ typeForm }) => {
     }, [formInputs]);
 
 
+    const handleFormSubmit = (formtype: string) => {
+        //validar inputs mediante sus regex...
+        const inputs = { ...formInputs };
+        let isFormValid: FormInputsState = {};
+        let foundSomeError = false;
 
+        // TODO: EVALUAR ASÍ O AL CHAGE U BLUR
+        for (const prop in inputs) {
+            const currentInput = inputs[prop];
+            const regex = currentInput.regex;
+
+            if (regex.length > 0) {
+                for (let i = 0; i < regex.length; i++) {
+                    const validation = regexValidateFn(currentInput.value, regex[i]);
+                    // pueden tener 0 o muchos regex... pero si uno no pasa test (false) se aplica un break, para que noevalue más sin necesidad
+                    if (!validation.testValue) {
+                        currentInput.error = validation.errorMsg;
+                        foundSomeError = true;
+                        break;
+                    }
+                }
+            }
+
+            isFormValid = { ...isFormValid, [prop]: currentInput };
+        }
+
+
+        // si NO encontró un error, se ejcuta lo sig, para pintar el error correspondiente
+        if (!foundSomeError) {
+            //no hubo error
+            sendForm();
+        }
+
+        // Si hubo error
+
+
+        console.log('A VER... ==>', isFormValid);
+
+
+
+    };
+
+    const sendForm = async () => {
+        try {
+
+            // mandar a algún lado la data del form
+            const data = {
+                inputName1: 'value',
+                inputName2: 'value',
+                inputName3: 'value',
+                inputName4: 'value',
+                inputName5: 'value',
+            };
+        } catch (error) {
+            console.error('send form contact error ==>', error);
+        }
+    };
+
+
+    // COMPONENTES
 
     const ButtonsForm = () => {
         return (
@@ -60,17 +155,13 @@ const FormContact: React.FC<Props> = ({ typeForm }) => {
         );
     };
 
-    interface ServicesSelectProps {
-        value: string;
-        selectValueElement: (valueSelected: React.ChangeEvent<HTMLSelectElement>) => void;
-    }
 
     const ServicesSelect: React.FC<ServicesSelectProps> = ({ value, selectValueElement }) => {
         return (
             <div className={`t-input input-contact`}>
                 <label htmlFor="contactEmail"><span>*</span> Selección el paquete de tu interés:</label>
 
-                <select name="servicesTypeSelect" value={value} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectValueElement(e); }}>
+                <select name="contactServicesSelect" value={value} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectValueElement(e); }}>
                     <option value="wedding">Boda</option>
                     <option value="business">Empresa</option>
                     <option value="maternity">Maternidad</option>
@@ -84,8 +175,8 @@ const FormContact: React.FC<Props> = ({ typeForm }) => {
     return (
         <>
             {
-                typeForm == 'contact' && (
-                    <form action="">
+                formType == 'contact' && (
+                    <form action="" onSubmit={(e) => { e.preventDefault(); handleFormSubmit('contact'); }}>
                         <div className={`t-input input-contact`}>
                             <label htmlFor="contactName"
                             ><span>*</span> Nombre:
@@ -128,7 +219,7 @@ const FormContact: React.FC<Props> = ({ typeForm }) => {
                         <div className={`t-input input-contact`}>
                             <label htmlFor="contactEmail"><span>*</span> ¿En qué podemos ayudarte?:</label>
                             <select name="contactTypeSelect"
-                                value={formInputs['contactServicesSelect'].value}
+                                value={formInputs['contactTypeSelect'].value}
                                 onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
                                     setShowServices(e.target.value == 'pack');
 
@@ -145,7 +236,13 @@ const FormContact: React.FC<Props> = ({ typeForm }) => {
                                 <ServicesSelect value={formInputs['contactServicesSelect'].value} selectValueElement={handleChageInput} />
                             )
                         }
+
+                        <TextAreaForm value={formInputs['contactComments'].value} handleChangeValue={handleChageInput} />
+
+
                         <ButtonsForm />
+
+
                     </form>
 
                 )
@@ -153,7 +250,7 @@ const FormContact: React.FC<Props> = ({ typeForm }) => {
 
 
             {
-                typeForm == 'booking' && (
+                formType == 'booking' && (
                     <form action="">
                         <div className={`t-input input-contact`}>
                             <label htmlFor="contactName"
@@ -206,6 +303,16 @@ const FormContact: React.FC<Props> = ({ typeForm }) => {
                 )
             }
         </>
+    );
+};
+
+
+const TextAreaForm: React.FC<TextAreaProps> = ({ value, handleChangeValue }) => {
+    return (
+        <div className='t-input'>
+            <label htmlFor='contactComments' >Comentarios:</label>
+            <textarea name='contactComments' className='' onChange={handleChangeValue} value={value} ></textarea>
+        </div>
     );
 };
 

@@ -9,19 +9,27 @@ interface Props {
 interface ServicesSelectProps {
     value: string;
     selectValueElement: (valueSelected: React.ChangeEvent<HTMLSelectElement>) => void;
-}
+    handleBlur: (inputName: string) => void;
+};
 
 interface TextAreaProps {
+    labelText: string;
     value: string;
     handleChangeValue: (valueDetails: React.ChangeEvent<HTMLTextAreaElement>) => void;
-}
+    handleBlur: (inputName: string) => void;
+};
 
 
 interface FormInputsValues {
     value: string;
     error: string;
     regex: ValidationType[];
+    checked?: boolean;
 }
+
+interface ErrorMsg {
+    errorMsg: string;
+};
 
 type FormInputsState = Record<string, FormInputsValues>;
 
@@ -30,7 +38,7 @@ const formDataInit = {
     contactName: {
         value: '',
         error: '',
-        regex: ['notEmptyText']
+        regex: ['notEmptyText', 'onlyLetters']
     },
     contactEmail: {
         value: '',
@@ -40,7 +48,7 @@ const formDataInit = {
     contactNumber: {
         value: '',
         error: '',
-        regex: ['notEmptyText', 'phone']
+        regex: ['phoneCanBeEmpty']
     },
     contactTypeSelect: {
         value: 'general',
@@ -84,32 +92,61 @@ const FormContact: React.FC<Props> = ({ formType }) => {
         console.log('INPUTS ==>', formInputs);
     }, [formInputs]);
 
+    const handleBlurValidate = (propName: string) => {
+        //TODO: BUSCAR UN TOASTR PARA REACT Y ASTRO... DE PREFERENCIA COMPATIBLE ENTRE AMBOS...
+        if (!propName || propName == '' || !formInputs[propName]) return;
 
-    const handleFormSubmit = (formtype: string) => {
+
+
+        const inputInfo = formInputs[propName];
+
+        if (inputInfo.regex.length == 0) return; // NO HAY VALIDACINES... TODO: AGREGAR TOASTR
+
+
+        for (let i = 0; i < inputInfo.regex.length; i++) {
+            const validation = regexValidateFn(inputInfo.value, inputInfo.regex[i]);
+            // pueden tener 0 o muchos regex... pero si uno no pasa test (false) se aplica un break, para que noevalue más sin necesidad
+            if (!validation.testValue) {
+                inputInfo.error = validation.errorMsg;
+                break;
+            } else {
+                inputInfo.error = '';
+            }
+
+        }
+
+
+        //actualizamos el estate si hubo error
+        const allInputs = { ...formInputs, [propName]: inputInfo };
+        setFormInputs(allInputs);
+
+    };
+
+    const handleFormSubmit = (formtype: 'contact' | 'booking') => {
+        // TIENE QUE HABER DOBLE CHECK... EL BLUR Y EN DEL SUBMIT...
         //validar inputs mediante sus regex...
         const inputs = { ...formInputs };
         let isFormValid: FormInputsState = {};
         let foundSomeError = false;
 
-        // TODO: EVALUAR ASÍ O AL CHAGE U BLUR
-        for (const prop in inputs) {
-            const currentInput = inputs[prop];
-            const regex = currentInput.regex;
+        // for (const prop in inputs) {
+        //     const currentInput = inputs[prop];
+        //     const regex = currentInput.regex;
 
-            if (regex.length > 0) {
-                for (let i = 0; i < regex.length; i++) {
-                    const validation = regexValidateFn(currentInput.value, regex[i]);
-                    // pueden tener 0 o muchos regex... pero si uno no pasa test (false) se aplica un break, para que noevalue más sin necesidad
-                    if (!validation.testValue) {
-                        currentInput.error = validation.errorMsg;
-                        foundSomeError = true;
-                        break;
-                    }
-                }
-            }
+        //     if (regex.length > 0) {
+        //         for (let i = 0; i < regex.length; i++) {
+        //             const validation = regexValidateFn(currentInput.value, regex[i]);
+        //             // pueden tener 0 o muchos regex... pero si uno no pasa test (false) se aplica un break, para que noevalue más sin necesidad
+        //             if (!validation.testValue) {
+        //                 currentInput.error = validation.errorMsg;
+        //                 foundSomeError = true;
+        //                 break;
+        //             }
+        //         }
+        //     }
 
-            isFormValid = { ...isFormValid, [prop]: currentInput };
-        }
+        //     isFormValid = { ...isFormValid, [prop]: currentInput };
+        // }
 
 
         // si NO encontró un error, se ejcuta lo sig, para pintar el error correspondiente
@@ -156,12 +193,16 @@ const FormContact: React.FC<Props> = ({ formType }) => {
     };
 
 
-    const ServicesSelect: React.FC<ServicesSelectProps> = ({ value, selectValueElement }) => {
+    const ServicesSelect: React.FC<ServicesSelectProps> = ({ value, selectValueElement, handleBlur }) => {
         return (
             <div className={`t-input input-contact`}>
                 <label htmlFor="contactEmail"><span>*</span> Selección el paquete de tu interés:</label>
 
-                <select name="contactServicesSelect" value={value} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectValueElement(e); }}>
+                <select name="contactServicesSelect"
+                    value={value}
+                    onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectValueElement(e); }}
+                    onBlur={(e) => { handleBlur(e.target.name); }}
+                >
                     <option value="wedding">Boda</option>
                     <option value="business">Empresa</option>
                     <option value="maternity">Maternidad</option>
@@ -172,8 +213,11 @@ const FormContact: React.FC<Props> = ({ formType }) => {
         );
     };
 
+
+
     return (
         <>
+
             {
                 formType == 'contact' && (
                     <form action="" onSubmit={(e) => { e.preventDefault(); handleFormSubmit('contact'); }}>
@@ -181,49 +225,84 @@ const FormContact: React.FC<Props> = ({ formType }) => {
                             <label htmlFor="contactName"
                             ><span>*</span> Nombre:
                             </label>
-                            {/* <div className='form-input'> */}
+
+                            {
+                                formInputs['contactName'].error !== '' && (
+                                    <ErrorMsgForm errorMsg={formInputs['contactName'].error} />
+                                )
+                            }
                             <input
                                 onChange={handleChageInput}
                                 type="text"
                                 name="contactName"
                                 placeholder="Ingresa tu nombre"
+                                value={formInputs['contactName'].value}
+                                onBlur={(e) => {
+                                    handleBlurValidate(e.target.name);
+                                }}
                             />
-                            {/* <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 640 640"><path fill="#f8f7f2" d="M125.4 128C91.5 128 64 155.5 64 189.4C64 190.3 64 191.1 64.1 192L64 192L64 448C64 483.3 92.7 512 128 512L512 512C547.3 512 576 483.3 576 448L576 192L575.9 192C575.9 191.1 576 190.3 576 189.4C576 155.5 548.5 128 514.6 128L125.4 128zM528 256.3L528 448C528 456.8 520.8 464 512 464L128 464C119.2 464 112 456.8 112 448L112 256.3L266.8 373.7C298.2 397.6 341.7 397.6 373.2 373.7L528 256.3zM112 189.4C112 182 118 176 125.4 176L514.6 176C522 176 528 182 528 189.4C528 193.6 526 197.6 522.7 200.1L344.2 335.5C329.9 346.3 310.1 346.3 295.8 335.5L117.3 200.1C114 197.6 112 193.6 112 189.4z" /></svg> */}
-                            {/* </div> */}
+
 
                         </div>
                         <div className={`t-input input-contact`}>
                             <label htmlFor="contactEmail"
                             ><span>*</span> Correo eléctronico:
                             </label>
+
+                            {
+                                formInputs['contactEmail'].error !== '' && (
+                                    <ErrorMsgForm errorMsg={formInputs['contactEmail'].error} />
+                                )
+                            }
                             <input
                                 onChange={handleChageInput}
 
                                 type="text"
                                 name="contactEmail"
                                 placeholder="example@example.com"
+                                value={formInputs['contactEmail'].value}
+                                onBlur={(e) => {
+                                    handleBlurValidate(e.target.name);
+                                }}
                             />
                         </div>
                         <div className={`t-input input-contact`}>
                             <label htmlFor="contactNumber"
-                            ><span>*</span> Número teléfonico:
+                            ><span></span> Número teléfonico:
                             </label>
+                            {
+                                formInputs['contactNumber'].error !== '' && (
+                                    <ErrorMsgForm errorMsg={formInputs['contactNumber'].error} />
+                                )
+                            }
                             <input
                                 onChange={handleChageInput}
 
                                 type="text"
                                 name="contactNumber"
                                 placeholder="xxxxxxxxxx"
+                                value={formInputs['contactNumber'].value}
+                                onBlur={(e) => {
+                                    handleBlurValidate(e.target.name);
+                                }}
                             />
                         </div>
                         <div className={`t-input input-contact`}>
-                            <label htmlFor="contactEmail"><span>*</span> ¿En qué podemos ayudarte?:</label>
+                            <label htmlFor="contactTypeSelect"><span>*</span> ¿En qué podemos ayudarte?:</label>
+                            {
+                                formInputs['contactTypeSelect'].error !== '' && (
+                                    <ErrorMsgForm errorMsg={formInputs['contactTypeSelect'].error} />
+                                )
+                            }
                             <select name="contactTypeSelect"
                                 value={formInputs['contactTypeSelect'].value}
                                 onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
                                     setShowServices(e.target.value == 'pack');
 
                                     handleChageInput(e);
+                                }}
+                                onBlur={(e) => {
+                                    handleBlurValidate(e.target.name);
                                 }}
                             >
                                 <option value="general">Información general</option>
@@ -233,11 +312,18 @@ const FormContact: React.FC<Props> = ({ formType }) => {
                         </div>
                         {
                             showServices && (
-                                <ServicesSelect value={formInputs['contactServicesSelect'].value} selectValueElement={handleChageInput} />
+                                <>
+                                    {
+                                        formInputs['contactServicesSelect'].error !== '' && (
+                                            <ErrorMsgForm errorMsg={formInputs['contactServicesSelect'].error} />
+                                        )
+                                    }
+                                    <ServicesSelect value={formInputs['contactServicesSelect'].value} selectValueElement={handleChageInput} handleBlur={(inputName) => { handleBlurValidate(inputName); }} />
+                                </>
                             )
                         }
 
-                        <TextAreaForm value={formInputs['contactComments'].value} handleChangeValue={handleChageInput} />
+                        <TextAreaForm labelText='Comentarios/Dudas' value={formInputs['contactComments'].value} handleChangeValue={handleChageInput} handleBlur={(inputName) => { handleBlurValidate(inputName); }} />
 
 
                         <ButtonsForm />
@@ -251,55 +337,183 @@ const FormContact: React.FC<Props> = ({ formType }) => {
 
             {
                 formType == 'booking' && (
-                    <form action="">
+                    <form action="" onSubmit={(e) => { e.preventDefault(); handleFormSubmit('booking'); }}>
                         <div className={`t-input input-contact`}>
                             <label htmlFor="contactName"
-                            ><span>*</span> Nombre completo:
+                            ><span>*</span> Nombre:
                             </label>
+
+                            {
+                                formInputs['contactName'].error !== '' && (
+                                    <ErrorMsgForm errorMsg={formInputs['contactName'].error} />
+                                )
+                            }
                             <input
+                                onChange={handleChageInput}
                                 type="text"
                                 name="contactName"
                                 placeholder="Ingresa tu nombre"
+                                value={formInputs['contactName'].value}
+                                onBlur={(e) => {
+                                    handleBlurValidate(e.target.name);
+                                }}
                             />
+
+
                         </div>
                         <div className={`t-input input-contact`}>
                             <label htmlFor="contactEmail"
                             ><span>*</span> Correo eléctronico:
                             </label>
+
+                            {
+                                formInputs['contactEmail'].error !== '' && (
+                                    <ErrorMsgForm errorMsg={formInputs['contactEmail'].error} />
+                                )
+                            }
                             <input
+                                onChange={handleChageInput}
+
                                 type="text"
                                 name="contactEmail"
                                 placeholder="example@example.com"
+                                value={formInputs['contactEmail'].value}
+                                onBlur={(e) => {
+                                    handleBlurValidate(e.target.name);
+                                }}
                             />
                         </div>
                         <div className={`t-input input-contact`}>
                             <label htmlFor="contactNumber"
-                            ><span>*</span> Número teléfonico:
+                            ><span></span> Número teléfonico:
                             </label>
+                            {
+                                formInputs['contactNumber'].error !== '' && (
+                                    <ErrorMsgForm errorMsg={formInputs['contactNumber'].error} />
+                                )
+                            }
                             <input
+                                onChange={handleChageInput}
+
                                 type="text"
                                 name="contactNumber"
                                 placeholder="xxxxxxxxxx"
+                                value={formInputs['contactNumber'].value}
+                                onBlur={(e) => {
+                                    handleBlurValidate(e.target.name);
+                                }}
                             />
                         </div>
+                        {/* <div className={`t-input input-contact`}>
+                            <label htmlFor="contactTypeSelect"><span>*</span> ¿En qué podemos ayudarte?:</label>
+                            {
+                                formInputs['contactTypeSelect'].error !== '' && (
+                                    <ErrorMsgForm errorMsg={formInputs['contactTypeSelect'].error} />
+                                )
+                            }
+                            <select name="contactTypeSelect"
+                                value={formInputs['contactTypeSelect'].value}
+                                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+                                    setShowServices(e.target.value == 'pack');
+
+                                    handleChageInput(e);
+                                }}
+                                onBlur={(e) => {
+                                    handleBlurValidate(e.target.name);
+                                }}
+                            >
+                                <option value="general">Información general</option>
+                                <option value="pack">Información de algún paquete</option>
+                                <option value="session">Cotizar sesión personalizada</option>
+                            </select>
+                        </div> */}
+
+
+                        {
+                            formInputs['contactServicesSelect'].error !== '' && (
+                                <ErrorMsgForm errorMsg={formInputs['contactServicesSelect'].error} />
+                            )
+                        }
+                        <ServicesSelect value={formInputs['contactServicesSelect'].value} selectValueElement={handleChageInput} handleBlur={(inputName) => { handleBlurValidate(inputName); }} />
+
+                        <div className={`t-input input-contact`}>
+                            <label htmlFor="contactName">
+                                <span>*</span> Fecha y Hora:
+                            </label>
+
+                            {
+                                formInputs['contactName'].error !== '' && (
+                                    <ErrorMsgForm errorMsg={formInputs['contactName'].error} />
+                                )
+                            }
+
+                            <input
+                                onChange={handleChageInput}
+                                type="datetime-local"
+                                name="contactName"
+                                /* Value harcodeado: 24 de Diciembre de 2024 a las 15:30 */
+                                value={formInputs['contactName'].value || "2024-12-24T15:30"}
+                                onBlur={(e) => {
+                                    handleBlurValidate(e.target.name);
+                                }}
+                            />
+                        </div>
+
                         <div className={`t-input input-contact`}>
                             <label htmlFor="contactEmail"
-                            ><span>*</span> ¿En qué podemos ayudarte?:
+                            ><span>*</span> Dirección del sitio:
                             </label>
-                            <select name="contactType">
-                                <option value="general"
-                                >Información general</option
-                                >
-                                <option value="paquete"
-                                >Información de algún paquete</option
-                                >
-                                <option value="sesion"
-                                >Información de sesión personalizada</option
-                                >
-                            </select>
-                        </div>
-                    </form>
 
+                            {
+                                formInputs['contactEmail'].error !== '' && (
+                                    <ErrorMsgForm errorMsg={formInputs['contactEmail'].error} />
+                                )
+                            }
+                            <input
+                                onChange={handleChageInput}
+
+                                type="text"
+                                name="contactEmail"
+                                placeholder="example@example.com"
+                                value={formInputs['contactEmail'].value}
+                                onBlur={(e) => {
+                                    handleBlurValidate(e.target.name);
+                                }}
+                            />
+                        </div>
+
+                        <div className={`t-input input-contact`}>
+                            {/* El label suele envolver o estar junto al input en los checkbox */}
+                            <label htmlFor="contactName" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                <input
+                                    onChange={handleChageInput}
+                                    type="checkbox"
+                                    name="contactName"
+                                    /* Hardcodeado como true (marcado) para que no truene */
+                                    checked={formInputs['contactName'].checked || true}
+                                    onBlur={(e) => {
+                                        handleBlurValidate(e.target.name);
+                                    }}
+                                    style={{ width: 'auto', cursor: 'pointer' }}
+                                />
+                                <span>He leído los detalles del paquete que deseo solicitar</span>
+                            </label>
+
+                            {
+                                formInputs['contactName'].error !== '' && (
+                                    <ErrorMsgForm errorMsg={formInputs['contactName'].error} />
+                                )
+                            }
+                        </div>
+
+
+                        <TextAreaForm labelText='Quiero este paquete, pero tengo dudas' value={formInputs['contactComments'].value} handleChangeValue={handleChageInput} handleBlur={(inputName) => { handleBlurValidate(inputName); }} />
+
+
+                        <ButtonsForm />
+
+
+                    </form>
                 )
             }
         </>
@@ -307,13 +521,29 @@ const FormContact: React.FC<Props> = ({ formType }) => {
 };
 
 
-const TextAreaForm: React.FC<TextAreaProps> = ({ value, handleChangeValue }) => {
+const TextAreaForm: React.FC<TextAreaProps> = ({ labelText, value, handleChangeValue, handleBlur }) => {
     return (
         <div className='t-input'>
-            <label htmlFor='contactComments' >Comentarios:</label>
-            <textarea name='contactComments' className='' onChange={handleChangeValue} value={value} ></textarea>
+            <label htmlFor='contactComments' >{labelText}:</label>
+            <textarea name='contactComments' className=''
+                placeholder='Alguna duda y/o comentario'
+                onChange={handleChangeValue} value={value}
+                onBlur={(e) => { handleBlur(e.target.name); }}
+            ></textarea>
         </div>
     );
+};
+
+
+const ErrorMsgForm: React.FC<ErrorMsg> = ({ errorMsg }) => {
+    return (
+        <>
+            <div className='error-msg-container'>
+                <span className='error-msg-text'>{errorMsg}</span>
+            </div>
+        </>
+    );
+
 };
 
 export default FormContact;

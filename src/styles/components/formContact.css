@@ -42,9 +42,6 @@
         }
     }
 
-
-
-
     .send-btn-form {
         margin-bottom: 2rem;
         border: .1rem solid var(--color-primary);
@@ -59,4 +56,20 @@
         background-color: rgba(var(--color-quinary-rgb), .6);
         border: .1rem solid var(--color-quinary);
     }
+}
+
+.error-msg-container {
+    width: 100%;
+    text-align: end;
+}
+
+.error-msg-text {
+    display: inline-block;
+    color: var(--color-primary);
+    background-color: rgb(133, 45, 45);
+    padding: .5rem;
+    border-radius: .3rem;
+    margin-bottom: .5rem;
+    text-align: end;
+    font-size: 1.2rem;
 }

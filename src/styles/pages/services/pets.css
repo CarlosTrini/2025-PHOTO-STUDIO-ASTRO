@@ -1,4 +1,12 @@
+.tab-component-pets {
+    width: 90%;
+    margin: 2rem auto 0 auto;
 
+    @media (min-width: 1024px) {
+        width: 80%;
+    }
+
+}
 
 .service-pets-info {
     min-height: 50vh;
@@ -38,31 +46,35 @@
     }
 }
 
-.service-pets-extras{
+.service-pets-extras {
     width: 90%;
     margin: 5rem auto;
-     @media (min-width: 992px) {
+
+    @media (min-width: 992px) {
         width: 80%;
     }
 }
 
-.pets-extras{
+.pets-extras {
     display: flex;
     flex-direction: column;
     gap: 2rem;
     margin-top: 2rem;
     align-items: center;
 
-    figure{
+    figure {
         max-width: 90%;
+
         @media (min-width: 768px) {
             max-width: 33%;
         }
-        img{
+
+        img {
             height: 20rem;
-             /* max-width: 30rem;  */
+            /* max-width: 30rem;  */
         }
-        figcaption{
+
+        figcaption {
             margin-top: 1.5rem;
             color: var(--color-quinary);
         }
@@ -71,6 +83,6 @@
     @media (min-width: 768px) {
         flex-direction: row;
         justify-content: space-around;
-        
+
     }
 }

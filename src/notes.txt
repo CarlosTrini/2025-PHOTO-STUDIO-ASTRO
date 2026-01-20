@@ -33,6 +33,7 @@ https://www.estheraguilerafotografia.com/lang/es/web/
 https://github.com/claudiabdm/astro-carousel?tab=readme-ov-file
 https://linxtion.com/demo/react-image-gallery/
 https://www.npmjs.com/package/react-image-gallery
+https://free-astro-components.vercel.app/components/tab
 
 pixabay (img menus)=> jarmoluk
 pixabay (img menus)=> Atlantios

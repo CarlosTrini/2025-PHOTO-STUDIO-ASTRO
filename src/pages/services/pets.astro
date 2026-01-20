@@ -1,6 +1,7 @@
 ---
 import LayoutServices from "@layouts/LayoutServices.astro";
 import "@styles/pages/services/pets.css";
+import { Tab, TabItem } from "free-astro-components";
 ---
 
 <LayoutServices
@@ -14,74 +15,86 @@ import "@styles/pages/services/pets.css";
         "Tiempo de entrega: Entre 2 y 4 semanas",
     ]}
 >
-    <section class="service-pets-info" data-aos="fade-right">
-        <article>
-            <h4>Tu amiguito solo</h4>
-            <p>
-                Sesión de <strong
-                    >10 fotografías dígitales en tu hogar o en nuestro estudio</strong
-                >, con duración de una hora.
-            </p>
-            <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-                quis esse ipsum iste deleniti! Dicta adipisci minima quam
-                incidunt reiciendis qui earum dignissimos, labore magnam
-                laudantium, maxime quia cupiditate esse et libero voluptatum at
-                laboriosam quibusdam nesciunt molestias. Consectetur, ratione
-                iusto! Autem corporis minus id eius magni adipisci eligendi
-                doloremque.
-            </p>
-        </article>
+    <Tab
+        tabs={[{ label: "S", active: true }, { label: "Tab 2" }]}
+        class={`tab-component-pets`}
+    >
+        <TabItem active class={``}>
+            <section class="service-pets-info" data-aos="fade-right">
+                <article>
+                    <h4>Tu amiguito solo</h4>
+                    <p>
+                        Sesión de <strong
+                            >10 fotografías dígitales en tu hogar o en nuestro
+                            estudio</strong
+                        >, con duración de una hora.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing
+                        elit. Velit quis esse ipsum iste deleniti! Dicta
+                        adipisci minima quam incidunt reiciendis qui earum
+                        dignissimos, labore magnam laudantium, maxime quia
+                        cupiditate esse et libero voluptatum at laboriosam
+                        quibusdam nesciunt molestias. Consectetur, ratione
+                        iusto! Autem corporis minus id eius magni adipisci
+                        eligendi doloremque.
+                    </p>
+                </article>
 
-        <article>
-            <h4>Tú junto con tu amigo</h4>
-            <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Repellat saepe molestias voluptas velit quaerat veniam pariatur
-                voluptatibus minima assumenda, temporibus, optio cupiditate!
-                Magni, ratione ea! Quasi sed quae a, mollitia corporis in quam
-                necessitatibus consequatur expedita porro ipsam similique
-                aperiam quisquam aliquid quia quod omnis ipsa praesentium modi
-                voluptate? Distinctio.
-            </p>
-            <p>
-                A partir de ahí, estaré presente en todo el evento, desde la
-                ceremonia hasta el momento fiesta (media hora máximo) hasta que
-                captemos a la gente bailando y disfrutando del momento.
-            </p>
-        </article>
-    </section>
+                <article>
+                    <h4>Tú junto con tu amigo</h4>
+                    <p>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit. Repellat saepe molestias voluptas velit quaerat
+                        veniam pariatur voluptatibus minima assumenda,
+                        temporibus, optio cupiditate! Magni, ratione ea! Quasi
+                        sed quae a, mollitia corporis in quam necessitatibus
+                        consequatur expedita porro ipsam similique aperiam
+                        quisquam aliquid quia quod omnis ipsa praesentium modi
+                        voluptate? Distinctio.
+                    </p>
+                    <p>
+                        A partir de ahí, estaré presente en todo el evento,
+                        desde la ceremonia hasta el momento fiesta (media hora
+                        máximo) hasta que captemos a la gente bailando y
+                        disfrutando del momento.
+                    </p>
+                </article>
+            </section>
 
-    <section class="service-pets-extras" data-aos="fade-left">
-        <h3>Entregables</h3>
-        <div class="pets-extras">
-            <figure>
-                <img
-                    src="/img/camera-one.jpg"
-                    alt="Imagen ilustrativa de fotografias"
-                />
-                <figcaption>
-                    <p>- 20 Fotografías digitales</p>
-                </figcaption>
-            </figure>
-            <figure>
-                <img
-                    src="/img/camera-one.jpg"
-                    alt="Imagen ilustrativa de fotografias"
-                />
-                <figcaption>
-                    <p>- 5 fotografías impresas</p>
-                </figcaption>
-            </figure>
-            <figure>
-                <img
-                    src="/img/wedding-three.jpg"
-                    alt="Imagen ilustrativa de un album fotografico"
-                />
-                <figcaption>
-                    <p>- Dos fotografías de tu elección con su marco</p>
-                </figcaption>
-            </figure>
-        </div>
-    </section>
+            <section class="service-pets-extras" data-aos="fade-left">
+                <h3>Entregables</h3>
+                <div class="pets-extras">
+                    <figure>
+                        <img
+                            src="/img/camera-one.jpg"
+                            alt="Imagen ilustrativa de fotografias"
+                        />
+                        <figcaption>
+                            <p>- 20 Fotografías digitales</p>
+                        </figcaption>
+                    </figure>
+                    <figure>
+                        <img
+                            src="/img/camera-one.jpg"
+                            alt="Imagen ilustrativa de fotografias"
+                        />
+                        <figcaption>
+                            <p>- 5 fotografías impresas</p>
+                        </figcaption>
+                    </figure>
+                    <figure>
+                        <img
+                            src="/img/wedding-three.jpg"
+                            alt="Imagen ilustrativa de un album fotografico"
+                        />
+                        <figcaption>
+                            <p>- Dos fotografías de tu elección con su marco</p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </section>
+        </TabItem>
+        <TabItem>Content for Tab 2</TabItem>
+    </Tab>
 </LayoutServices>

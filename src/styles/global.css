@@ -4,6 +4,8 @@
 @import './utils/_fonts.css';
 @import './utils/_containers.css';
 @import './utils/_colors.css';
+@import './utils/_tabs.css';
+
 
 
 
@@ -51,6 +53,10 @@
     --padding-85: calc((100vw - 85vw) /2);
     --padding-90: calc((100vw - 90vw) /2);
     --padding-95: calc((100vw - 95vw) /2);
+
+
+    /* colores de libreria de tabs */
+    --ac-primary: 134, 94, 245 !important;
 }
 
 

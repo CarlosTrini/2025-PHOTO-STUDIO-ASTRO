@@ -1,0 +1,17 @@
+.tab-component {
+    margin: 2rem auto 0 auto;
+
+
+
+}
+
+/* clase de la libreria */
+.ac-tab-header {
+    margin-top: 2rem !important;
+
+    li button {
+        font-size: 1.7rem !important;
+        font-family: var(--font-playfair-boldItalic) !important;
+
+    }
+}

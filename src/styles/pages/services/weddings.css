@@ -1,9 +1,7 @@
-
-
 .service-wedding-info {
     min-height: 50vh;
-    width: 90%;
-    margin: 5rem auto;
+    /* width: 90%; */
+    /* margin: 5rem auto; */
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -11,9 +9,9 @@
     background-color: rgba(var(--color-secondary-rgb), .4);
     border-radius: .3rem;
 
-    @media (min-width: 1024px) {
+    /* @media (min-width: 1024px) {
         width: 80%;
-    }
+    } */
 
 
     article {
@@ -35,42 +33,5 @@
         strong {
             color: var(--color-senary);
         }
-    }
-}
-
-.service-wedding-extras{
-    width: 90%;
-    margin: 5rem auto;
-     @media (min-width: 992px) {
-        width: 80%;
-    }
-}
-
-.wedding-extras{
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-top: 2rem;
-    align-items: center;
-
-    figure{
-        max-width: 90%;
-        @media (min-width: 768px) {
-            max-width: 45%;
-        }
-        img{
-            height: 20rem;
-             /* max-width: 30rem;  */
-        }
-        figcaption{
-            margin-top: 1.5rem;
-            color: var(--color-quinary);
-        }
-    }
-
-    @media (min-width: 768px) {
-        flex-direction: row;
-        justify-content: space-around;
-        
     }
 }

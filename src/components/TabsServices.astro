@@ -1,0 +1,53 @@
+---
+import { Tab } from "free-astro-components";
+export interface Label {
+    label: string;
+    active?: boolean;
+}
+interface Props {
+    labels: Label[] | [];
+}
+
+const { labels } = Astro.props;
+---
+
+<Tab tabs={labels} class={`tab-component`}>
+    <slot />
+</Tab>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const params = new URLSearchParams(window.location.search);
+        const targetTab = params.get("tab");
+
+        const tabs = Array.from(
+            document.querySelectorAll("[role='tab']"),
+        ) as HTMLButtonElement[];
+
+        // Activar tab inicial según query param
+        if (targetTab) {
+            const normalizedTarget = targetTab.trim().toLowerCase();
+            tabs.forEach((tab) => {
+                const label = tab.textContent?.trim().toLowerCase();
+                if (label === normalizedTarget) tab.click();
+            });
+        } else {
+            tabs[0].click();
+        }
+
+        // Escuchar clicks para actualizar URL
+        tabs.forEach((tab) => {
+            tab.addEventListener("click", () => {
+                const label = tab.textContent?.trim().toLowerCase();
+                const newParams = new URLSearchParams(window.location.search);
+
+                newParams.set("tab", label); // Actualiza/añade el param
+                const newUrl =
+                    window.location.pathname + "?" + newParams.toString();
+
+                // Cambia la URL sin recargar la página
+                history.replaceState(null, "", newUrl);
+            });
+        });
+    });
+</script>

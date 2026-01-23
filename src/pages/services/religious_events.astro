@@ -11,126 +11,52 @@ import { TabItem } from "free-astro-components";
 import "@styles/layout/layoutServices.css";
 
 let labels: Label[] = [];
-const subRoutes = getRouteDataService("/services", "family");
+const subRoutes = getRouteDataService("/services", "religious_events");
 if (subRoutes) {
     labels = makeTabsServicesNames(subRoutes || []);
 }
 ---
 
 <LayoutServices
-    pageTitle="En Familia"
-    heroImage="/img/photo-eight.jpg"
-    bannerTitle=`"Momentos familiares capturados con amor y autenticidad"`
-    bannerSubtitle="La familia es el refugio donde el tiempo se detiene con ternura; capturamos cada abrazo, cada risa compartida y cada mirada llena de amor, para que esos momentos sagrados vivan por siempre en vuestro corazón."
+    pageTitle="Eventos Religiosos"
+    heroImage="/img/photo-seven.jpg"
+    bannerTitle=`"Historias de amor capturadas para siempre"`
+    bannerSubtitle=`La fotografía es la única forma de detener el tiempo sin que el
+            momento pierda su latido; capturamos el hoy para que vuestro
+            'siempre' sea inolvidable.`
 >
     <TabsServices labels={labels}>
-        <TabItem active class={``}>
-            <section class="service-description-info">
-                <article>
-                    <h3>Sesión familiar en estudio</h3>
-                    <p>
-                        Sesión fotográfica pensada para capturar la <span
-                            >conexión, complicidad y esencia de tu familia</span
-                        > en un ambiente cómodo y controlado.
-                    </p>
-                    <p>
-                        La sesión se realiza en nuestro estudio, con una
-                        duración aproximada de <span>60 minutos</span>, ideal
-                        para lograr imágenes naturales, espontáneas y llenas de
-                        emoción, sin prisas y respetando el ritmo de cada
-                        integrante.
-                    </p>
-                </article>
-
-                <article>
-                    <h3>Un recuerdo para toda la vida</h3>
-                    <p>
-                        Durante la sesión cuidamos cada detalle: iluminación,
-                        composición y poses guiadas de forma sutil para que el
-                        resultado sea <span>auténtico y atemporal</span>.
-                    </p>
-                    <p>
-                        Es una experiencia ideal para familias con niños,
-                        parejas con hijos o incluso sesiones
-                        intergeneracionales, creando recuerdos que podrán
-                        revivir y compartir por muchos años.
-                    </p>
-                </article>
-            </section>
-
-            <DetailsServices
-                deliverableDetails={[
-                    {
-                        img: {
-                            alt: "Imagen ilustrativa de un album fotografico",
-                            href: "/img/boda-two.jpg",
-                        },
-                        listDescription: [
-                            "Álbum fotográfico 30x30 cm con 40 páginas",
-                        ],
-                    },
-                    {
-                        img: {
-                            alt: "Imagen ilustrativa de un album fotografico",
-                            href: "/img/wedding-three.jpg",
-                        },
-                        listDescription: [
-                            "1 fotografía familiar enmarcada 30x40 cm",
-                        ],
-                    },
-                    {
-                        img: {
-                            alt: "Imagen ilustrativa de la usb entregable",
-                            href: "/img/photo-usb.jpg",
-                        },
-                        listDescription: [
-                            "USB con fotografías finales editadas",
-                        ],
-                    },
-                ]}
-                detailsInfo={[
-                    "70 fotos digitales",
-                    "Sesión fotográfica familiar en estudio",
-                    "Duración aproximada de 60 minutos",
-                    "Selección de fotografías digitales en alta resolución",
-                    "Álbum físico 30x30 cm (20 páginas)",
-                    "1 fotografía enmarcada 30x40 cm",
-                    "Entrega digital y física de 2 a 3 semanas",
-                ]}
-            />
-        </TabItem>
         <TabItem class={``}>
             <section class="service-description-info">
                 <article>
-                    <h3>Sesión familiar en exterior</h3>
+                    <h3>Sesión de primera comunión</h3>
                     <p>
-                        Sesión fotográfica pensada para capturar a tu familia en
-                        un entorno natural, aprovechando la <span
-                            >luz natural, el movimiento y la espontaneidad</span
-                        > que solo un espacio abierto puede ofrecer.
+                        Sesión fotográfica pensada para capturar uno de los
+                        momentos más importantes en la vida de tu hijo o hija,
+                        con imágenes llenas de
+                        <span>significado, emoción y delicadeza</span>.
                     </p>
                     <p>
-                        La sesión se realiza en una locación previamente
-                        acordada (parque, playa, campo o entorno urbano), con
-                        una duración aproximada de <span>60 minutos</span>,
-                        permitiendo que todo fluya de manera relajada y
-                        auténtica.
+                        La sesión puede realizarse en estudio, exterior o en la
+                        iglesia, con una duración aproximada de <span
+                            >60 a 90 minutos</span
+                        >, adaptándose al ritmo del niño o niña y al desarrollo
+                        del evento.
                     </p>
                 </article>
 
                 <article>
-                    <h3>Momentos reales, recuerdos auténticos</h3>
+                    <h3>Recuerdos que perduran</h3>
                     <p>
-                        Durante la sesión fomentamos la interacción natural
-                        entre los integrantes de la familia, logrando imágenes
-                        llenas de
-                        <span>emoción, conexión y naturalidad</span>, sin poses
-                        rígidas ni situaciones forzadas.
+                        Cuidamos cada detalle: vestuario, expresiones y momentos
+                        clave, logrando fotografías naturales y elegantes que
+                        reflejan la importancia de este día tan especial.
                     </p>
                     <p>
-                        Es ideal para familias activas, con niños o mascotas,
-                        que buscan fotografías vivas y dinámicas que reflejen su
-                        esencia tal como es.
+                        Ideal para quienes buscan un recuerdo completo y
+                        atemporal, combinando <span
+                            >retrato, familia y ceremonia</span
+                        > en una sola experiencia fotográfica.
                     </p>
                 </article>
             </section>
@@ -148,87 +74,11 @@ if (subRoutes) {
                     },
                     {
                         img: {
-                            alt: "Imagen ilustrativa de un album fotografico",
+                            alt: "Imagen ilustrativa de una fotografia enmarcada",
                             href: "/img/wedding-three.jpg",
                         },
                         listDescription: [
-                            "1 fotografía familiar enmarcada 30x40 cm",
-                        ],
-                    },
-                    {
-                        img: {
-                            alt: "Imagen ilustrativa de la usb entregable",
-                            href: "/img/photo-usb.jpg",
-                        },
-                        listDescription: [
-                            "USB con fotografías finales editadas",
-                        ],
-                    },
-                ]}
-                detailsInfo={[
-                    "Sesión fotográfica familiar en exterior",
-                    "Duración aproximada de 60 minutos",
-                    "Locación previamente acordada",
-                    "Selección de fotografías digitales en alta resolución",
-                    "Álbum físico 30x30 cm (40 páginas)",
-                    "1 fotografía enmarcada 30x40 cm",
-                    "Entrega digital y física de 2 a 3 semanas",
-                ]}
-            />
-        </TabItem>
-
-        <TabItem class={``}>
-            <section class="service-description-info">
-                <article>
-                    <h3>Sesión lifestyle familiar</h3>
-                    <p>
-                        Sesión fotográfica de estilo <span
-                            >documental y natural</span
-                        >, pensada para capturar la vida tal como es, sin poses
-                        forzadas ni escenarios artificiales.
-                    </p>
-                    <p>
-                        Se realiza en el entorno cotidiano de tu familia, ya sea
-                        en casa o en un espacio habitual, con una duración
-                        aproximada de
-                        <span>90 minutos</span>, permitiendo que las emociones y
-                        los momentos reales fluyan con total libertad.
-                    </p>
-                </article>
-
-                <article>
-                    <h3>Historias reales, momentos cotidianos</h3>
-                    <p>
-                        Más que una sesión de fotos, es una experiencia donde se
-                        documentan gestos, miradas, juegos y rutinas que forman
-                        parte de su historia familiar.
-                    </p>
-                    <p>
-                        Ideal para familias que buscan recuerdos auténticos,
-                        <span>imperfectos y llenos de vida</span>, creando
-                        imágenes con un alto valor emocional y narrativo.
-                    </p>
-                </article>
-            </section>
-
-            <DetailsServices
-                deliverableDetails={[
-                    {
-                        img: {
-                            alt: "Imagen ilustrativa de un album fotografico",
-                            href: "/img/boda-two.jpg",
-                        },
-                        listDescription: [
-                            "Álbum fotográfico 30x30 cm con 40 páginas",
-                        ],
-                    },
-                    {
-                        img: {
-                            alt: "Imagen ilustrativa de un album fotografico",
-                            href: "/img/wedding-three.jpg",
-                        },
-                        listDescription: [
-                            "1 fotografía lifestyle enmarcada 30x40 cm",
+                            "1 fotografía de primera comunión enmarcada 30x40 cm",
                         ],
                     },
                     {
@@ -242,10 +92,164 @@ if (subRoutes) {
                     },
                 ]}
                 detailsInfo={[
-                    "Sesión lifestyle familiar en entorno cotidiano",
-                    "Duración aproximada de 90 minutos",
+                    "Sesión fotográfica de primera comunión",
+                    "Duración aproximada de 60 a 90 minutos",
+                    "Cobertura en estudio, exterior o iglesia",
+                    "60 fotografías digitales en alta resolución entregadas en USB",
+                    "Edición profesional de color y luz",
+                    "Álbum físico 30x30 cm (40 páginas)",
+                    "1 fotografía enmarcada 30x40 cm",
+                    "Entrega digital y física de 2 a 3 semanas",
+                ]}
+            />
+        </TabItem>
+        <TabItem class={``}>
+            <section class="service-description-info">
+                <article>
+                    <h3>Sesión de bautizo</h3>
+                    <p>
+                        Cobertura fotográfica de uno de los primeros y más
+                        importantes eventos en la vida de tu bebé, capturando
+                        cada instante con
+                        <span>sensibilidad, respeto y naturalidad</span>.
+                    </p>
+                    <p>
+                        Acompañamos el evento desde la llegada a la iglesia, la
+                        ceremonia y los momentos posteriores con la familia, con
+                        una duración aproximada de <span>60 minutos</span>.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Un recuerdo lleno de significado</h3>
+                    <p>
+                        Nos enfocamos en los gestos, miradas y detalles que
+                        hacen único este día, logrando imágenes emotivas y
+                        llenas de simbolismo.
+                    </p>
+                    <p>
+                        Ideal para conservar un recuerdo completo del bautizo,
+                        incluyendo
+                        <span>familia, padrinos y momentos clave</span> de la ceremonia.
+                    </p>
+                </article>
+            </section>
+
+            <DetailsServices
+                deliverableDetails={[
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de un album fotografico",
+                            href: "/img/boda-two.jpg",
+                        },
+                        listDescription: [
+                            "Álbum fotográfico 30x30 cm con 40 páginas",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de una fotografia enmarcada",
+                            href: "/img/wedding-three.jpg",
+                        },
+                        listDescription: [
+                            "1 fotografía de bautizo enmarcada 30x40 cm",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de la usb entregable",
+                            href: "/img/photo-usb.jpg",
+                        },
+                        listDescription: [
+                            "USB con fotografías digitales editadas",
+                        ],
+                    },
+                ]}
+                detailsInfo={[
+                    "Cobertura fotográfica de bautizo",
+                    "Duración aproximada de 60 minutos",
+                    "Cobertura de ceremonia y fotografías familiares",
                     "50 fotografías digitales en alta resolución entregadas en USB",
-                    "Edición de color y luz con estilo natural",
+                    "Edición profesional de color y luz",
+                    "Álbum físico 30x30 cm (40 páginas)",
+                    "1 fotografía enmarcada 30x40 cm",
+                    "Entrega digital y física de 2 a 3 semanas",
+                ]}
+            />
+        </TabItem>
+
+        <TabItem class={``}>
+            <section class="service-description-info">
+                <article>
+                    <h3>Sesión de confirmación</h3>
+                    <p>
+                        Sesión fotográfica pensada para documentar un momento
+                        clave en el crecimiento personal y espiritual, con
+                        imágenes que reflejan
+                        <span>madurez, significado y emoción</span>.
+                    </p>
+                    <p>
+                        La cobertura puede realizarse en la iglesia y
+                        alrededores, con una duración aproximada de <span
+                            >60 a 90 minutos</span
+                        >, adaptándose al desarrollo de la ceremonia y a las
+                        fotografías familiares posteriores.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Un recuerdo de una etapa importante</h3>
+                    <p>
+                        Nos enfocamos en capturar los momentos más relevantes de
+                        la ceremonia, así como retratos naturales del
+                        confirmando junto a su familia y padrinos.
+                    </p>
+                    <p>
+                        Ideal para quienes buscan un recuerdo elegante y
+                        atemporal, combinando <span
+                            >ceremonia, retrato y fotografía familiar</span
+                        >
+                        en una sola sesión.
+                    </p>
+                </article>
+            </section>
+
+            <DetailsServices
+                deliverableDetails={[
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de un album fotografico",
+                            href: "/img/boda-two.jpg",
+                        },
+                        listDescription: [
+                            "Álbum fotográfico 30x30 cm con 40 páginas",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de una fotografia enmarcada",
+                            href: "/img/wedding-three.jpg",
+                        },
+                        listDescription: [
+                            "1 fotografía de confirmación enmarcada 30x40 cm",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de la usb entregable",
+                            href: "/img/photo-usb.jpg",
+                        },
+                        listDescription: [
+                            "USB con fotografías digitales editadas",
+                        ],
+                    },
+                ]}
+                detailsInfo={[
+                    "Cobertura fotográfica de confirmación",
+                    "Duración aproximada de 60 a 90 minutos",
+                    "Cobertura de ceremonia y retratos familiares",
+                    "55 fotografías digitales en alta resolución entregadas en USB",
+                    "Edición profesional de color y luz",
                     "Álbum físico 30x30 cm (40 páginas)",
                     "1 fotografía enmarcada 30x40 cm",
                     "Entrega digital y física de 2 a 3 semanas",

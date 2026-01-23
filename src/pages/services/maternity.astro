@@ -1,3 +1,252 @@
 ---
+import DetailsServices from "@components/DetailsServices.astro";
+import type { Label } from "@components/TabsServices.astro";
+import TabsServices from "@components/TabsServices.astro";
+import {
+    getRouteDataService,
+    makeTabsServicesNames,
+} from "@helpers/infoRoutes";
+import LayoutServices from "@layouts/LayoutServices.astro";
+import { TabItem } from "free-astro-components";
+import "@styles/layout/layoutServices.css";
+
+let labels: Label[] = [];
+const subRoutes = getRouteDataService("/services", "maternity");
+if (subRoutes) {
+    labels = makeTabsServicesNames(subRoutes || []);
+}
 ---
-<h2>SERVICIOS => MATERNIDAD</h2>
+
+<LayoutServices
+    pageTitle="Maternidad"
+    heroImage="/img/photo-thirteen.jpg"
+    bannerTitle=`"La espera más hermosa merece ser recordada"`
+    bannerSubtitle=`Cada gesto, cada sonrisa, cada caricia cuenta la historia
+de un amor que crece. Capturamos la magia de la maternidad
+para que estos momentos duren toda la vida.`
+>
+    <TabsServices labels={labels}>
+        <TabItem class={``}>
+            <section class="service-description-info">
+                <article>
+                    <h3>Dulce Espera</h3>
+                    <p>
+                        Sesión fotográfica en solitario para capturar la belleza
+                        y
+                        <span>fuerza de la silueta de la futura madre</span>,
+                        celebrando la espera de su bebé.
+                    </p>
+                    <p>
+                        Aplicable tanto para madres con pareja como para madres
+                        solteras, la sesión se realiza en estudio o exterior,
+                        con duración aproximada de <span>60 minutos</span>,
+                        cuidando iluminación y poses para resaltar la forma y
+                        naturalidad.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Recuerdos únicos de la maternidad</h3>
+                    <p>
+                        Capturamos la conexión con la vida que está por llegar,
+                        creando imágenes llenas de ternura y fuerza.
+                    </p>
+                    <p>
+                        Ideal para conservar recuerdos <span
+                            >íntimos y elegantes</span
+                        >
+                        de esta etapa tan especial.
+                    </p>
+                </article>
+            </section>
+
+            <DetailsServices
+                deliverableDetails={[
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de album maternidad",
+                            href: "/img/boda-two.jpg",
+                        },
+                        listDescription: [
+                            "Álbum fotográfico 30x30 cm con 40 páginas",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de fotografía enmarcada maternidad",
+                            href: "/img/wedding-three.jpg",
+                        },
+                        listDescription: ["1 fotografía enmarcada 30x40 cm"],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de USB con fotos",
+                            href: "/img/photo-usb.jpg",
+                        },
+                        listDescription: [
+                            "USB con fotografías digitales editadas",
+                        ],
+                    },
+                ]}
+                detailsInfo={[
+                    "Sesión fotográfica Dulce Espera",
+                    "Duración aproximada de 60 minutos",
+                    "Cobertura en estudio o exterior",
+                    "50 fotografías digitales en alta resolución entregadas en USB",
+                    "Edición profesional de color y luz",
+                    "Álbum físico 30x30 cm (40 páginas)",
+                    "1 fotografía enmarcada 30x40 cm",
+                    "Entrega digital y física de 2 a 3 semanas",
+                ]}
+            />
+        </TabItem>
+
+        <TabItem class={``}>
+            <section class="service-description-info">
+                <article>
+                    <h3>Sesión en pareja</h3>
+                    <p>
+                        Sesión fotográfica que celebra la conexión y expectativa
+                        de ambos padres, capturando <span
+                            >amor, ternura y complicidad</span
+                        > durante el embarazo.
+                    </p>
+                    <p>
+                        Ideal para documentar juntos la espera del bebé, en
+                        estudio o exterior, con duración aproximada de <span
+                            >60 a 90 minutos</span
+                        >.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Momentos compartidos y memorables</h3>
+                    <p>
+                        Cuidamos cada gesto, mirada y abrazo, logrando imágenes
+                        naturales y emotivas que reflejan la unión y la alegría
+                        de esperar un hijo.
+                    </p>
+                    <p>
+                        Perfecto para padres que buscan recuerdos <span
+                            >íntimos y auténticos</span
+                        >
+                        de esta etapa especial.
+                    </p>
+                </article>
+            </section>
+
+            <DetailsServices
+                deliverableDetails={[
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de album maternidad pareja",
+                            href: "/img/boda-two.jpg",
+                        },
+                        listDescription: [
+                            "Álbum fotográfico 30x30 cm con 40 páginas",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de fotografía enmarcada pareja",
+                            href: "/img/wedding-three.jpg",
+                        },
+                        listDescription: ["1 fotografía enmarcada 30x40 cm"],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de USB con fotos",
+                            href: "/img/photo-usb.jpg",
+                        },
+                        listDescription: [
+                            "USB con fotografías digitales editadas",
+                        ],
+                    },
+                ]}
+                detailsInfo={[
+                    "Sesión fotográfica en pareja durante el embarazo",
+                    "Duración aproximada de 60 a 90 minutos",
+                    "Cobertura en estudio o exterior",
+                    "55 fotografías digitales en alta resolución entregadas en USB",
+                    "Edición profesional de color y luz",
+                    "Álbum físico 30x30 cm (40 páginas)",
+                    "1 fotografía enmarcada 30x40 cm",
+                    "Entrega digital y física de 2 a 3 semanas",
+                ]}
+            />
+        </TabItem>
+        <TabItem class={``}>
+            <section class="service-description-info">
+                <article>
+                    <h3>Sesión Newborn</h3>
+                    <p>
+                        Sesión fotográfica especializada en los primeros días
+                        del bebé, usualmente antes de los 15 días de vida,
+                        capturando
+                        <span>ternura, delicadeza y los primeros gestos</span> del
+                        recién nacido.
+                    </p>
+                    <p>
+                        La sesión se realiza en estudio o domicilio, con un
+                        enfoque seguro y cómodo, cuidando iluminación,
+                        temperatura y poses.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Recuerdos para toda la vida</h3>
+                    <p>
+                        Capturamos los primeros momentos, detalles y gestos del
+                        bebé, logrando imágenes llenas de ternura y emoción.
+                    </p>
+                    <p>
+                        Ideal para padres que desean preservar recuerdos <span
+                            >íntimos y memorables</span
+                        >
+                        de los primeros días de su hijo o hija.
+                    </p>
+                </article>
+            </section>
+
+            <DetailsServices
+                deliverableDetails={[
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de album newborn",
+                            href: "/img/boda-two.jpg",
+                        },
+                        listDescription: [
+                            "Álbum fotográfico 30x30 cm con 40 páginas",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de fotografía enmarcada newborn",
+                            href: "/img/wedding-three.jpg",
+                        },
+                        listDescription: ["1 fotografía enmarcada 30x40 cm"],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de USB con fotos",
+                            href: "/img/photo-usb.jpg",
+                        },
+                        listDescription: [
+                            "USB con fotografías digitales editadas",
+                        ],
+                    },
+                ]}
+                detailsInfo={[
+                    "Sesión fotográfica Newborn (antes de los 15 días de vida)",
+                    "Duración aproximada de 90 minutos",
+                    "Cobertura en estudio o domicilio",
+                    "60 fotografías digitales en alta resolución entregadas en USB",
+                    "Edición profesional de color y luz",
+                    "Álbum físico 30x30 cm (40 páginas)",
+                    "1 fotografía enmarcada 30x40 cm",
+                    "Entrega digital y física de 2 a 3 semanas",
+                ]}
+            />
+        </TabItem>
+    </TabsServices>
+</LayoutServices>

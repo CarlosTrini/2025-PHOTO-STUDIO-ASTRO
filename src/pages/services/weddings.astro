@@ -1,7 +1,19 @@
 ---
+import DetailsServices from "@components/DetailsServices.astro";
+import TabsServices, { type Label } from "@components/TabsServices.astro";
 import LayoutServices from "@layouts/LayoutServices.astro";
-import "@styles/pages/services/weddings.css";
-import { Tab, TabItem } from "free-astro-components";
+import "@styles/layout/layoutServices.css";
+import { TabItem } from "free-astro-components";
+import {
+    getRouteDataService,
+    makeTabsServicesNames,
+} from "@helpers/infoRoutes.ts";
+
+let labels: Label[] = [];
+const subRoutes = getRouteDataService("/services", "weddings");
+if (subRoutes) {
+    labels = makeTabsServicesNames(subRoutes || []);
+}
 ---
 
 <LayoutServices
@@ -11,24 +23,12 @@ import { Tab, TabItem } from "free-astro-components";
     bannerSubtitle=`La fotografía es la única forma de detener el tiempo sin que el
             momento pierda su latido; capturamos el hoy para que vuestro
             'siempre' sea inolvidable.`
-    detailsInfo={[
-        "80 Fotografías dígitales",
-        "Sesión de Preboda y Después de la boda: Una hora u hora y media c/u",
-        "Álbum con 50 fotografías",
-        "Una fotografia en marco de 30 * 40 cm",
-        "Tiempo de entrega: Entre 1 a 3 meses",
-        "Sesión de la boda: Desde el inicio hasta las 10pm",
-    ]}
-    ]}
 >
-    <Tab
-        tabs={[{ label: "Bodas", active: true }, { label: "Postbodas" }]}
-        class={`tab-component`}
-    >
-        <TabItem active class={``}>
-            <section class="service-wedding-info">
+    <TabsServices labels={labels}>
+        <TabItem class={``}>
+            <section class="service-description-info">
                 <article>
-                    <h4>Antes de la boda</h4>
+                    <h3>Antes de la boda</h3>
                     <p>
                         Sesión de <strong
                             >10 fotografías dígitales en tu hogar o en nuestro
@@ -44,7 +44,7 @@ import { Tab, TabItem } from "free-astro-components";
                 </article>
 
                 <article>
-                    <h4>¡El día de tu boda!</h4>
+                    <h3>¡El día de tu boda!</h3>
                     <p>
                         Es un día muy emotivo para vosotros, y para mí también.
                         Empezaremos los preparativos en las respectivas casas
@@ -61,9 +61,45 @@ import { Tab, TabItem } from "free-astro-components";
                         disfrutando del momento.
                     </p>
                 </article>
+            </section>
 
+            <DetailsServices
+                deliverableDetails={[
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de un album fotografico",
+                            href: "/img/boda-two.jpg",
+                        },
+                        listDescription: [
+                            "Tamaño del álbum de 40 x 30 cm",
+                            "50 fotografías",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de un album fotografico",
+                            href: "/img/wedding-three.jpg",
+                        },
+                        listDescription: [
+                            "Una fotografía de tu elección con su marco",
+                        ],
+                    },
+                ]}
+                detailsInfo={[
+                    "80 Fotografías dígitales",
+                    "Sesión de Preboda y Después de la boda: Una hora u hora y media c/u",
+                    "Álbum con 50 fotografías",
+                    "Una fotografia en marco de 30 * 40 cm",
+                    "Tiempo de entrega: Entre 1 a 3 meses",
+                    "Sesión de la boda: Desde el inicio hasta las 10pm",
+                ]}
+            />
+        </TabItem>
+
+        <TabItem>
+            <section class="service-description-info">
                 <article>
-                    <h4>Después de la boda</h4>
+                    <h3>!Revive emociones!</h3>
                     <p>
                         Después de vivir uno de los días más especiales de
                         vuestra vida, si te has quedado con ganas de lucir
@@ -77,38 +113,46 @@ import { Tab, TabItem } from "free-astro-components";
                             estudio</strong
                         >, con duración de una hora.
                     </p>
+                    <p>
+                        <strong class={`note-info`}
+                            >Si tomaste con nostros el paquete: 'Boda', obten un
+                            descuento del 20%</strong
+                        >.
+                    </p>
                 </article>
             </section>
 
-            <section class="service-container-extras" slot="deliverables">
-                <h3>Entregables</h3>
-                <div class="services-extras">
-                    <figure>
-                        <img
-                            src="/img/boda-two.jpg"
-                            alt="Imagen ilustrativa de un album fotografico"
-                        />
-                        <figcaption>
-                            <p>- Tamaño del álbum de 40 x 30 cm</p>
-                            <p>- 50 fotografías</p>
-                        </figcaption>
-                    </figure>
-
-                    <figure>
-                        <img
-                            src="/img/wedding-three.jpg"
-                            alt="Imagen ilustrativa de un album fotografico"
-                        />
-                        <figcaption>
-                            <p>- Una fotografía de tu elección con su marco</p>
-                        </figcaption>
-                    </figure>
-                </div>
-            </section>
+            <DetailsServices
+                deliverableDetails={[
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de un album fotografico",
+                            href: "/img/boda-two.jpg",
+                        },
+                        listDescription: [
+                            "Tamaño del álbum de 40 x 30 cm",
+                            "20 fotografías",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de un album fotografico",
+                            href: "/img/wedding-three.jpg",
+                        },
+                        listDescription: [
+                            "Dos fotografías de tu elección con su marco",
+                        ],
+                    },
+                ]}
+                detailsInfo={[
+                    "80 Fotografías dígitales",
+                    "Sesión de Preboda y Después de la boda: Una hora u hora y media c/u",
+                    "Álbum con 50 fotografías",
+                    "Una fotografia en marco de 30 * 40 cm",
+                    "Tiempo de entrega: Entre 1 a 3 meses",
+                    "Sesión de la boda: Desde el inicio hasta las 10pm",
+                ]}
+            />
         </TabItem>
-    </Tab>
+    </TabsServices>
 </LayoutServices>
-
-<!-- <ServiceLayout deliverables={<section class="service-container-extras">Deliverables aquí</section>}>
-  <section>Contenido principal</section>
-</ServiceLayout> -->

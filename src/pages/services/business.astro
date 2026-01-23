@@ -1,3 +1,244 @@
 ---
+import DetailsServices from "@components/DetailsServices.astro";
+import type { Label } from "@components/TabsServices.astro";
+import TabsServices from "@components/TabsServices.astro";
+import {
+    getRouteDataService,
+    makeTabsServicesNames,
+} from "@helpers/infoRoutes";
+import LayoutServices from "@layouts/LayoutServices.astro";
+import { TabItem } from "free-astro-components";
+import "@styles/layout/layoutServices.css";
+
+let labels: Label[] = [];
+const subRoutes = getRouteDataService("/services", "business");
+if (subRoutes) {
+    labels = makeTabsServicesNames(subRoutes || []);
+}
 ---
-<h2>SERVICIOS => NEGOCIOS</h2>
+
+<LayoutServices
+    pageTitle="Negocios"
+    heroImage="/img/photo-nine.jpg"
+    bannerTitle=`"La imagen que tu negocio merece"`
+    bannerSubtitle=`Fotografía corporativa pensada para reforzar tu identidad de marca,
+posicionar tu negocio y generar una presencia visual coherente, sólida
+y memorable en todos tus canales.`
+>
+    <TabsServices labels={labels}>
+        <TabItem class={``}>
+            <section class="service-description-info">
+                <article>
+                    <h3>Fotografía de producto para e-commerce</h3>
+                    <p>
+                        Sesión fotográfica profesional enfocada en mostrar tus
+                        productos de forma <span
+                            >clara, atractiva y comercial</span
+                        >, ideal para tiendas online, catálogos digitales y
+                        marketplaces.
+                    </p>
+                    <p>
+                        Las sesiones pueden realizarse en estudio o en locación,
+                        utilizando fondos neutros o ambientados, cuidando
+                        iluminación, encuadres y detalles para destacar cada
+                        producto.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Imágenes que venden</h3>
+                    <p>
+                        Nos enfocamos en crear fotografías limpias y coherentes
+                        con la identidad de tu marca, facilitando la decisión de
+                        compra del cliente.
+                    </p>
+                    <p>
+                        Ideal para <span
+                            >ropa, accesorios, alimentos, tecnología y productos
+                            artesanales</span
+                        >, adaptando el estilo visual según el tipo de negocio.
+                    </p>
+                </article>
+            </section>
+
+            <DetailsServices
+                deliverableDetails={[
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de fotografia comercial",
+                            href: "/img/photo-ten.jpg",
+                        },
+                        listDescription: [
+                            "Imágenes optimizadas para web y redes sociales",
+                            "Fotografías de producto listas para e-commerce",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de la usb entregable",
+                            href: "/img/photo-usb.jpg",
+                        },
+                        listDescription: [
+                            "USB con fotografías finales editadas",
+                        ],
+                    },
+                ]}
+                detailsInfo={[
+                    "Sesión de fotografía de producto",
+                    "Sesión en estudio o locación",
+                    "50 fotografías digitales en alta resolución entregadas en USB",
+                    "Edición profesional de color y limpieza visual",
+                    "Imágenes optimizadas para e-commerce y redes sociales",
+                    "Entrega digital de 1 a 2 semanas",
+                ]}
+            />
+        </TabItem>
+
+        <TabItem class={``}>
+            <section class="service-description-info">
+                <article>
+                    <h3>Fotografía de instalaciones e interiores</h3>
+                    <p>
+                        Sesión fotográfica pensada para mostrar los espacios de
+                        tu negocio de forma <span
+                            >atractiva, profesional y funcional</span
+                        >, destacando su arquitectura, diseño y ambiente.
+                    </p>
+                    <p>
+                        Ideal para oficinas, locales comerciales, hoteles,
+                        clínicas, coworkings o cualquier espacio que busque
+                        comunicar confianza y profesionalismo.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Tu espacio como parte de tu marca</h3>
+                    <p>
+                        Cuidamos la composición, la iluminación y los ángulos
+                        para resaltar la amplitud, el orden y la identidad del
+                        lugar.
+                    </p>
+                    <p>
+                        Estas imágenes son perfectas para <span
+                            >sitios web, redes sociales, Google Maps y material
+                            corporativo</span
+                        >.
+                    </p>
+                </article>
+            </section>
+
+            <DetailsServices
+                deliverableDetails={[
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de fotografia de interiores",
+                            href: "/img/boda-two.jpg",
+                        },
+                        listDescription: [
+                            "Fotografías profesionales de interiores",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de espacio comercial",
+                            href: "/img/photo-ten.jpg",
+                        },
+                        listDescription: [
+                            "Imágenes para web y material corporativo",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de la usb entregable",
+                            href: "/img/photo-usb.jpg",
+                        },
+                        listDescription: [
+                            "USB con fotografías finales editadas",
+                        ],
+                    },
+                ]}
+                detailsInfo={[
+                    "Sesión fotográfica de instalaciones o interiores",
+                    "Cobertura de espacios, detalles y ambientes",
+                    "40 fotografías digitales en alta resolución entregadas en USB",
+                    "Edición de color y corrección de perspectiva",
+                    "Imágenes ideales para web, redes y Google Business",
+                    "Entrega digital de 1 a 2 semanas",
+                ]}
+            />
+        </TabItem>
+
+        <TabItem class={``}>
+            <section class="service-description-info">
+                <article>
+                    <h3>Fotografía gastronómica</h3>
+                    <p>
+                        Sesión fotográfica especializada en resaltar tus
+                        platillos de forma <span
+                            >apetecible, cuidada y visualmente impactante</span
+                        >, ideal para restaurantes, cafeterías y negocios de
+                        comida.
+                    </p>
+                    <p>
+                        Trabajamos con luz natural o controlada, cuidando
+                        texturas, colores y presentación para que cada platillo
+                        se vea irresistible.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Imágenes que despiertan el apetito</h3>
+                    <p>
+                        Las fotografías están pensadas para menús físicos y
+                        digitales, redes sociales y plataformas de delivery.
+                    </p>
+                    <p>
+                        Ideal para mostrar <span
+                            >platillos, bebidas, procesos y ambiente del local</span
+                        >, reforzando la identidad visual del negocio.
+                    </p>
+                </article>
+            </section>
+
+            <DetailsServices
+                deliverableDetails={[
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de fotografia gastronomica",
+                            href: "/img/boda-two.jpg",
+                        },
+                        listDescription: [
+                            "Fotografías profesionales de platillos",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de menu fotografico",
+                            href: "/img/photo-ten.jpg",
+                        },
+                        listDescription: [
+                            "Imágenes listas para menús y redes sociales",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de la usb entregable",
+                            href: "/img/photo-usb.jpg",
+                        },
+                        listDescription: [
+                            "USB con fotografías finales editadas",
+                        ],
+                    },
+                ]}
+                detailsInfo={[
+                    "Sesión de fotografía gastronómica",
+                    "Sesión en restaurante o locación",
+                    "45 fotografías digitales en alta resolución entregadas en USB",
+                    "Edición profesional enfocada en color y textura",
+                    "Imágenes optimizadas para menús y redes sociales",
+                    "Entrega digital de 1 a 2 semanas",
+                ]}
+            />
+        </TabItem>
+    </TabsServices>
+</LayoutServices>

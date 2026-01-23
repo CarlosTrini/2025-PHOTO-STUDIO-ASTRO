@@ -1,3 +1,250 @@
 ---
+import DetailsServices from "@components/DetailsServices.astro";
+import type { Label } from "@components/TabsServices.astro";
+import TabsServices from "@components/TabsServices.astro";
+import {
+    getRouteDataService,
+    makeTabsServicesNames,
+} from "@helpers/infoRoutes";
+import LayoutServices from "@layouts/LayoutServices.astro";
+import { TabItem } from "free-astro-components";
+import "@styles/layout/layoutServices.css";
+
+let labels: Label[] = [];
+const subRoutes = getRouteDataService("/services", "couples");
+if (subRoutes) {
+    labels = makeTabsServicesNames(subRoutes || []);
+}
 ---
-<h2>SERVICIOS => PAREJAS</h2>
+
+<LayoutServices
+    pageTitle="Parejas"
+    heroImage="/img/photo-fourteen.jpg"
+    bannerTitle=`"Risas, abrazos y todo lo que los une"`
+    bannerSubtitle=`Las parejas no solo se aman, también se divierten juntas.
+Fotografiamos la autenticidad de vuestro amor para que cada momento
+perdure para siempre.`
+>
+    <TabsServices labels={labels}>
+        <TabItem class={``}>
+            <section class="service-description-info">
+                <article>
+                    <h3>Sesión de Aniversario</h3>
+                    <p>
+                        Sesión fotográfica para recordar por qué siguen
+                        eligiéndose cada año, capturando <span
+                            >amor, complicidad y momentos especiales</span
+                        >
+                        de la pareja.
+                    </p>
+                    <p>
+                        Ideal para parejas que desean inmortalizar recuerdos de
+                        sus aniversarios, en estudio o exterior, con una
+                        duración aproximada de <span>60 minutos</span>.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Recuerdos que fortalecen la relación</h3>
+                    <p>
+                        Capturamos miradas, abrazos y gestos espontáneos que
+                        reflejan la historia de amor de la pareja.
+                    </p>
+                    <p>
+                        Perfecto para quienes buscan un recuerdo <span
+                            >íntimo, elegante y emotivo</span
+                        >
+                        de cada año juntos.
+                    </p>
+                </article>
+            </section>
+
+            <DetailsServices
+                deliverableDetails={[
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de album de pareja",
+                            href: "/img/boda-two.jpg",
+                        },
+                        listDescription: [
+                            "Álbum fotográfico 30x30 cm con 40 páginas",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de fotografía enmarcada aniversario",
+                            href: "/img/wedding-three.jpg",
+                        },
+                        listDescription: ["1 fotografía enmarcada 30x40 cm"],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de USB con fotos",
+                            href: "/img/photo-usb.jpg",
+                        },
+                        listDescription: [
+                            "USB con fotografías digitales editadas",
+                        ],
+                    },
+                ]}
+                detailsInfo={[
+                    "Sesión fotográfica de aniversario",
+                    "Duración aproximada de 60 minutos",
+                    "Cobertura en estudio o exterior",
+                    "50 fotografías digitales en alta resolución entregadas en USB",
+                    "Edición profesional de color y luz",
+                    "Álbum físico 30x30 cm (40 páginas)",
+                    "1 fotografía enmarcada 30x40 cm",
+                    "Entrega digital y física de 2 a 3 semanas",
+                ]}
+            />
+        </TabItem>
+
+        <TabItem class={``}>
+            <section class="service-description-info">
+                <article>
+                    <h3>Cita Urbana</h3>
+                    <p>
+                        Sesión fotográfica que acompaña a la pareja en un
+                        recorrido por algún lugar especial, capturando <span
+                            >momentos espontáneos y auténticos</span
+                        >
+                        mientras disfrutan juntos.
+                    </p>
+                    <p>
+                        Ideal para parejas que buscan una experiencia dinámica y
+                        divertida, con duración aproximada de <span
+                            >60 a 90 minutos</span
+                        >.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Recuerdos urbanos y naturales</h3>
+                    <p>
+                        Capturamos gestos, risas y situaciones cotidianas que se
+                        convierten en recuerdos memorables.
+                    </p>
+                    <p>
+                        Perfecto para quienes desean <span
+                            >una sesión relajada, espontánea y natural</span
+                        >, en entornos urbanos o parques.
+                    </p>
+                </article>
+            </section>
+
+            <DetailsServices
+                deliverableDetails={[
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de album de pareja urbana",
+                            href: "/img/boda-two.jpg",
+                        },
+                        listDescription: [
+                            "Álbum fotográfico 30x30 cm con 40 páginas",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de fotografía enmarcada urbana",
+                            href: "/img/wedding-three.jpg",
+                        },
+                        listDescription: ["1 fotografía enmarcada 30x40 cm"],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de USB con fotos",
+                            href: "/img/photo-usb.jpg",
+                        },
+                        listDescription: [
+                            "USB con fotografías digitales editadas",
+                        ],
+                    },
+                ]}
+                detailsInfo={[
+                    "Sesión fotográfica Cita Urbana",
+                    "Duración aproximada de 60 a 90 minutos",
+                    "Cobertura en exteriores o locaciones urbanas",
+                    "55 fotografías digitales en alta resolución entregadas en USB",
+                    "Edición profesional de color y luz",
+                    "Álbum físico 30x30 cm (40 páginas)",
+                    "1 fotografía enmarcada 30x40 cm",
+                    "Entrega digital y física de 2 a 3 semanas",
+                ]}
+            />
+        </TabItem>
+        <TabItem class={``}>
+            <section class="service-description-info">
+                <article>
+                    <h3>Sesión Temática Variada</h3>
+                    <p>
+                        Sesión fotográfica creativa donde la pareja elige
+                        temáticas, disfraces o situaciones especiales, creando <span
+                            >una experiencia divertida y única</span
+                        >.
+                    </p>
+                    <p>
+                        Perfecta para quienes buscan salir de lo común y
+                        disfrutar de una sesión <span
+                            >llena de creatividad y espontaneidad</span
+                        >, con duración aproximada de 60 a 90 minutos.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Recuerdos originales y divertidos</h3>
+                    <p>
+                        Capturamos los momentos más originales y las expresiones
+                        genuinas, logrando un recuerdo inolvidable y lleno de
+                        personalidad.
+                    </p>
+                    <p>
+                        Ideal para parejas que buscan <span
+                            >una sesión fuera de lo común</span
+                        >, con temáticas personalizadas y disfraces divertidos.
+                    </p>
+                </article>
+            </section>
+
+            <DetailsServices
+                deliverableDetails={[
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de album de pareja temática",
+                            href: "/img/boda-two.jpg",
+                        },
+                        listDescription: [
+                            "Álbum fotográfico 30x30 cm con 40 páginas",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de fotografía enmarcada temática",
+                            href: "/img/wedding-three.jpg",
+                        },
+                        listDescription: ["1 fotografía enmarcada 30x40 cm"],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de USB con fotos",
+                            href: "/img/photo-usb.jpg",
+                        },
+                        listDescription: [
+                            "USB con fotografías digitales editadas",
+                        ],
+                    },
+                ]}
+                detailsInfo={[
+                    "Sesión fotográfica temática variada",
+                    "Duración aproximada de 60 a 90 minutos",
+                    "Cobertura en estudio o locación según temática",
+                    "60 fotografías digitales en alta resolución entregadas en USB",
+                    "Edición profesional de color y luz",
+                    "Álbum físico 30x30 cm (40 páginas)",
+                    "1 fotografía enmarcada 30x40 cm",
+                    "Entrega digital y física de 2 a 3 semanas",
+                ]}
+            />
+        </TabItem>
+    </TabsServices>
+</LayoutServices>

@@ -9,7 +9,7 @@
         display: block;
         width: 100%;
         height: 50vh;
-        background-color: rgba(var(--color-senary-rgb), .5);
+        background-color: rgba(var(--color-quinary-rgb), .7);
         position: absolute;
         top: 0;
         left: 0;
@@ -138,16 +138,58 @@
     }
 }
 
-.main-srevices .service-container-extras {
-    width: 90%;
+.service-container-extras {
+    /* width: 90%; */
     margin: 5rem auto;
 
     @media (min-width: 992px) {
-        width: 80%;
+        /* width: 80%; */
     }
 }
 
-.main-services .services-extras {
+
+
+
+
+.service-description-info {
+    /* min-height: 50vh; */
+    /* width: 90%; */
+    /* margin: 5rem auto; */
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    background-color: rgba(var(--color-secondary-rgb), .4);
+    border-radius: .3rem;
+
+    /* @media (min-width: 1024px) {
+        width: 80%;
+    } */
+
+
+    article {
+        h3 {
+            font-family: var(--font-playfair-boldItalic);
+            text-shadow: .1rem 0 0 var(--color-senary);
+
+            font-size: 2.5rem;
+
+        }
+
+        p {
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--color-quinary);
+        }
+
+        strong {
+            color: var(--color-senary);
+        }
+    }
+}
+
+.services-extras {
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -169,6 +211,12 @@
         figcaption {
             margin-top: 1.5rem;
             color: var(--color-quinary);
+
+            ul li {
+                display: flex;
+                align-items: center;
+                gap: .5rem;
+            }
         }
     }
 
@@ -182,7 +230,7 @@
 
 
 .services-details {
-    width: 90%;
+    /* width: 90%; */
     margin: 5rem auto;
 
     @media (min-width: 992px) {
@@ -204,4 +252,10 @@
         align-items: center;
         gap: 1rem;
     }
+}
+
+.note-info {
+    padding-bottom: .6rem;
+    color: var(--color-dark-full) !important;
+    border-bottom: .1rem solid var(--color-dark-full);
 }

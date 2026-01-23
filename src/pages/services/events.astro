@@ -1,3 +1,248 @@
 ---
+import DetailsServices from "@components/DetailsServices.astro";
+import type { Label } from "@components/TabsServices.astro";
+import TabsServices from "@components/TabsServices.astro";
+import {
+    getRouteDataService,
+    makeTabsServicesNames,
+} from "@helpers/infoRoutes";
+import LayoutServices from "@layouts/LayoutServices.astro";
+import { TabItem } from "free-astro-components";
+import "@styles/layout/layoutServices.css";
+
+let labels: Label[] = [];
+const subRoutes = getRouteDataService("/services", "events");
+if (subRoutes) {
+    labels = makeTabsServicesNames(subRoutes || []);
+}
 ---
-<h2>SERVICIOS => EVENTOS</h2>
+
+<LayoutServices
+    pageTitle="Eventos/Fiestas"
+    heroImage="/img/photo-twelve.jpg"
+    bannerTitle=`"Momentos que se viven una vez, recuerdos para toda la vida"`
+    bannerSubtitle=`Los eventos pasan en un instante, pero las emociones merecen quedarse.
+Capturamos risas, miradas y abrazos para que cada celebración
+pueda revivirse una y otra vez.`
+>
+    <TabsServices labels={labels}>
+        <TabItem class={``}>
+            <section class="service-description-info">
+                <article>
+                    <h3>Cobertura de XV años</h3>
+                    <p>
+                        Cobertura fotográfica completa de uno de los días más
+                        importantes y esperados, capturando cada momento con
+                        <span>elegancia, emoción y atención al detalle</span>.
+                    </p>
+                    <p>
+                        Acompañamos desde los preparativos, la ceremonia, la
+                        recepción, el vals y los momentos clave de la fiesta,
+                        asegurando un recuerdo completo de esta celebración tan
+                        especial.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Un recuerdo inolvidable</h3>
+                    <p>
+                        Nos enfocamos en retratos de la quinceañera, fotografías
+                        familiares y la cobertura espontánea del evento.
+                    </p>
+                    <p>
+                        Ideal para quienes buscan un recuerdo completo que
+                        incluya
+                        <span>gala, vals y celebración</span>, reflejando la
+                        esencia de este día único.
+                    </p>
+                </article>
+            </section>
+
+            <DetailsServices
+                deliverableDetails={[
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de un album fotografico",
+                            href: "/img/boda-two.jpg",
+                        },
+                        listDescription: [
+                            "Álbum fotográfico 30x30 cm con 40 páginas",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de fotografia enmarcada",
+                            href: "/img/wedding-three.jpg",
+                        },
+                        listDescription: [
+                            "1 fotografía de XV años enmarcada 30x40 cm",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de la usb entregable",
+                            href: "/img/photo-usb.jpg",
+                        },
+                        listDescription: [
+                            "USB con todas las fotografías editadas",
+                        ],
+                    },
+                ]}
+                detailsInfo={[
+                    "Cobertura completa de fiesta de XV años",
+                    "Cobertura de gala, ceremonia, vals y recepción",
+                    "80 fotografías digitales en alta resolución entregadas en USB",
+                    "Edición profesional de color y luz",
+                    "Álbum físico 30x30 cm (40 páginas)",
+                    "1 fotografía enmarcada 30x40 cm",
+                    "Entrega digital y física de 2 a 3 semanas",
+                ]}
+            />
+        </TabItem>
+        <TabItem class={``}>
+            <section class="service-description-info">
+                <article>
+                    <h3>Cobertura fotográfica de graduación</h3>
+                    <p>
+                        Sesión y cobertura fotográfica pensada para documentar
+                        el cierre de una etapa importante, capturando los
+                        momentos más
+                        <span>representativos y emotivos</span> del evento.
+                    </p>
+                    <p>
+                        Incluye fotografías de grupo, entrega de diplomas y
+                        retratos individuales, asegurando un recuerdo completo
+                        de la ceremonia.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Recuerdos de logro y celebración</h3>
+                    <p>
+                        Nos enfocamos en captar expresiones, aplausos y momentos
+                        clave que marcan este logro académico.
+                    </p>
+                    <p>
+                        Ideal para escuelas, universidades y familias que desean
+                        conservar <span>un recuerdo profesional y ordenado</span
+                        > de la graduación.
+                    </p>
+                </article>
+            </section>
+
+            <DetailsServices
+                deliverableDetails={[
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de un album fotografico",
+                            href: "/img/boda-two.jpg",
+                        },
+                        listDescription: [
+                            "Álbum fotográfico 30x30 cm con 40 páginas",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de fotografia enmarcada",
+                            href: "/img/wedding-three.jpg",
+                        },
+                        listDescription: [
+                            "1 fotografía grupal enmarcada 30x40 cm",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de la usb entregable",
+                            href: "/img/photo-usb.jpg",
+                        },
+                        listDescription: ["USB con fotografías del evento"],
+                    },
+                ]}
+                detailsInfo={[
+                    "Cobertura fotográfica de graduación",
+                    "Fotografías de grupo y entrega de diplomas",
+                    "70 fotografías digitales en alta resolución entregadas en USB",
+                    "Edición profesional y corrección de color",
+                    "Álbum físico 30x30 cm (40 páginas)",
+                    "1 fotografía grupal enmarcada 30x40 cm",
+                    "Entrega digital y física de 2 a 3 semanas",
+                ]}
+            />
+        </TabItem>
+        <TabItem class={``}>
+            <section class="service-description-info">
+                <article>
+                    <h3>Cobertura de fiestas infantiles</h3>
+                    <p>
+                        Cobertura fotográfica pensada para capturar la alegría,
+                        diversión y espontaneidad de los más pequeños, con
+                        imágenes llenas de <span
+                            >color, emoción y movimiento</span
+                        >.
+                    </p>
+                    <p>
+                        Documentamos juegos, pastel, piñata, convivencia
+                        familiar y los momentos más importantes de la
+                        celebración.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Recuerdos llenos de diversión</h3>
+                    <p>
+                        Nos adaptamos al ritmo de los niños, capturando
+                        sonrisas, risas y momentos espontáneos sin interferir en
+                        la dinámica del evento.
+                    </p>
+                    <p>
+                        Ideal para cumpleaños infantiles y celebraciones
+                        familiares, creando recuerdos <span
+                            >naturales y llenos de vida</span
+                        >.
+                    </p>
+                </article>
+            </section>
+
+            <DetailsServices
+                deliverableDetails={[
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de un album fotografico",
+                            href: "/img/boda-two.jpg",
+                        },
+                        listDescription: [
+                            "Álbum fotográfico 30x30 cm con 40 páginas",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de fotografia enmarcada",
+                            href: "/img/wedding-three.jpg",
+                        },
+                        listDescription: [
+                            "1 fotografía infantil enmarcada 30x40 cm",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de la usb entregable",
+                            href: "/img/photo-usb.jpg",
+                        },
+                        listDescription: [
+                            "USB con fotografías editadas del evento",
+                        ],
+                    },
+                ]}
+                detailsInfo={[
+                    "Cobertura fotográfica de fiesta infantil",
+                    "Cobertura de juegos, pastel y momentos clave",
+                    "60 fotografías digitales en alta resolución entregadas en USB",
+                    "Edición profesional con colores vivos",
+                    "Álbum físico 30x30 cm (40 páginas)",
+                    "1 fotografía enmarcada 30x40 cm",
+                    "Entrega digital y física de 2 a 3 semanas",
+                ]}
+            />
+        </TabItem>
+    </TabsServices>
+</LayoutServices>

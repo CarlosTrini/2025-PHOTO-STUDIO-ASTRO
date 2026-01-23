@@ -1,100 +1,242 @@
 ---
+import DetailsServices from "@components/DetailsServices.astro";
+import type { Label } from "@components/TabsServices.astro";
+import TabsServices from "@components/TabsServices.astro";
+import {
+    getRouteDataService,
+    makeTabsServicesNames,
+} from "@helpers/infoRoutes";
 import LayoutServices from "@layouts/LayoutServices.astro";
-import "@styles/pages/services/pets.css";
-import { Tab, TabItem } from "free-astro-components";
+import { TabItem } from "free-astro-components";
+import "@styles/layout/layoutServices.css";
+
+let labels: Label[] = [];
+const subRoutes = getRouteDataService("/services", "pets");
+if (subRoutes) {
+    labels = makeTabsServicesNames(subRoutes || []);
+}
 ---
 
 <LayoutServices
     pageTitle="Mascotas"
     heroImage="/img/pets-one.jpg"
-    bannerTitle=`"Almas sin palabras"`
-    bannerSubtitle=`Un vínculo que no necesita voz para ser profundo. Capturar su mirada es entender que el amor más puro suele venir en cuatro patas.`
-    detailsInfo={[
-        "20 Fotografías dígitales",
-        "Sesión de una hora u hora y media",
-        "Tiempo de entrega: Entre 2 y 4 semanas",
-    ]}
+    bannerTitle=`"Pequeños compañeros, grandes recuerdos"`
+    bannerSubtitle=`Cada mascota tiene una historia que contar. Creamos imágenes llenas de cariño
+y personalidad que celebran el vínculo único entre tú y tu compañero.`
 >
-    <Tab
-        tabs={[{ label: "S", active: true }, { label: "Tab 2" }]}
-        class={`tab-component`}
-    >
-        <TabItem active class={``}>
-            <section class="service-pets-info" data-aos="fade-right">
+    <TabsServices labels={labels}>
+        <TabItem class={``}>
+            <section class="service-description-info">
                 <article>
-                    <h4>Tu amiguito solo</h4>
+                    <h3>Retrato de Estudio</h3>
                     <p>
-                        Sesión de <strong
-                            >10 fotografías dígitales en tu hogar o en nuestro
-                            estudio</strong
-                        >, con duración de una hora.
+                        Sesión fotográfica en estudio para capturar <span
+                            >la esencia y personalidad</span
+                        >
+                        del sujeto, cuidando iluminación, fondo y composición.
                     </p>
                     <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing
-                        elit. Velit quis esse ipsum iste deleniti! Dicta
-                        adipisci minima quam incidunt reiciendis qui earum
-                        dignissimos, labore magnam laudantium, maxime quia
-                        cupiditate esse et libero voluptatum at laboriosam
-                        quibusdam nesciunt molestias. Consectetur, ratione
-                        iusto! Autem corporis minus id eius magni adipisci
-                        eligendi doloremque.
+                        Ideal para retratos profesionales, portafolios, redes
+                        sociales o simplemente un recuerdo elegante y atemporal.
                     </p>
                 </article>
 
                 <article>
-                    <h4>Tú junto con tu amigo</h4>
+                    <h3>Imágenes profesionales y memorables</h3>
                     <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit. Repellat saepe molestias voluptas velit quaerat
-                        veniam pariatur voluptatibus minima assumenda,
-                        temporibus, optio cupiditate! Magni, ratione ea! Quasi
-                        sed quae a, mollitia corporis in quam necessitatibus
-                        consequatur expedita porro ipsam similique aperiam
-                        quisquam aliquid quia quod omnis ipsa praesentium modi
-                        voluptate? Distinctio.
+                        Nos enfocamos en expresiones, postura y detalles,
+                        logrando un resultado
+                        <span>profesional y con estilo</span>.
                     </p>
                     <p>
-                        A partir de ahí, estaré presente en todo el evento,
-                        desde la ceremonia hasta el momento fiesta (media hora
-                        máximo) hasta que captemos a la gente bailando y
-                        disfrutando del momento.
+                        Perfecto para quien busca <span
+                            >un retrato cuidado, artístico y duradero</span
+                        >.
                     </p>
                 </article>
             </section>
 
-            <section class="service-pets-extras" data-aos="fade-left">
-                <h3>Entregables</h3>
-                <div class="pets-extras">
-                    <figure>
-                        <img
-                            src="/img/camera-one.jpg"
-                            alt="Imagen ilustrativa de fotografias"
-                        />
-                        <figcaption>
-                            <p>- 20 Fotografías digitales</p>
-                        </figcaption>
-                    </figure>
-                    <figure>
-                        <img
-                            src="/img/camera-one.jpg"
-                            alt="Imagen ilustrativa de fotografias"
-                        />
-                        <figcaption>
-                            <p>- 5 fotografías impresas</p>
-                        </figcaption>
-                    </figure>
-                    <figure>
-                        <img
-                            src="/img/wedding-three.jpg"
-                            alt="Imagen ilustrativa de un album fotografico"
-                        />
-                        <figcaption>
-                            <p>- Dos fotografías de tu elección con su marco</p>
-                        </figcaption>
-                    </figure>
-                </div>
-            </section>
+            <DetailsServices
+                deliverableDetails={[
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de retrato en estudio",
+                            href: "/img/boda-two.jpg",
+                        },
+                        listDescription: [
+                            "Álbum fotográfico 30x30 cm con 40 páginas",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de fotografía enmarcada retrato",
+                            href: "/img/wedding-three.jpg",
+                        },
+                        listDescription: ["1 fotografía enmarcada 30x40 cm"],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de USB con fotos",
+                            href: "/img/photo-usb.jpg",
+                        },
+                        listDescription: [
+                            "USB con fotografías digitales editadas",
+                        ],
+                    },
+                ]}
+                detailsInfo={[
+                    "Sesión fotográfica de retrato en estudio",
+                    "Duración aproximada de 60 minutos",
+                    "50 fotografías digitales en alta resolución entregadas en USB",
+                    "Edición profesional de color, luz y detalle",
+                    "Álbum físico 30x30 cm (40 páginas)",
+                    "1 fotografía enmarcada 30x40 cm",
+                    "Entrega digital y física de 2 a 3 semanas",
+                ]}
+            />
         </TabItem>
-        <TabItem>Content for Tab 2</TabItem>
-    </Tab>
+        <TabItem class={``}>
+            <section class="service-description-info">
+                <article>
+                    <h3>Acción en Exterior</h3>
+                    <p>
+                        Sesión fotográfica en exteriores capturando <span
+                            >movimiento, energía y espontaneidad</span
+                        >, ideal para deportistas, bailarines, artistas o
+                        lifestyle activo.
+                    </p>
+                    <p>
+                        Aprovechamos luz natural y locaciones dinámicas para
+                        lograr imágenes auténticas y llenas de vida.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Fotografía vibrante y natural</h3>
+                    <p>
+                        Capturamos gestos, acción y emociones genuinas, logrando
+                        un resultado
+                        <span>dinámico y lleno de personalidad</span>.
+                    </p>
+                    <p>
+                        Ideal para quienes buscan <span
+                            >retratar su energía y estilo de vida</span
+                        > en imágenes profesionales.
+                    </p>
+                </article>
+            </section>
+
+            <DetailsServices
+                deliverableDetails={[
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de sesión en exterior",
+                            href: "/img/boda-two.jpg",
+                        },
+                        listDescription: [
+                            "Álbum fotográfico 30x30 cm con 40 páginas",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de fotografía enmarcada acción",
+                            href: "/img/wedding-three.jpg",
+                        },
+                        listDescription: ["1 fotografía enmarcada 30x40 cm"],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de USB con fotos",
+                            href: "/img/photo-usb.jpg",
+                        },
+                        listDescription: [
+                            "USB con fotografías digitales editadas",
+                        ],
+                    },
+                ]}
+                detailsInfo={[
+                    "Sesión fotográfica en exterior y acción",
+                    "Duración aproximada de 60 a 90 minutos",
+                    "Cobertura en locación al aire libre",
+                    "55 fotografías digitales en alta resolución entregadas en USB",
+                    "Edición profesional de color, luz y movimiento",
+                    "Álbum físico 30x30 cm (40 páginas)",
+                    "1 fotografía enmarcada 30x40 cm",
+                    "Entrega digital y física de 2 a 3 semanas",
+                ]}
+            />
+        </TabItem>
+        <TabItem class={``}>
+            <section class="service-description-info">
+                <article>
+                    <h3>Mascota & Dueño</h3>
+                    <p>
+                        Sesión fotográfica dedicada a capturar la relación entre
+                        tu mascota y tú, resaltando <span
+                            >afecto, diversión y complicidad</span
+                        > en imágenes memorables.
+                    </p>
+                    <p>
+                        Se puede realizar en estudio o exteriores, con dinámicas
+                        adaptadas a cada animal y estilo de la sesión.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Recuerdos tiernos y divertidos</h3>
+                    <p>
+                        Capturamos gestos, juegos y momentos espontáneos entre
+                        mascota y dueño, logrando fotografías <span
+                            >íntimas, naturales y llenas de personalidad</span
+                        >.
+                    </p>
+                    <p>
+                        Ideal para amantes de sus mascotas que desean conservar
+                        recuerdos
+                        <span>inolvidables y llenos de vida</span>.
+                    </p>
+                </article>
+            </section>
+
+            <DetailsServices
+                deliverableDetails={[
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de album mascota y dueño",
+                            href: "/img/boda-two.jpg",
+                        },
+                        listDescription: [
+                            "Álbum fotográfico 30x30 cm con 40 páginas",
+                        ],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de fotografía enmarcada mascota",
+                            href: "/img/wedding-three.jpg",
+                        },
+                        listDescription: ["1 fotografía enmarcada 30x40 cm"],
+                    },
+                    {
+                        img: {
+                            alt: "Imagen ilustrativa de USB con fotos",
+                            href: "/img/photo-usb.jpg",
+                        },
+                        listDescription: [
+                            "USB con fotografías digitales editadas",
+                        ],
+                    },
+                ]}
+                detailsInfo={[
+                    "Sesión fotográfica Mascota & Dueño",
+                    "Duración aproximada de 60 a 90 minutos",
+                    "Cobertura en estudio o exterior",
+                    "50 fotografías digitales en alta resolución entregadas en USB",
+                    "Edición profesional de color, luz y detalles",
+                    "Álbum físico 30x30 cm (40 páginas)",
+                    "1 fotografía enmarcada 30x40 cm",
+                    "Entrega digital y física de 2 a 3 semanas",
+                ]}
+            />
+        </TabItem>
+    </TabsServices>
 </LayoutServices>

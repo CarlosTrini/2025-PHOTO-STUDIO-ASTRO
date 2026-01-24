@@ -15,7 +15,7 @@ export interface RoutesI {
 export interface RouterI {
     section: string;//nombre que se muestra
     basePath: '/' | '/services' | '/gallery' | '/contact-booking' | '/reviews';
-    type: 'link' | 'box' | 'dropdown'; //esto poque uso mi menu personalizado
+    type: 'link' | 'box' | 'dropdown' | 'boxList'; //esto poque uso mi menu personalizado
     containerClass?: string; // para casos de box o drop, esta clase da estilos a su contenedor
     illustration?: string; // src para el caso de que sean box se agrega una imagen ilustrativa al contenedor
     routes: RoutesI[];
@@ -31,8 +31,8 @@ export const routes: RouterI[] = [
     {
         section: "Sesiones",
         basePath: "/services",
-        type: "box",
-        containerClass: "box-services",
+        type: "boxList",
+        containerClass: "boxlist-services",
         illustration: "/img/services-menu.jpg",
         routes: [
             {
@@ -174,13 +174,13 @@ export const routes: RouterI[] = [
                 }
                 ]
             },
-            { name: "Y más...", path: "", show: true, imgSrc: '/img/photo-four.jpg' },
+
         ],
     },
     {
         section: "Galería",
         basePath: "/gallery",
-        type: "box",
+        type: "dropdown",
         containerClass: "box-gallery",
         illustration: "/img/gallery-menu.jpg",
         routes: [
@@ -192,7 +192,6 @@ export const routes: RouterI[] = [
             { name: "Maternidad", path: "/maternity", show: true, imgSrc: '/img/photo-one.jpg' },
             { name: "Parejas", path: "/couples", show: true, imgSrc: '/img/photo-two.jpg' },
             { name: "Mascotas", path: "/pets", show: false, imgSrc: '/img/photo-three.jpg' },
-            { name: "Y más...", path: "", show: true, imgSrc: '/img/photo-four.jpg' },
         ],
     },
     {

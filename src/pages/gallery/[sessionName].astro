@@ -1,6 +1,15 @@
 ---
 import LayoutGallery from "@layouts/LayoutGallery.astro";
 import GalleryComponent from "@components/GalleryComponent.tsx";
+
+export function getStaticPaths() {
+    return [
+        { params: { SessionName: "weddings" } },
+        { params: { SessionName: "familia" } },
+    ];
+}
+
+const { SessionName } = Astro.params;
 ---
 
 <LayoutGallery>

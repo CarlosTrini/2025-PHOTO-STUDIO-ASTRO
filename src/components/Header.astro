@@ -73,14 +73,16 @@ import "@styles/components/header.css";
                         ) : section.type === "dropdown" ? (
                             <li class="">
                                 <p class="drop-title" data-droptrigger={idx}>
-                                    {section.section}
+                                    <a href={section.basePath}>
+                                        {section.section}
+                                    </a>
                                 </p>
                                 <ul
                                     class={`drop-content hidden-drop ${section.containerClass}`}
                                     data-dropcontent={idx}
                                 >
                                     {section.routes.map((route) => (
-                                        <li>
+                                        <li class={`drop-item-li`}>
                                             <a
                                                 class=" link-drop"
                                                 href={`${section.basePath}${route.path}`}
@@ -89,6 +91,14 @@ import "@styles/components/header.css";
                                             </a>
                                         </li>
                                     ))}
+                                    <li>
+                                        <a
+                                            class={`see-more-btn`}
+                                            href={section.basePath}
+                                        >
+                                            Ver más...
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                         ) : section.type === "box" ? (
@@ -127,6 +137,80 @@ import "@styles/components/header.css";
                                                 ),
                                         )}
                                     </ul>
+                                </div>
+                            </li>
+                        ) : section.type === "boxList" ? (
+                            <li class="">
+                                <p class=" drop-title" data-droptrigger={idx}>
+                                    <a
+                                        class=" link-drop"
+                                        href={`${section.basePath}`}
+                                    >
+                                        {section.section}
+                                    </a>
+                                </p>
+                                <div
+                                    class={`boxlist-content hidden-drop ${section.containerClass}`}
+                                    data-dropcontent={idx}
+                                >
+                                    {section.illustration &&
+                                        section.illustration != "" && (
+                                            <figure>
+                                                <img
+                                                    src={section.illustration}
+                                                    alt="imagen galeria"
+                                                    width="50px"
+                                                    height="50px"
+                                                />
+                                            </figure>
+                                        )}
+                                    {/* UL LIST CONTAINER  */}
+                                    <div>
+                                        <div class={`boxlist-container`}>
+                                            {section.routes.map(
+                                                (route) =>
+                                                    route.show && (
+                                                        <div
+                                                            class={`boxlist-lists`}
+                                                        >
+                                                            <p
+                                                                class={`boxlist-title-section`}
+                                                            >
+                                                                {route.name}
+                                                            </p>
+
+                                                            <ul
+                                                                class={`boxlist-container__ul`}
+                                                            >
+                                                                {route.subRoutes &&
+                                                                    route.subRoutes.map(
+                                                                        (sub) =>
+                                                                            sub.show && (
+                                                                                <li>
+                                                                                    <a
+                                                                                        class=" link-drop"
+                                                                                        href={`${section.basePath}${route.path}?tab=${sub.name}`}
+                                                                                    >
+                                                                                        {
+                                                                                            sub.name
+                                                                                        }
+                                                                                    </a>
+                                                                                </li>
+                                                                            ),
+                                                                    )}
+                                                            </ul>
+                                                        </div>
+                                                    ),
+                                            )}
+                                        </div>
+
+                                        <a
+                                            class={`see-more-btn`}
+                                            href={section.basePath}
+                                        >
+                                            Ver más...
+                                        </a>
+                                    </div>
                                 </div>
                             </li>
                         ) : null;

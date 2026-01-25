@@ -1,6 +1,15 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import "@styles/pages/home.css";
+
+import photoOne from "@assets/img/generic/photo-one.jpg";
+import photoTwo from "@assets/img/generic/photo-two.jpg";
+import photoThree from "@assets/img/generic/photo-three.jpg";
+import photoFour from "@assets/img/generic/photo-four.jpg";
+import photoFive from "@assets/img/generic/photo-five.jpg";
+import ourImage from "@assets/img/generic/our.jpg";
+
+import { Image } from "astro:assets";
 ---
 
 <Layout title="test" description="test description">
@@ -18,7 +27,7 @@ import "@styles/pages/home.css";
             </div>
           </div>
           <figure class="hero-img">
-            <img src="/img/photo-one.jpg" alt="Imagen de portada uno" />
+            <Image src={photoOne} alt="Imagen de portada uno" loading="lazy" />
           </figure>
         </div>
 
@@ -30,7 +39,7 @@ import "@styles/pages/home.css";
             </div>
           </div>
           <figure class="hero-img">
-            <img src="/img/photo-two.jpg" alt="Imagen de portada uno" />
+            <Image src={photoTwo} alt="Imagen de portada uno" loading="lazy" />
           </figure>
         </div>
 
@@ -42,7 +51,11 @@ import "@styles/pages/home.css";
             </div>
           </div>
           <figure class="hero-img">
-            <img src="/img/photo-three.jpg" alt="Imagen de portada uno" />
+            <Image
+              src={photoThree}
+              alt="Imagen de portada uno"
+              loading="lazy"
+            />
           </figure>
         </div>
 
@@ -54,7 +67,7 @@ import "@styles/pages/home.css";
             </div>
           </div>
           <figure class="hero-img">
-            <img src="/img/photo-five.jpg" alt="Imagen de portada uno" />
+            <Image src={photoFive} alt="Imagen de portada uno" loading="lazy" />
           </figure>
         </div>
 
@@ -66,7 +79,7 @@ import "@styles/pages/home.css";
             </div>
           </div>
           <figure class="hero-img">
-            <img src="/img/photo-four.jpg" alt="Imagen de portada uno" />
+            <Image src={photoFour} alt="Imagen de portada uno" loading="lazy" />
           </figure>
         </div>
         ...
@@ -90,7 +103,7 @@ import "@styles/pages/home.css";
     </p>
 
     <figure class="bann-img">
-      <img src="/img/banner.jpg" alt="" data-aos="fade-up-left" />
+      <Image src={ourImage} alt="" data-aos="fade-up-left" loading="lazy" />
       <figcaption data-aos="fade-up-right">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos dolorum

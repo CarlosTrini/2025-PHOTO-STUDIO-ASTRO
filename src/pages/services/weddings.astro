@@ -9,6 +9,8 @@ import {
     makeTabsServicesNames,
 } from "@helpers/infoRoutes.ts";
 
+import weddingImage from "@assets/img/services/wedding-one.jpg";
+
 let labels: Label[] = [];
 const subRoutes = getRouteDataService("/services", "weddings");
 if (subRoutes) {
@@ -18,7 +20,7 @@ if (subRoutes) {
 
 <LayoutServices
     pageTitle="Bodas"
-    heroImage="/img/boda-one.jpg"
+    heroImage={weddingImage}
     bannerTitle=`"Historias de amor capturadas para siempre"`
     bannerSubtitle=`La fotografía es la única forma de detener el tiempo sin que el
             momento pierda su latido; capturamos el hoy para que vuestro
@@ -68,7 +70,7 @@ if (subRoutes) {
                     {
                         img: {
                             alt: "Imagen ilustrativa de un album fotografico",
-                            href: "/img/boda-two.jpg",
+                            name: "album",
                         },
                         listDescription: [
                             "Tamaño del álbum de 40 x 30 cm",
@@ -78,7 +80,7 @@ if (subRoutes) {
                     {
                         img: {
                             alt: "Imagen ilustrativa de un album fotografico",
-                            href: "/img/wedding-three.jpg",
+                            name: "photoFrame",
                         },
                         listDescription: [
                             "Una fotografía de tu elección con su marco",
@@ -127,7 +129,7 @@ if (subRoutes) {
                     {
                         img: {
                             alt: "Imagen ilustrativa de un album fotografico",
-                            href: "/img/boda-two.jpg",
+                            name: "album",
                         },
                         listDescription: [
                             "Tamaño del álbum de 40 x 30 cm",
@@ -137,7 +139,7 @@ if (subRoutes) {
                     {
                         img: {
                             alt: "Imagen ilustrativa de un album fotografico",
-                            href: "/img/wedding-three.jpg",
+                            name: "photoFrame",
                         },
                         listDescription: [
                             "Dos fotografías de tu elección con su marco",

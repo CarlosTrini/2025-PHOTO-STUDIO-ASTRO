@@ -1,7 +1,9 @@
 ---
 import FormContact from "@components/FormContact";
 import Layout from "@layouts/Layout.astro";
+import { Image } from "astro:assets";
 import "@styles/pages/contactBooking.css";
+import locationImage from "@assets/img/generic/location.png";
 ---
 
 <Layout>
@@ -18,9 +20,10 @@ import "@styles/pages/contactBooking.css";
         <section class={`contact-page-content`}>
             <!-- UBICACIÓN -->
             <figure class={`location-figure`}>
-                <img
-                    src="/img/location.png"
+                <Image
+                    src={locationImage}
                     alt="imagen de fondo ilustrariva de contacto y reserva"
+                    loading={"lazy"}
                 />
             </figure>
             <!-- TABS -->

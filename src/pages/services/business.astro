@@ -9,6 +9,7 @@ import {
 import LayoutServices from "@layouts/LayoutServices.astro";
 import { TabItem } from "free-astro-components";
 import "@styles/layout/layoutServices.css";
+import bussinessImage from "@assets/img/services/bussiness-one.jpg";
 
 let labels: Label[] = [];
 const subRoutes = getRouteDataService("/services", "business");
@@ -19,7 +20,7 @@ if (subRoutes) {
 
 <LayoutServices
     pageTitle="Negocios"
-    heroImage="/img/photo-nine.jpg"
+    heroImage={bussinessImage}
     bannerTitle=`"La imagen que tu negocio merece"`
     bannerSubtitle=`Fotografía corporativa pensada para reforzar tu identidad de marca,
 posicionar tu negocio y generar una presencia visual coherente, sólida
@@ -66,7 +67,7 @@ y memorable en todos tus canales.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de fotografia comercial",
-                            href: "/img/photo-ten.jpg",
+                            name: "socialMedia",
                         },
                         listDescription: [
                             "Imágenes optimizadas para web y redes sociales",
@@ -76,7 +77,7 @@ y memorable en todos tus canales.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de la usb entregable",
-                            href: "/img/photo-usb.jpg",
+                            name: "usb",
                         },
                         listDescription: [
                             "USB con fotografías finales editadas",
@@ -132,7 +133,7 @@ y memorable en todos tus canales.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de fotografia de interiores",
-                            href: "/img/boda-two.jpg",
+                            name: "comercial",
                         },
                         listDescription: [
                             "Fotografías profesionales de interiores",
@@ -141,7 +142,7 @@ y memorable en todos tus canales.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de espacio comercial",
-                            href: "/img/photo-ten.jpg",
+                            name: "socialMedia",
                         },
                         listDescription: [
                             "Imágenes para web y material corporativo",
@@ -150,7 +151,7 @@ y memorable en todos tus canales.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de la usb entregable",
-                            href: "/img/photo-usb.jpg",
+                            name: "usb",
                         },
                         listDescription: [
                             "USB con fotografías finales editadas",
@@ -205,7 +206,7 @@ y memorable en todos tus canales.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de fotografia gastronomica",
-                            href: "/img/boda-two.jpg",
+                            name: "comercial",
                         },
                         listDescription: [
                             "Fotografías profesionales de platillos",
@@ -214,7 +215,7 @@ y memorable en todos tus canales.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de menu fotografico",
-                            href: "/img/photo-ten.jpg",
+                            name: "socialMedia",
                         },
                         listDescription: [
                             "Imágenes listas para menús y redes sociales",
@@ -223,7 +224,7 @@ y memorable en todos tus canales.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de la usb entregable",
-                            href: "/img/photo-usb.jpg",
+                            name: "usb",
                         },
                         listDescription: [
                             "USB con fotografías finales editadas",

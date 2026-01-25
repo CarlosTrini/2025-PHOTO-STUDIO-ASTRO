@@ -10,6 +10,8 @@ import LayoutServices from "@layouts/LayoutServices.astro";
 import { TabItem } from "free-astro-components";
 import "@styles/layout/layoutServices.css";
 
+import eventsImage from "@assets/img/services/events-one.jpg";
+
 let labels: Label[] = [];
 const subRoutes = getRouteDataService("/services", "events");
 if (subRoutes) {
@@ -19,7 +21,7 @@ if (subRoutes) {
 
 <LayoutServices
     pageTitle="Eventos/Fiestas"
-    heroImage="/img/photo-twelve.jpg"
+    heroImage={eventsImage}
     bannerTitle=`"Momentos que se viven una vez, recuerdos para toda la vida"`
     bannerSubtitle=`Los eventos pasan en un instante, pero las emociones merecen quedarse.
 Capturamos risas, miradas y abrazos para que cada celebración
@@ -63,7 +65,7 @@ pueda revivirse una y otra vez.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de un album fotografico",
-                            href: "/img/boda-two.jpg",
+                            name: "album",
                         },
                         listDescription: [
                             "Álbum fotográfico 30x30 cm con 40 páginas",
@@ -72,7 +74,7 @@ pueda revivirse una y otra vez.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de fotografia enmarcada",
-                            href: "/img/wedding-three.jpg",
+                            name: "photoFrame",
                         },
                         listDescription: [
                             "1 fotografía de XV años enmarcada 30x40 cm",
@@ -81,7 +83,7 @@ pueda revivirse una y otra vez.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de la usb entregable",
-                            href: "/img/photo-usb.jpg",
+                            name: "usb",
                         },
                         listDescription: [
                             "USB con todas las fotografías editadas",
@@ -135,7 +137,7 @@ pueda revivirse una y otra vez.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de un album fotografico",
-                            href: "/img/boda-two.jpg",
+                            name: "album",
                         },
                         listDescription: [
                             "Álbum fotográfico 30x30 cm con 40 páginas",
@@ -144,7 +146,7 @@ pueda revivirse una y otra vez.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de fotografia enmarcada",
-                            href: "/img/wedding-three.jpg",
+                            name: "photoFrame",
                         },
                         listDescription: [
                             "1 fotografía grupal enmarcada 30x40 cm",
@@ -153,7 +155,7 @@ pueda revivirse una y otra vez.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de la usb entregable",
-                            href: "/img/photo-usb.jpg",
+                            name: "usb",
                         },
                         listDescription: ["USB con fotografías del evento"],
                     },
@@ -208,7 +210,7 @@ pueda revivirse una y otra vez.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de un album fotografico",
-                            href: "/img/boda-two.jpg",
+                            name: "album",
                         },
                         listDescription: [
                             "Álbum fotográfico 30x30 cm con 40 páginas",
@@ -217,7 +219,7 @@ pueda revivirse una y otra vez.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de fotografia enmarcada",
-                            href: "/img/wedding-three.jpg",
+                            name: "photoFrame",
                         },
                         listDescription: [
                             "1 fotografía infantil enmarcada 30x40 cm",
@@ -226,7 +228,7 @@ pueda revivirse una y otra vez.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de la usb entregable",
-                            href: "/img/photo-usb.jpg",
+                            name: "usb",
                         },
                         listDescription: [
                             "USB con fotografías editadas del evento",

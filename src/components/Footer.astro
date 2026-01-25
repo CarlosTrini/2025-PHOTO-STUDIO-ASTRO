@@ -1,11 +1,23 @@
 ---
 import "@styles/components/footer.css";
+import logoImg from "@assets/img/generic/logo-white.png";
+import facebookImg from "@assets/img/generic/facebook.png";
+import twitterImg from "@assets/img/generic/twitter.png";
+import instagramImg from "@assets/img/generic/instagram.png";
+import tiktokImg from "@assets/img/generic/tiktok.png";
+import { Image } from "astro:assets";
 ---
 
 <footer>
     <div class="footer-info">
         <figure class="footer-logo" data-aos="fade-left">
-            <img src="/img/logo-white.png" alt="" />
+            <Image
+                src={logoImg}
+                width={250}
+                height={100}
+                alt="imagen del logitipo en footer"
+                loading="lazy"
+            />
         </figure>
 
         <p class="footer-bann">Visita nuestras redes sociales</p>
@@ -18,11 +30,12 @@ import "@styles/components/footer.css";
                     rel="noopener noreferrer"
                     aria-label="Ir a nuestra página de Facebook"
                 >
-                    <img
-                        src="/img/facebook.png"
+                    <Image
+                        src={facebookImg}
                         alt="Facebook"
-                        width="32"
-                        height="32"
+                        width={32}
+                        height={32}
+                        loading="lazy"
                     />
                 </a>
             </li>
@@ -33,11 +46,12 @@ import "@styles/components/footer.css";
                     rel="noopener noreferrer"
                     aria-label="Ir a nuestra página de Instagram"
                 >
-                    <img
-                        src="/img/instagram.png"
+                    <Image
+                        loading="lazy"
+                        src={instagramImg}
                         alt="Instagram"
-                        width="32"
-                        height="32"
+                        width={32}
+                        height={32}
                     />
                 </a>
             </li>
@@ -48,11 +62,12 @@ import "@styles/components/footer.css";
                     rel="noopener noreferrer"
                     aria-label="Ir a nuestro perfil de Twitter/X"
                 >
-                    <img
-                        src="/img/twitter.png"
+                    <Image
+                        loading="lazy"
+                        src={twitterImg}
                         alt="Twitter"
-                        width="32"
-                        height="32"
+                        width={32}
+                        height={32}
                     />
                 </a>
             </li>
@@ -63,11 +78,12 @@ import "@styles/components/footer.css";
                     rel="noopener noreferrer"
                     aria-label="Ir a nuestro perfil de TikTok"
                 >
-                    <img
-                        src="/img/tiktok.png"
+                    <Image
+                        loading="lazy"
+                        src={tiktokImg}
                         alt="TikTok"
-                        width="32"
-                        height="32"
+                        width={32}
+                        height={32}
                     />
                 </a>
             </li>

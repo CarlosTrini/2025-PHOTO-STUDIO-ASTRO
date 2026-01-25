@@ -10,6 +10,7 @@ import LayoutServices from "@layouts/LayoutServices.astro";
 import { TabItem } from "free-astro-components";
 import "@styles/layout/layoutServices.css";
 
+import maternityImage from "@assets/img/services/maternity-one.jpg";
 let labels: Label[] = [];
 const subRoutes = getRouteDataService("/services", "maternity");
 if (subRoutes) {
@@ -19,7 +20,7 @@ if (subRoutes) {
 
 <LayoutServices
     pageTitle="Maternidad"
-    heroImage="/img/photo-thirteen.jpg"
+    heroImage={maternityImage}
     bannerTitle=`"La espera más hermosa merece ser recordada"`
     bannerSubtitle=`Cada gesto, cada sonrisa, cada caricia cuenta la historia
 de un amor que crece. Capturamos la magia de la maternidad
@@ -65,7 +66,7 @@ para que estos momentos duren toda la vida.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de album maternidad",
-                            href: "/img/boda-two.jpg",
+                            name: "album",
                         },
                         listDescription: [
                             "Álbum fotográfico 30x30 cm con 40 páginas",
@@ -74,14 +75,14 @@ para que estos momentos duren toda la vida.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de fotografía enmarcada maternidad",
-                            href: "/img/wedding-three.jpg",
+                            name: "photoFrame",
                         },
                         listDescription: ["1 fotografía enmarcada 30x40 cm"],
                     },
                     {
                         img: {
                             alt: "Imagen ilustrativa de USB con fotos",
-                            href: "/img/photo-usb.jpg",
+                            name: "usb",
                         },
                         listDescription: [
                             "USB con fotografías digitales editadas",
@@ -140,7 +141,7 @@ para que estos momentos duren toda la vida.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de album maternidad pareja",
-                            href: "/img/boda-two.jpg",
+                            name: "album",
                         },
                         listDescription: [
                             "Álbum fotográfico 30x30 cm con 40 páginas",
@@ -149,14 +150,14 @@ para que estos momentos duren toda la vida.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de fotografía enmarcada pareja",
-                            href: "/img/wedding-three.jpg",
+                            name: "photoFrame",
                         },
                         listDescription: ["1 fotografía enmarcada 30x40 cm"],
                     },
                     {
                         img: {
                             alt: "Imagen ilustrativa de USB con fotos",
-                            href: "/img/photo-usb.jpg",
+                            name: "usb",
                         },
                         listDescription: [
                             "USB con fotografías digitales editadas",
@@ -213,7 +214,7 @@ para que estos momentos duren toda la vida.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de album newborn",
-                            href: "/img/boda-two.jpg",
+                            name: "album",
                         },
                         listDescription: [
                             "Álbum fotográfico 30x30 cm con 40 páginas",
@@ -222,14 +223,14 @@ para que estos momentos duren toda la vida.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de fotografía enmarcada newborn",
-                            href: "/img/wedding-three.jpg",
+                            name: "photoFrame",
                         },
                         listDescription: ["1 fotografía enmarcada 30x40 cm"],
                     },
                     {
                         img: {
                             alt: "Imagen ilustrativa de USB con fotos",
-                            href: "/img/photo-usb.jpg",
+                            name: "usb",
                         },
                         listDescription: [
                             "USB con fotografías digitales editadas",

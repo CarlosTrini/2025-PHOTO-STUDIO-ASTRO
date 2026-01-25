@@ -10,6 +10,8 @@ import LayoutServices from "@layouts/LayoutServices.astro";
 import { TabItem } from "free-astro-components";
 import "@styles/layout/layoutServices.css";
 
+import petsImage from "@assets/img/services/pets-one.jpg";
+
 let labels: Label[] = [];
 const subRoutes = getRouteDataService("/services", "pets");
 if (subRoutes) {
@@ -19,7 +21,7 @@ if (subRoutes) {
 
 <LayoutServices
     pageTitle="Mascotas"
-    heroImage="/img/pets-one.jpg"
+    heroImage={petsImage}
     bannerTitle=`"Pequeños compañeros, grandes recuerdos"`
     bannerSubtitle=`Cada mascota tiene una historia que contar. Creamos imágenes llenas de cariño
 y personalidad que celebran el vínculo único entre tú y tu compañero.`
@@ -61,7 +63,7 @@ y personalidad que celebran el vínculo único entre tú y tu compañero.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de retrato en estudio",
-                            href: "/img/boda-two.jpg",
+                            name: "album",
                         },
                         listDescription: [
                             "Álbum fotográfico 30x30 cm con 40 páginas",
@@ -70,14 +72,14 @@ y personalidad que celebran el vínculo único entre tú y tu compañero.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de fotografía enmarcada retrato",
-                            href: "/img/wedding-three.jpg",
+                            name: "photoFrame",
                         },
                         listDescription: ["1 fotografía enmarcada 30x40 cm"],
                     },
                     {
                         img: {
                             alt: "Imagen ilustrativa de USB con fotos",
-                            href: "/img/photo-usb.jpg",
+                            name: "usb",
                         },
                         listDescription: [
                             "USB con fotografías digitales editadas",
@@ -131,7 +133,7 @@ y personalidad que celebran el vínculo único entre tú y tu compañero.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de sesión en exterior",
-                            href: "/img/boda-two.jpg",
+                            name: "album",
                         },
                         listDescription: [
                             "Álbum fotográfico 30x30 cm con 40 páginas",
@@ -140,14 +142,14 @@ y personalidad que celebran el vínculo único entre tú y tu compañero.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de fotografía enmarcada acción",
-                            href: "/img/wedding-three.jpg",
+                            name: "photoFrame",
                         },
                         listDescription: ["1 fotografía enmarcada 30x40 cm"],
                     },
                     {
                         img: {
                             alt: "Imagen ilustrativa de USB con fotos",
-                            href: "/img/photo-usb.jpg",
+                            name: "usb",
                         },
                         listDescription: [
                             "USB con fotografías digitales editadas",
@@ -203,7 +205,7 @@ y personalidad que celebran el vínculo único entre tú y tu compañero.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de album mascota y dueño",
-                            href: "/img/boda-two.jpg",
+                            name: "album",
                         },
                         listDescription: [
                             "Álbum fotográfico 30x30 cm con 40 páginas",
@@ -212,14 +214,14 @@ y personalidad que celebran el vínculo único entre tú y tu compañero.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de fotografía enmarcada mascota",
-                            href: "/img/wedding-three.jpg",
+                            name: "photoFrame",
                         },
                         listDescription: ["1 fotografía enmarcada 30x40 cm"],
                     },
                     {
                         img: {
                             alt: "Imagen ilustrativa de USB con fotos",
-                            href: "/img/photo-usb.jpg",
+                            name: "usb",
                         },
                         listDescription: [
                             "USB con fotografías digitales editadas",

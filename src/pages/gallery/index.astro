@@ -3,6 +3,27 @@ import Layout from "@layouts/Layout.astro";
 import "@styles/pages/gallery/homeGallery.css";
 import { routes } from "@utils/constants/routes";
 
+import bussinessImage from "@assets/img/services/bussiness-one.jpg";
+import familyImage from "@assets/img/services/family-one.jpg";
+import petsImage from "@assets/img/services/pets-one.jpg";
+import maternityImage from "@assets/img/services/maternity-one.jpg";
+import eventsImage from "@assets/img/services/events-one.jpg";
+import couplesImage from "@assets/img/services/couples-one.jpg";
+import religiousImage from "@assets/img/services/religious-one.jpg";
+import weddingImage from "@assets/img/services/wedding-one.jpg";
+import emptyImage from "@assets/img/generic/services-menu.jpg";
+import { Image } from "astro:assets";
+
+const images = {
+    "family-one": familyImage,
+    "pets-one": petsImage,
+    "bussiness-one": bussinessImage,
+    "events-one": eventsImage,
+    "couples-one": couplesImage,
+    "religious-one": religiousImage,
+    "wedding-one": weddingImage,
+    "maternity-one": maternityImage,
+};
 const galleryRoutes = routes.filter((router) => router.basePath == "/gallery");
 ---
 
@@ -18,16 +39,16 @@ const galleryRoutes = routes.filter((router) => router.basePath == "/gallery");
                             route.path !== "" && (
                                 <article class="gallery-card">
                                     <figure>
-                                        <img
+                                        <Image
                                             src={
-                                                route?.imgSrc
-                                                    ? route.imgSrc
-                                                    : "/img/services-menu.jpg"
+                                                route?.imgName
+                                                    ? images[
+                                                          route.imgName as keyof typeof images
+                                                      ]
+                                                    : emptyImage
                                             }
                                             alt={`Sesión fotográfica de ${route.name}`}
                                             loading="lazy"
-                                            width="400"
-                                            height="300"
                                         />
                                     </figure>
                                     <h3>

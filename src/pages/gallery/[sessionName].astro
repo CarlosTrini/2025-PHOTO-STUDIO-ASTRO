@@ -1,17 +1,28 @@
 ---
 import LayoutGallery from "@layouts/LayoutGallery.astro";
 import GalleryComponent from "@components/GalleryComponent.tsx";
+import { galleries, titlesLayout } from "@utils/constants/galleryData.ts";
+
+// export function getStaticPaths() {
+//     return [
+//         { params: { SessionName: "weddings" } },
+//         { params: { SessionName: "familia" } },
+//     ];
+// }
 
 export function getStaticPaths() {
-    return [
-        { params: { SessionName: "weddings" } },
-        { params: { SessionName: "familia" } },
-    ];
+    return Object.keys(galleries).map((key) => ({
+        params: { sessionName: key },
+        props: {
+            pictures: galleries[key as keyof typeof galleries],
+            title: titlesLayout[key as keyof typeof galleries].title,
+            subtitle: titlesLayout[key as keyof typeof galleries].subtitle,
+        },
+    }));
 }
-
-const { SessionName } = Astro.params;
+const { pictures, title, subtitle } = Astro.props;
 ---
 
-<LayoutGallery>
-    <GalleryComponent nameGallery={"weddings"} client:load />
+<LayoutGallery title={title} subtitle={subtitle}>
+    <GalleryComponent nameGallery={title} pictures={pictures} client:load />
 </LayoutGallery>

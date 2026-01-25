@@ -8,7 +8,7 @@ export interface RoutesI {
     name: string; //nombre que se muestra
     path: string; // /ruta
     show: boolean; // para mostrar o no esta ruta en algún menu etc
-    imgSrc?: string | null; //ruta de imagen ilustrativa relacionada a la ruta (la uso en el sitio en caso de services)
+    imgName?: string | null; //ruta de imagen ilustrativa relacionada a la ruta (la uso en el sitio en caso de services)
     subRoutes?: SubRoutes[]; // esto se va a usar para los params en los servicios/sesiones para los tabs más que nada
 }
 
@@ -26,17 +26,17 @@ export const routes: RouterI[] = [
         section: "Inicio",
         basePath: "/",
         type: "link",
-        routes: [{ name: "Inicio", path: "", show: true, imgSrc: null }],
+        routes: [{ name: "Inicio", path: "", show: true, imgName: null }],
     },
     {
         section: "Sesiones",
         basePath: "/services",
         type: "boxList",
         containerClass: "boxlist-services",
-        illustration: "/img/services-menu.jpg",
+        illustration: "/src/assets/img/generic/services-menu.jpg",
         routes: [
             {
-                name: "Bodas", path: "/weddings", show: true, imgSrc: '/img/photo-one.jpg', subRoutes: [{
+                name: "Bodas", path: "/weddings", show: true, imgName: 'wedding-one', subRoutes: [{
                     name: 'boda', // como lo voy a usar en params para tabs de services y galería, debe ser exactamente el mismo nombre del path y del label del tab 
                     path: 'boda',
                     show: true
@@ -49,7 +49,7 @@ export const routes: RouterI[] = [
                 ]
             },
             {
-                name: "Eventos religiosos", path: "/religious_events", show: true, imgSrc: '/img/photo-two.jpg', subRoutes: [{
+                name: "Eventos religiosos", path: "/religious_events", show: true, imgName: 'religious-one', subRoutes: [{
                     name: 'Primera Comunión', // como lo voy a usar en params para tabs de services y galería, debe ser exactamente el mismo nombre del path y del label del tab 
                     path: 'primera_comunion',
                     show: true
@@ -67,7 +67,7 @@ export const routes: RouterI[] = [
                 ]
             },
             {
-                name: "Familia", path: "/family", show: true, imgSrc: '/img/photo-three.jpg', subRoutes: [{
+                name: "Familia", path: "/family", show: true, imgName: 'family-one', subRoutes: [{
                     name: 'Sesión De Estudio', // como lo voy a usar en params para tabs de services y galería, debe ser exactamente el mismo nombre del path y del label del tab 
                     path: 'studio_session',
                     show: true
@@ -85,7 +85,7 @@ export const routes: RouterI[] = [
                 ]
             },
             {
-                name: "Negocios", path: "/business", show: false, imgSrc: '/img/photo-four.jpg', subRoutes: [{
+                name: "Negocios", path: "/business", show: false, imgName: 'bussiness-one', subRoutes: [{
                     name: 'Productos e-commerce', // como lo voy a usar en params para tabs de services y galería, debe ser exactamente el mismo nombre del path y del label del tab 
                     path: 'products',
                     show: true
@@ -103,7 +103,7 @@ export const routes: RouterI[] = [
                 ]
             },
             {
-                name: "Eventos", path: "/events", show: false, imgSrc: '/img/photo-five.jpg', subRoutes: [{
+                name: "Eventos", path: "/events", show: false, imgName: 'events-one', subRoutes: [{
                     name: 'XV Años', // como lo voy a usar en params para tabs de services y galería, debe ser exactamente el mismo nombre del path y del label del tab 
                     path: 'xv_party',
                     show: true
@@ -121,7 +121,7 @@ export const routes: RouterI[] = [
                 ]
             },
             {
-                name: "Maternidad", path: "/maternity", show: true, imgSrc: '/img/photo-one.jpg', subRoutes: [{
+                name: "Maternidad", path: "/maternity", show: true, imgName: 'maternity-one', subRoutes: [{
                     name: 'Dulce Espera', // como lo voy a usar en params para tabs de services y galería, debe ser exactamente el mismo nombre del path y del label del tab 
                     path: 'baby_on_the_board',
                     show: true
@@ -139,7 +139,7 @@ export const routes: RouterI[] = [
                 ]
             },
             {
-                name: "Parejas", path: "/couples", show: false, imgSrc: '/img/photo-two.jpg', subRoutes: [{
+                name: "Parejas", path: "/couples", show: false, imgName: 'couples-one', subRoutes: [{
                     name: 'Aniversarios', // como lo voy a usar en params para tabs de services y galería, debe ser exactamente el mismo nombre del path y del label del tab 
                     path: 'anniversary',
                     show: true
@@ -157,7 +157,7 @@ export const routes: RouterI[] = [
                 ]
             },
             {
-                name: "Mascotas", path: "/pets", show: true, imgSrc: '/img/photo-three.jpg', subRoutes: [{
+                name: "Mascotas", path: "/pets", show: true, imgName: 'pets-one', subRoutes: [{
                     name: 'Sesión de estudio', // como lo voy a usar en params para tabs de services y galería, debe ser exactamente el mismo nombre del path y del label del tab 
                     path: 'studio_portrait',
                     show: true
@@ -182,16 +182,16 @@ export const routes: RouterI[] = [
         basePath: "/gallery",
         type: "dropdown",
         containerClass: "box-gallery",
-        illustration: "/img/gallery-menu.jpg",
+        illustration: "/src/assets/img/generic/gallery-menu.jpg",
         routes: [
-            { name: "Bodas", path: "/weddings", show: true, imgSrc: '/img/photo-one.jpg' },
-            { name: "Comuniones", path: "/communions", show: true, imgSrc: '/img/photo-two.jpg' },
-            { name: "Familia", path: "/family", show: true, imgSrc: '/img/photo-three.jpg' },
-            { name: "Empresa", path: "/business", show: false, imgSrc: '/img/photo-four.jpg' },
-            { name: "Eventos", path: "/events", show: false, imgSrc: '/img/photo-five.jpg' },
-            { name: "Maternidad", path: "/maternity", show: true, imgSrc: '/img/photo-one.jpg' },
-            { name: "Parejas", path: "/couples", show: true, imgSrc: '/img/photo-two.jpg' },
-            { name: "Mascotas", path: "/pets", show: false, imgSrc: '/img/photo-three.jpg' },
+            { name: "Bodas", path: "/weddings", show: true, imgName: 'wedding-one' },
+            { name: "Eventos religiosos", path: "/religious_events", show: true, imgName: 'religious-one' },
+            { name: "Familia", path: "/family", show: true, imgName: 'family-one' },
+            { name: "Negocio", path: "/business", show: false, imgName: 'bussiness-one' },
+            { name: "Eventos", path: "/events", show: false, imgName: 'events-one' },
+            { name: "Maternidad", path: "/maternity", show: true, imgName: 'maternity-one' },
+            { name: "Parejas", path: "/couples", show: true, imgName: 'couples-one' },
+            { name: "Mascotas", path: "/pets", show: false, imgName: 'pets-one' },
         ],
     },
     {
@@ -201,13 +201,13 @@ export const routes: RouterI[] = [
         // containerClass: "drop-contact",
         containerClass: '',
         routes: [
-            { name: "Contacto/Reserva", path: "", show: true, imgSrc: null }
+            { name: "Contacto/Reserva", path: "", show: true, imgName: null }
         ],
     },
     {
         section: "Comentarios",
         basePath: "/reviews",
         type: "link",
-        routes: [{ name: "Comentarios", path: "", show: true, imgSrc: null }],
+        routes: [{ name: "Comentarios", path: "", show: true, imgName: null }],
     },
 ];

@@ -10,6 +10,8 @@ import LayoutServices from "@layouts/LayoutServices.astro";
 import { TabItem } from "free-astro-components";
 import "@styles/layout/layoutServices.css";
 
+import couplesImage from "@assets/img/services/couples-one.jpg";
+
 let labels: Label[] = [];
 const subRoutes = getRouteDataService("/services", "couples");
 if (subRoutes) {
@@ -19,7 +21,7 @@ if (subRoutes) {
 
 <LayoutServices
     pageTitle="Parejas"
-    heroImage="/img/photo-fourteen.jpg"
+    heroImage={couplesImage}
     bannerTitle=`"Risas, abrazos y todo lo que los une"`
     bannerSubtitle=`Las parejas no solo se aman, también se divierten juntas.
 Fotografiamos la autenticidad de vuestro amor para que cada momento
@@ -64,7 +66,7 @@ perdure para siempre.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de album de pareja",
-                            href: "/img/boda-two.jpg",
+                            name: "album",
                         },
                         listDescription: [
                             "Álbum fotográfico 30x30 cm con 40 páginas",
@@ -73,14 +75,14 @@ perdure para siempre.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de fotografía enmarcada aniversario",
-                            href: "/img/wedding-three.jpg",
+                            name: "photoFrame",
                         },
                         listDescription: ["1 fotografía enmarcada 30x40 cm"],
                     },
                     {
                         img: {
                             alt: "Imagen ilustrativa de USB con fotos",
-                            href: "/img/photo-usb.jpg",
+                            name: "usb",
                         },
                         listDescription: [
                             "USB con fotografías digitales editadas",
@@ -138,7 +140,7 @@ perdure para siempre.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de album de pareja urbana",
-                            href: "/img/boda-two.jpg",
+                            name: "album",
                         },
                         listDescription: [
                             "Álbum fotográfico 30x30 cm con 40 páginas",
@@ -147,14 +149,14 @@ perdure para siempre.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de fotografía enmarcada urbana",
-                            href: "/img/wedding-three.jpg",
+                            name: "photoFrame",
                         },
                         listDescription: ["1 fotografía enmarcada 30x40 cm"],
                     },
                     {
                         img: {
                             alt: "Imagen ilustrativa de USB con fotos",
-                            href: "/img/photo-usb.jpg",
+                            name: "usb",
                         },
                         listDescription: [
                             "USB con fotografías digitales editadas",
@@ -211,7 +213,7 @@ perdure para siempre.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de album de pareja temática",
-                            href: "/img/boda-two.jpg",
+                            name: "album",
                         },
                         listDescription: [
                             "Álbum fotográfico 30x30 cm con 40 páginas",
@@ -220,14 +222,14 @@ perdure para siempre.`
                     {
                         img: {
                             alt: "Imagen ilustrativa de fotografía enmarcada temática",
-                            href: "/img/wedding-three.jpg",
+                            name: "photoFrame",
                         },
                         listDescription: ["1 fotografía enmarcada 30x40 cm"],
                     },
                     {
                         img: {
                             alt: "Imagen ilustrativa de USB con fotos",
-                            href: "/img/photo-usb.jpg",
+                            name: "usb",
                         },
                         listDescription: [
                             "USB con fotografías digitales editadas",

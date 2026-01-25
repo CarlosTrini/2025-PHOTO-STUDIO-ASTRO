@@ -1,13 +1,16 @@
 ---
 import { routes } from "@utils/constants/routes";
 import "@styles/components/header.css";
+import { Image } from "astro:assets";
+
+import logoImg from "@assets/img/generic/logo-white.png";
 ---
 
 <header class="header-container header-opacity" id="headerContainer">
     <div class="logo-hamb_container">
         <h1 class="h-logo_container">
             <a href="/">
-                <img src="/img/logo-white.png" alt="" id="logoSite" />
+                <Image loading="lazy" src={logoImg} alt="" id="logoSite" />
             </a>
         </h1>
         <button class="hamburguer-menu" id="mobileMenuToggle">
@@ -113,11 +116,12 @@ import "@styles/components/header.css";
                                     {section.illustration &&
                                         section.illustration != "" && (
                                             <figure>
-                                                <img
+                                                <Image
+                                                    loading="lazy"
                                                     src={section.illustration}
                                                     alt="imagen galeria"
-                                                    width="50px"
-                                                    height="50px"
+                                                    width={50}
+                                                    height={50}
                                                 />
                                             </figure>
                                         )}
@@ -156,11 +160,12 @@ import "@styles/components/header.css";
                                     {section.illustration &&
                                         section.illustration != "" && (
                                             <figure>
-                                                <img
+                                                <Image
+                                                    loading="lazy"
                                                     src={section.illustration}
                                                     alt="imagen galeria"
-                                                    width="50px"
-                                                    height="50px"
+                                                    width={50}
+                                                    height={50}
                                                 />
                                             </figure>
                                         )}

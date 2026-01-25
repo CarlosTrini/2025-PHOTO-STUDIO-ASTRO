@@ -1,28 +1,29 @@
 ---
 import Layout from "./Layout.astro";
 import "@styles/layout/layoutGallery.css";
+import galleryImage from "@assets/img/generic/wedding-bg.jpg";
+import { Image } from "astro:assets";
 const { title, subtitle, imgBackground } = Astro.props;
 ---
 
 <Layout>
     <main class={`t-100vh t-padding-header main-gallery-layout`}>
         <figure class={`figure-bg-gallery`}>
-            <img
-                src="/img/wedding-bg.jpg"
-                alt="imagen de fondo ilustrariva de galería de bodas"
+            <Image
+                src={galleryImage}
+                alt=`imagen de fondo ilustrariva de galería de ${title}`
+                loading="lazy"
             />
         </figure>
 
-        <h2 class={`gallery-title`}>Galería de bodas</h2>
+        <h2 class={`gallery-title`}>Galería de {title}</h2>
         <div class={`title-gallery-layout`}></div>
 
         <p class={`nav-gallery-menu`}>
-            <a href="/gallery">Sesiones</a> &gt; bodas
+            <a href="/gallery">Galería</a> &gt; {title}
         </p>
         <p class={`subtitle-gallery-layout`}>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus
-            quibusdam eaque facere porro quas. Pariatur quasi consequuntur
-            officia ex quam?
+            {subtitle}
         </p>
 
         <slot />

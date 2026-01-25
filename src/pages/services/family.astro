@@ -9,6 +9,7 @@ import {
 import LayoutServices from "@layouts/LayoutServices.astro";
 import { TabItem } from "free-astro-components";
 import "@styles/layout/layoutServices.css";
+import familyImage from "@assets/img/services/family-one.jpg";
 
 let labels: Label[] = [];
 const subRoutes = getRouteDataService("/services", "family");
@@ -19,7 +20,7 @@ if (subRoutes) {
 
 <LayoutServices
     pageTitle="En Familia"
-    heroImage="/img/photo-eight.jpg"
+    heroImage={familyImage}
     bannerTitle=`"Momentos familiares capturados con amor y autenticidad"`
     bannerSubtitle="La familia es el refugio donde el tiempo se detiene con ternura; capturamos cada abrazo, cada risa compartida y cada mirada llena de amor, para que esos momentos sagrados vivan por siempre en vuestro corazón."
 >
@@ -63,7 +64,7 @@ if (subRoutes) {
                     {
                         img: {
                             alt: "Imagen ilustrativa de un album fotografico",
-                            href: "/img/boda-two.jpg",
+                            name: "album",
                         },
                         listDescription: [
                             "Álbum fotográfico 30x30 cm con 40 páginas",
@@ -72,7 +73,7 @@ if (subRoutes) {
                     {
                         img: {
                             alt: "Imagen ilustrativa de un album fotografico",
-                            href: "/img/wedding-three.jpg",
+                            name: "photoFrame",
                         },
                         listDescription: [
                             "1 fotografía familiar enmarcada 30x40 cm",
@@ -81,7 +82,7 @@ if (subRoutes) {
                     {
                         img: {
                             alt: "Imagen ilustrativa de la usb entregable",
-                            href: "/img/photo-usb.jpg",
+                            name: "usb",
                         },
                         listDescription: [
                             "USB con fotografías finales editadas",
@@ -140,7 +141,7 @@ if (subRoutes) {
                     {
                         img: {
                             alt: "Imagen ilustrativa de un album fotografico",
-                            href: "/img/boda-two.jpg",
+                            name: "album",
                         },
                         listDescription: [
                             "Álbum fotográfico 30x30 cm con 40 páginas",
@@ -149,7 +150,7 @@ if (subRoutes) {
                     {
                         img: {
                             alt: "Imagen ilustrativa de un album fotografico",
-                            href: "/img/wedding-three.jpg",
+                            name: "photoFrame",
                         },
                         listDescription: [
                             "1 fotografía familiar enmarcada 30x40 cm",
@@ -158,7 +159,7 @@ if (subRoutes) {
                     {
                         img: {
                             alt: "Imagen ilustrativa de la usb entregable",
-                            href: "/img/photo-usb.jpg",
+                            name: "usb",
                         },
                         listDescription: [
                             "USB con fotografías finales editadas",
@@ -216,7 +217,7 @@ if (subRoutes) {
                     {
                         img: {
                             alt: "Imagen ilustrativa de un album fotografico",
-                            href: "/img/boda-two.jpg",
+                            name: "album",
                         },
                         listDescription: [
                             "Álbum fotográfico 30x30 cm con 40 páginas",
@@ -225,7 +226,7 @@ if (subRoutes) {
                     {
                         img: {
                             alt: "Imagen ilustrativa de un album fotografico",
-                            href: "/img/wedding-three.jpg",
+                            name: "photoFrame",
                         },
                         listDescription: [
                             "1 fotografía lifestyle enmarcada 30x40 cm",
@@ -234,7 +235,7 @@ if (subRoutes) {
                     {
                         img: {
                             alt: "Imagen ilustrativa de la usb entregable",
-                            href: "/img/photo-usb.jpg",
+                            name: "usb",
                         },
                         listDescription: [
                             "USB con fotografías digitales editadas",

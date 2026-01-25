@@ -1,10 +1,16 @@
 ---
-import { defineLiveCollection } from "astro/content/config";
+import albumImage from '@assets/img/deliverables/album.jpg';
+import photoFrameImage from '@assets/img/deliverables/photo-frame.jpg';
+import socialMediaImage from '@assets/img/deliverables/social-media.jpg';
+import usbImage from '@assets/img/deliverables/usb.jpg';
+import comercialImage from '@assets/img/deliverables/comercial.jpg';
+import emptyImage from '@assets/img/generic/studio-one.jpg';
+import { Image } from 'astro:assets';
 
 interface DeliverableItem {
     img: {
         alt: string;
-        href: string;
+        name: string; // nombre de imagen tal cual como en src>assets>img>deliverables
     };
     listDescription: string[];
 }
@@ -14,6 +20,15 @@ interface Props {
 }
 
 const { detailsInfo, deliverableDetails } = Astro.props;
+
+const images = {
+    comercial: comercialImage,
+    album: albumImage,
+    photoFrame: photoFrameImage,
+    socialMedia: socialMediaImage,
+    usb: usbImage
+};
+
 ---
 
 <!-- DETAILS DELIVERABLES -->{
@@ -21,19 +36,20 @@ const { detailsInfo, deliverableDetails } = Astro.props;
         <section class="service-container-extras">
             <h3>Entregables</h3>
             <div class="services-extras">
-                {deliverableDetails.map((deliverable) => {
+                {deliverableDetails.map((deliverable: DeliverableItem) => {
                     return (
                         <figure>
-                            <img
+                            <Image
                                 src={
-                                    deliverable.img.href
-                                        ? deliverable.img.href
-                                        : "img/studio-one.jpg"
+                                    deliverable.img.name
+                                        ? images[deliverable.img.name as keyof typeof images]
+                                        : emptyImage
                                 }
                                 alt={
                                     deliverable.img.alt ||
                                     "Imagen meramente ilustrativa"
                                 }
+                                loading={'lazy'}
                             />
                             <figcaption>
                                 <ul>

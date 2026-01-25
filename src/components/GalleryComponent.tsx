@@ -25,7 +25,7 @@ interface DataGalleryResponse {
     pictures: GalleryI[];
 }
 
-const GalleryComponent: React.FC<GalleryProps> = ({ nameGallery }) => {
+const GalleryComponent: React.FC<GalleryProps> = ({ nameGallery, pictures }) => {
 
     const [dataGallery, setDataGallery] = React.useState<DataGalleryResponse | null>(null);
     const [thumbnailPosition, setThumbnailPosition] = React.useState<'bottom' | 'top' | 'left' | 'right'>('bottom');

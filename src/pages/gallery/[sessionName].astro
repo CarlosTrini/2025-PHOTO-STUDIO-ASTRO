@@ -1,28 +1,66 @@
 ---
 import LayoutGallery from "@layouts/LayoutGallery.astro";
-import GalleryComponent from "@components/GalleryComponent.tsx";
-import { galleries, titlesLayout } from "@utils/constants/galleryData.ts";
-
-// export function getStaticPaths() {
-//     return [
-//         { params: { SessionName: "weddings" } },
-//         { params: { SessionName: "familia" } },
-//     ];
-// }
+import GalleryComponent, {
+    type GalleryI,
+} from "@components/GalleryComponent.tsx";
 
 export function getStaticPaths() {
-    return Object.keys(galleries).map((key) => ({
-        params: { sessionName: key },
-        props: {
-            pictures: galleries[key as keyof typeof galleries],
-            title: titlesLayout[key as keyof typeof galleries].title,
-            subtitle: titlesLayout[key as keyof typeof galleries].subtitle,
-        },
-    }));
+    return [
+        { params: { sessionName: "weddings" } },
+        { params: { sessionName: "family" } },
+        { params: { sessionName: "pets" } },
+        { params: { sessionName: "events" } },
+        { params: { sessionName: "religious_events" } },
+        { params: { sessionName: "maternity" } },
+        { params: { sessionName: "couples" } },
+        { params: { sessionName: "business" } },
+    ];
 }
-const { pictures, title, subtitle } = Astro.props;
+
+const titlesLayout = {
+    weddings: {
+        title: "Bodas",
+        subtitle: "Un sí que vive para siempre",
+    },
+    religious_events: {
+        title: "Eventos Religiosos",
+        subtitle: "Fe, tradición y momentos eternos",
+    },
+    family: {
+        title: "Familia",
+        subtitle: "Donde nace la memoria",
+    },
+    business: {
+        title: "Negocio",
+        subtitle: "Historias que dan rostro a tu trabajo",
+    },
+    events: {
+        title: "Eventos/Fiestas",
+        subtitle: "Instantes que merecen volver a vivirse",
+    },
+    maternity: {
+        title: "Maternidad",
+        subtitle: "El comienzo de una historia de amor",
+    },
+    couples: {
+        title: "Parejas",
+        subtitle: "Dos almas, un mismo recuerdo",
+    },
+    pets: {
+        title: "Mascotas",
+        subtitle: "Amor que no necesita palabras",
+    },
+};
+
+const { sessionName } = Astro.params;
+
+let title = "";
+let subtitle = "";
+
+title = titlesLayout[sessionName as keyof typeof titlesLayout].title;
+subtitle = titlesLayout[sessionName as keyof typeof titlesLayout].subtitle;
 ---
 
 <LayoutGallery title={title} subtitle={subtitle}>
-    <GalleryComponent nameGallery={title} pictures={pictures} client:load />
+    <GalleryComponent sessionName={sessionName} client:load />
 </LayoutGallery>

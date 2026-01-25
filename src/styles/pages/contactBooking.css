@@ -1,5 +1,5 @@
 .contact-main-page {
-    background: linear-gradient(rgba(var(--color-quinary-rgb), .6), rgba(var(--color-senary-rgb), .7)), url('/img/photo-six.jpg');
+    background: linear-gradient(rgba(var(--color-quinary-rgb), .6), rgba(var(--color-senary-rgb), .7)), url('/img/bg-contact.jpg');
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;

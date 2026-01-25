@@ -4,7 +4,7 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import '@styles/components/galleryComponent.css';
 
 type GalleryProps = {
-    nameGallery: string;
+    sessionName: string; //nombre de ruta... weddings, couples, family, etc...
 };
 
 export interface GalleryI {
@@ -20,12 +20,10 @@ export interface GalleryI {
     thumbnailClass?: string;
 }
 
-interface DataGalleryResponse {
-    title: string;
-    pictures: GalleryI[];
-}
+type DataGalleryResponse = GalleryI[];
 
-const GalleryComponent: React.FC<GalleryProps> = ({ nameGallery, pictures }) => {
+
+const GalleryComponent: React.FC<GalleryProps> = ({ sessionName }) => {
 
     const [dataGallery, setDataGallery] = React.useState<DataGalleryResponse | null>(null);
     const [thumbnailPosition, setThumbnailPosition] = React.useState<'bottom' | 'top' | 'left' | 'right'>('bottom');
@@ -37,46 +35,24 @@ const GalleryComponent: React.FC<GalleryProps> = ({ nameGallery, pictures }) => 
             //     "https://jsonplaceholder.typicode.com/photos?_limit=10",
             // );
             // const data = await response.json();
-            const responseGallery = {
-                title: "Galería de Bodas",
-                pictures: [
-                    {
-                        original: "/img/photo-one.jpg",
-                        thumbnail: "/img/photo-one.jpg",
-                        originalAlt: "Fotografía Uno",
-                        thumbnailAlt: "Miniatura Uno",
-                        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat provident fugit iure",
-                    },
-                    {
-                        original: "/img/photo-two.jpg",
-                        thumbnail: "/img/photo-two.jpg",
-                        originalAlt: "Fotografía Dos",
-                        thumbnailAlt: "Miniatura Dos",
-                        description: "Descripción de la foto dos",
-                    },
-                    {
-                        original: "/img/photo-three.jpg",
-                        thumbnail: "/img/photo-three.jpg",
-                        originalAlt: "Fotografía Tres",
-                        thumbnailAlt: "Miniatura Tres",
-                        description: "Descripción de la foto tres",
-                    },
-                    {
-                        original: "/img/photo-four.jpg",
-                        thumbnail: "/img/photo-four.jpg",
-                        originalAlt: "Fotografía Cuatro",
-                        thumbnailAlt: "Miniatura Cuatro",
-                        description: "Descripción de la foto cuatro",
-                    },
-                    {
-                        original: "/img/photo-five.jpg",
-                        thumbnail: "/img/photo-five.jpg",
-                        originalAlt: "Fotografía Cinco",
-                        thumbnailAlt: "Miniatura Cinco",
-                        description: "Descripción de la foto cinco",
-                    },
-                ],
+            let responseGallery = [] as DataGalleryResponse;
+            const values = {
+                1: 'one',
+                2: 'two',
+                3: 'three',
+                4: 'four',
+                5: 'five'
             };
+
+            for (let i = 1; i <= 5; i++) {
+                responseGallery = [...responseGallery, {
+                    original: `/gallery/webp/${sessionName}-${values[i as keyof typeof values]}.webp`,
+                    thumbnail: `/gallery/thumbs/${sessionName}-${values[i as keyof typeof values]}.jpg`,
+                    description: '',
+                    originalAlt: '',
+                    thumbnailAlt: '',
+                }];
+            }
 
             setDataGallery(responseGallery);
         } catch (error) {
@@ -86,12 +62,12 @@ const GalleryComponent: React.FC<GalleryProps> = ({ nameGallery, pictures }) => 
     };
 
     useEffect(() => {
-        if (!nameGallery || nameGallery == '') {
+        if (!sessionName || sessionName == '') {
             return;
         }
 
         getInfoGallery();
-    }, [nameGallery]);
+    }, [sessionName]);
 
 
 
@@ -117,8 +93,8 @@ const GalleryComponent: React.FC<GalleryProps> = ({ nameGallery, pictures }) => 
             <section className='gallery-carousel-container'>
 
                 {
-                    dataGallery && dataGallery.pictures.length > 0 && (
-                        <ImageGallery items={dataGallery.pictures} autoPlay={true} slideInterval={50000} thumbnailPosition={thumbnailPosition} showFullscreenButton={false} showPlayButton={false} />
+                    dataGallery && dataGallery.length > 0 && (
+                        <ImageGallery items={dataGallery} autoPlay={true} slideInterval={50000} thumbnailPosition={thumbnailPosition} showFullscreenButton={false} showPlayButton={false} />
                     )
                 }
             </section>

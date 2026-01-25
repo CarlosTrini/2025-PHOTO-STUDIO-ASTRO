@@ -1,6 +1,6 @@
 .main-gallery-page {
     background: linear-gradient(rgba(var(--color-secondary-rgb), 0.9), rgba(var(--color-quinary-rgb), 0.9)),
-        url('/img/gallery-one.jpg');
+        url('/img/bg-gallery.jpg');
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;

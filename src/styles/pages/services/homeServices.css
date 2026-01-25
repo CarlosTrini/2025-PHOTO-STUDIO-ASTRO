@@ -1,7 +1,7 @@
 .main-service-page {
 
     background: linear-gradient(rgba(var(--color-secondary-rgb), 0.9), rgba(var(--color-tertiary-rgb), 0.9)),
-        url('/img/studio-one.jpg');
+        url('/img/bg-services.jpg');
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;

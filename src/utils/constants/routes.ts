@@ -1,3 +1,6 @@
+export type ServicesTypes = 'Bodas' | 'Eventos religiosos' | 'Familia' | 'Negocio' | 'Eventos' | 'Maternidad' | 'Parejas' | 'Mascotas';
+export type MenuTypes = 'Inicio' | 'Sesiones' | 'Galería' | 'Contáctanos/Reserva' | 'Comentarios';
+
 export interface SubRoutes {
     name: string; // ESTO DA NOMBRE A TABS EN PÁGINAS DE /services/route...
     path: string;
@@ -5,7 +8,7 @@ export interface SubRoutes {
 }
 
 export interface RoutesI {
-    name: string; //nombre que se muestra
+    name: ServicesTypes; //nombre que se muestra (servicio)
     path: string; // /ruta
     show: boolean; // para mostrar o no esta ruta en algún menu etc
     imgName?: string | null; //ruta de imagen ilustrativa relacionada a la ruta (la uso en el sitio en caso de services)
@@ -13,7 +16,7 @@ export interface RoutesI {
 }
 
 export interface RouterI {
-    section: string;//nombre que se muestra
+    section: MenuTypes;//nombre que se muestra en el menú
     basePath: '/' | '/services' | '/gallery' | '/contact-booking' | '/reviews';
     type: 'link' | 'box' | 'dropdown' | 'boxList'; //esto poque uso mi menu personalizado
     containerClass?: string; // para casos de box o drop, esta clase da estilos a su contenedor
@@ -26,7 +29,8 @@ export const routes: RouterI[] = [
         section: "Inicio",
         basePath: "/",
         type: "link",
-        routes: [{ name: "Inicio", path: "", show: true, imgName: null }],
+        routes: []
+        // routes: [{ name: "Inicio", path: "", show: true, imgName: null }],
     },
     {
         section: "Sesiones",
@@ -85,7 +89,7 @@ export const routes: RouterI[] = [
                 ]
             },
             {
-                name: "Negocios", path: "/business", show: false, imgName: 'bussiness-one', subRoutes: [{
+                name: "Negocio", path: "/business", show: false, imgName: 'bussiness-one', subRoutes: [{
                     name: 'Productos e-commerce', // como lo voy a usar en params para tabs de services y galería, debe ser exactamente el mismo nombre del path y del label del tab 
                     path: 'products',
                     show: true
@@ -198,16 +202,17 @@ export const routes: RouterI[] = [
         section: "Contáctanos/Reserva",
         basePath: "/contact-booking",
         type: "link",
-        // containerClass: "drop-contact",
         containerClass: '',
-        routes: [
-            { name: "Contacto/Reserva", path: "", show: true, imgName: null }
-        ],
+        routes: []
+        // routes: [
+        //     { name: "Contacto/Reserva", path: "", show: true, imgName: null }
+        // ],
     },
     {
         section: "Comentarios",
         basePath: "/reviews",
         type: "link",
-        routes: [{ name: "Comentarios", path: "", show: true, imgName: null }],
+        routes: []
+        // routes: [{ name: "Comentarios", path: "", show: true, imgName: null }],
     },
 ];

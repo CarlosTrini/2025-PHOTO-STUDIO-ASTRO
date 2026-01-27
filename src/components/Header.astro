@@ -26,13 +26,13 @@ import logoImg from "@assets/img/generic/logo-white.png";
             <ul class="h-links_container">
                 {
                     routes.map((section) => {
-                        return section.routes.length == 1 ? (
+                        return section.routes.length == 0 ? (
                             <li>
                                 <a
                                     class="link-item"
-                                    href={`${section.basePath}${section.routes[0].path}`}
+                                    href={`${section.basePath}`}
                                 >
-                                    {section.routes[0].name}
+                                    {section.section}
                                 </a>
                             </li>
                         ) : (
@@ -68,9 +68,9 @@ import logoImg from "@assets/img/generic/logo-white.png";
                             <li>
                                 <a
                                     class="drop-title"
-                                    href={`${section.basePath}${section.routes[0].path}`}
+                                    href={`${section.basePath}`}
                                 >
-                                    {section.routes[0].name}
+                                    {section.section}
                                 </a>
                             </li>
                         ) : section.type === "dropdown" ? (

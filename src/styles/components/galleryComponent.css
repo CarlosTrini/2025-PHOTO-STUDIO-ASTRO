@@ -15,8 +15,7 @@
 
     .image-gallery-image {
         /* LIBRERÍA */
-        height: 70vh;
-        /* object-fit: cover; */
+        height: 75vh !important;
         object-fit: contain;
         padding: 1.5rem;
         background: var(--color-white-full);
@@ -34,6 +33,10 @@
         }
     }
 
+    .image-gallery-thumbnail .image-gallery-thumbnail-image {
+        object-fit: cover;
+    }
+
     .image-gallery-thumbnail.active,
     .image-gallery-thumbnail:focus {
         /* GALERIA */
@@ -42,7 +45,7 @@
         overflow: hidden;
 
         & img {
-            object-fit: contain;
+            object-fit: cover;
             filter: brightness(.4);
 
         }

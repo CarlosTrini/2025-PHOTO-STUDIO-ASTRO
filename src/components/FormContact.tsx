@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import '@styles/components/formContact.css';
 import { regexValidateFn, type ValidationType } from '@helpers/regexValidate';
+import type { ServicesTypes } from '@utils/constants/routes';
 
 interface Props {
     formType: 'contact' | 'booking';
 }
 
 interface ServicesSelectProps {
+    services: ServicesTypes[];
     value: string;
     selectValueElement: (valueSelected: React.ChangeEvent<HTMLSelectElement>) => void;
     handleBlur: (inputName: string) => void;
@@ -67,13 +69,15 @@ const formDataInit = {
     },
 } as FormInputsState;
 
+const allServices: ServicesTypes[] = ['Bodas', 'Eventos', 'Eventos religiosos', 'Familia', 'Mascotas', 'Maternidad', 'Negocio', 'Parejas'];
+
 
 
 const FormContact: React.FC<Props> = ({ formType }) => {
 
     const [showServices, setShowServices] = useState(false);
-
     const [formInputs, setFormInputs] = useState<FormInputsState>(formDataInit);
+
 
 
     const handleChageInput = (input: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -193,7 +197,7 @@ const FormContact: React.FC<Props> = ({ formType }) => {
     };
 
 
-    const ServicesSelect: React.FC<ServicesSelectProps> = ({ value, selectValueElement, handleBlur }) => {
+    const ServicesSelect: React.FC<ServicesSelectProps> = ({ services, value, selectValueElement, handleBlur }) => {
         return (
             <div className={`t-input input-contact`}>
                 <label htmlFor="contactEmail"><span>*</span> Selección el paquete de tu interés:</label>
@@ -203,11 +207,11 @@ const FormContact: React.FC<Props> = ({ formType }) => {
                     onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectValueElement(e); }}
                     onBlur={(e) => { handleBlur(e.target.name); }}
                 >
-                    <option value="wedding">Boda</option>
-                    <option value="business">Empresa</option>
-                    <option value="maternity">Maternidad</option>
-                    <option value="studioSession">Sesión de estudio</option>
-                    <option value="outdoorSession">Sesión en exterior</option>
+                    {
+                        services.map(service => (
+                            <option value={service.toLocaleLowerCase()}>{service}</option>
+                        ))
+                    }
                 </select>
             </div>
         );
@@ -434,7 +438,7 @@ const FormContact: React.FC<Props> = ({ formType }) => {
                                 <ErrorMsgForm errorMsg={formInputs['contactServicesSelect'].error} />
                             )
                         }
-                        <ServicesSelect value={formInputs['contactServicesSelect'].value} selectValueElement={handleChageInput} handleBlur={(inputName) => { handleBlurValidate(inputName); }} />
+                        <ServicesSelect services={allServices} value={formInputs['contactServicesSelect'].value} selectValueElement={handleChageInput} handleBlur={(inputName) => { handleBlurValidate(inputName); }} />
 
                         <div className={`t-input input-contact`}>
                             <label htmlFor="contactName">

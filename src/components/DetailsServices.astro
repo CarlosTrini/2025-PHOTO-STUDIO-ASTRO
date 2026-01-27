@@ -4,7 +4,7 @@ import photoFrameImage from '@assets/img/deliverables/photo-frame.jpg';
 import socialMediaImage from '@assets/img/deliverables/social-media.jpg';
 import usbImage from '@assets/img/deliverables/usb.jpg';
 import comercialImage from '@assets/img/deliverables/comercial.jpg';
-import emptyImage from '@assets/img/generic/studio-one.jpg';
+import emptyImage from '@assets/img/generic/services-menu.jpg';
 import { Image } from 'astro:assets';
 
 interface DeliverableItem {
@@ -72,7 +72,7 @@ const images = {
         <section class="services-details" data-aos="fade-left">
             <h3>Detalles</h3>
             <ul class="services-details__ul">
-                {detailsInfo.map((detail) => (
+                {detailsInfo.map((detail:string) => (
                     <li>
                         <figure>
                             <svg

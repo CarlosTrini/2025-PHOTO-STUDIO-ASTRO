@@ -3,6 +3,11 @@
     width: 90%;
     margin: 3rem auto;
 
+    .image-gallery {
+        max-width: 140rem;
+        margin: 0 auto;
+    }
+
     .image-gallery-thumbnail .image-gallery-thumbnail-image {
         height: 10rem;
     }

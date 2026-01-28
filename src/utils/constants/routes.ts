@@ -37,7 +37,7 @@ export const routes: RouterI[] = [
         basePath: "/services",
         type: "boxList",
         containerClass: "boxlist-services",
-        illustration: "/src/assets/img/generic/services-menu.jpg",
+        illustration: "/img/services-menu.jpg",
         routes: [
             {
                 name: "Bodas", path: "/weddings", show: true, imgName: 'wedding-one', subRoutes: [{

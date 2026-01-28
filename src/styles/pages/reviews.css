@@ -1,0 +1,147 @@
+.main-reviews-page {
+
+    background: linear-gradient(rgba(var(--color-secondary-rgb), 0.9), rgba(var(--color-quaternary-rgb), 0.7)),
+        url('/img/bg-reviews.webp');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.review-container {
+    width: 90%;
+    min-height: 50vh;
+    margin: 6rem auto 3rem auto;
+    max-width: 115rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.reviews-title-page {
+    color: var(--color-quaternary);
+    text-shadow: .1rem .1rem 0 var(--color-primary);
+    border-bottom: .2rem solid var(--color-primary);
+}
+
+.swiper-wrapper-reviews {
+    display: flex !important;
+    padding-bottom: 4rem;
+}
+
+.slide-reviews {
+    padding: 1rem;
+
+    @media (min-width: 768px) {
+        min-height: 24rem;
+    }
+}
+
+.card-review {
+    background-color: rgba(var(--color-quaternary-rgb), .8);
+    box-shadow: 0 .2rem .2rem rgba(var(--color-senary-rgb), .5);
+    border-radius: 2rem;
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+
+    @media (min-width: 640px) {
+        padding: 2rem;
+    }
+}
+
+.card-header {
+    width: 100%;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    border-bottom: .1rem solid var(--color-senary);
+
+    @media (min-width: 640px) {
+        justify-content: space-around;
+        flex-direction: row;
+    }
+
+    figure {
+        width: 7rem;
+        height: 7rem;
+        border-radius: 50%;
+        overflow: hidden;
+        border: .1rem solid var(--color-secondary);
+        box-shadow: 0 .2rem .2rem rgba(var(--color-senary-rgb), .5);
+
+        @media (min-width: 640px) {
+            width: 5.5rem;
+            height: 5rem;
+
+        }
+
+    }
+
+
+
+    .card-service-name,
+    .card-service-user {
+        text-align: center;
+        font-size: 1.5rem;
+        color: var(--color-quinary);
+
+        @media (min-width: 640px) {
+
+            font-size: 1.3rem;
+            text-align: start;
+        }
+
+        @media (min-width: 1024px) {
+            font-size: 1.5rem;
+        }
+    }
+
+    .card-service-name {
+        color: var(--color-senary) !important;
+
+        @media (min-width: 640px) {
+            text-align: end !important;
+            margin-bottom: 1rem;
+        }
+
+    }
+
+}
+
+.card-body {
+    padding: 0 1.5rem;
+    color: var(--color-quinary) !important;
+
+    p {
+
+        font-size: 1.6rem;
+
+        @media (min-width: 640px) {
+            font-size: 1.4rem !important;
+        }
+
+        @media (min-width: 860px) {
+            font-size: 1.6rem !important;
+        }
+    }
+}
+
+.swiper-pagination-reviews {
+    bottom: 1rem !important;
+
+    .swiper-pagination-bullet {
+
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+}

@@ -6,15 +6,11 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; */
 }
 
 .service-title-page {
     color: var(--color-quinary);
-    text-shadow: .2rem 0 0 var(--color-primary);
+    text-shadow: .1rem .1rem 0 var(--color-primary);
     border-bottom: .2rem solid var(--color-primary);
 }
 
@@ -31,7 +27,7 @@
     width: 90%;
     min-height: 50vh;
     margin: 3rem auto;
-    max-width: 1200rem;
+    max-width: 120rem;
 
 }
 

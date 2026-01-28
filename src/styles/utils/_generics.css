@@ -58,6 +58,13 @@
 
     }
 
+    input[type="checkbox"] {
+        width: 2rem !important;
+        height: 2rem !important;
+        margin: 0;
+        padding-bottom: 0;
+    }
+
     select {
         width: fit-content;
         padding: 1rem;
@@ -91,6 +98,7 @@
         padding: 1rem;
         font-size: 1.3rem;
         border-radius: .4rem;
+        margin-bottom: 2rem;
     }
 
 }

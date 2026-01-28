@@ -53,7 +53,8 @@ export const VALIDATION_PATTERNS = {
     decimal: /^\d+(\.\d{1,2})?$/,
     url: /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/,
     username: /^[a-z0-9_-]{3,16}$/,
-    date: /^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$/
+    date: /^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$/,
+    mustBeChecked: /^(on|true|1)$/
 };
 
 
@@ -74,7 +75,8 @@ export const ERROR_MESSAGES: Record<ValidationType, string> = {
     decimal: "Usa un formato numérico válido (ej: 10.50).",
     url: "La dirección web no es válida (ej: https://...).",
     username: "El usuario debe tener entre 3 y 16 caracteres (letras, números o guiones).",
-    date: "El formato de fecha debe ser DD/MM/AAAA."
+    date: "El formato de fecha debe ser DD/MM/AAAA.",
+    mustBeChecked: "Debes aceptar los términos y condiciones."
 };
 
 export const regexValidateFn = (value: string, regexName: ValidationType): { testValue: boolean, errorMsg: string; } => {

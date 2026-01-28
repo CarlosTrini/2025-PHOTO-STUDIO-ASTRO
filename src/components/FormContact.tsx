@@ -69,6 +69,57 @@ const formDataInit = {
     },
 } as FormInputsState;
 
+
+const formDataBookingInit = {
+    bookingName: {
+        value: '',
+        error: '',
+        regex: ['notEmptyText', 'onlyLetters']
+    },
+    bookingEmail: {
+        value: '',
+        error: '',
+        regex: ['notEmptyText', 'email']
+    },
+    bookingNumber: {
+        value: '',
+        error: '',
+        regex: ['phoneCanBeEmpty']
+    },
+    bookingTypeSelect: {
+        value: 'general',
+        error: '',
+        regex: ['notEmptyText']
+    },
+    bookingServicesSelect: {
+        value: '',
+        error: '',
+        regex: []
+    },
+    bookingDateTime: {
+        value: '',
+        error: '',
+        regex: []
+    },
+    bookingAddress: {
+        value: '',
+        error: '',
+        regex: ['notEmptyText']
+    },
+    bookingTerms: {
+        value: '',
+        error: '',
+        regex: ['mustBeChecked'],
+    },
+    contactComments: {
+        value: '',
+        error: '',
+        regex: []
+    }
+} as FormInputsState;
+
+
+
 const allServices: ServicesTypes[] = ['Bodas', 'Eventos', 'Eventos religiosos', 'Familia', 'Mascotas', 'Maternidad', 'Negocio', 'Parejas'];
 
 
@@ -76,7 +127,9 @@ const allServices: ServicesTypes[] = ['Bodas', 'Eventos', 'Eventos religiosos', 
 const FormContact: React.FC<Props> = ({ formType }) => {
 
     const [showServices, setShowServices] = useState(false);
-    const [formInputs, setFormInputs] = useState<FormInputsState>(formDataInit);
+    const [formInputs, setFormInputs] = useState<FormInputsState>(formDataInit); // contact
+    const [formBookingInputs, setFormBookingInputs] = useState<FormInputsState>(formDataBookingInit); // booking
+
 
 
 
@@ -95,6 +148,11 @@ const FormContact: React.FC<Props> = ({ formType }) => {
     useEffect(() => {
         console.log('INPUTS ==>', formInputs);
     }, [formInputs]);
+
+    // useEffect(() => {
+
+    //     setFormInputs(!formType || formType == 'contact' ? formDataInit : formDataBookingInit);
+    // }, [formType]);
 
     const handleBlurValidate = (propName: string) => {
         //TODO: BUSCAR UN TOASTR PARA REACT Y ASTRO... DE PREFERENCIA COMPATIBLE ENTRE AMBOS...
@@ -322,7 +380,7 @@ const FormContact: React.FC<Props> = ({ formType }) => {
                                             <ErrorMsgForm errorMsg={formInputs['contactServicesSelect'].error} />
                                         )
                                     }
-                                    <ServicesSelect value={formInputs['contactServicesSelect'].value} selectValueElement={handleChageInput} handleBlur={(inputName) => { handleBlurValidate(inputName); }} />
+                                    <ServicesSelect services={allServices} value={formInputs['contactServicesSelect'].value} selectValueElement={handleChageInput} handleBlur={(inputName) => { handleBlurValidate(inputName); }} />
                                 </>
                             )
                         }
@@ -343,21 +401,21 @@ const FormContact: React.FC<Props> = ({ formType }) => {
                 formType == 'booking' && (
                     <form action="" onSubmit={(e) => { e.preventDefault(); handleFormSubmit('booking'); }}>
                         <div className={`t-input input-contact`}>
-                            <label htmlFor="contactName"
+                            <label htmlFor="bookingName"
                             ><span>*</span> Nombre:
                             </label>
 
                             {
-                                formInputs['contactName'].error !== '' && (
-                                    <ErrorMsgForm errorMsg={formInputs['contactName'].error} />
+                                formBookingInputs['bookingName'].error !== '' && (
+                                    <ErrorMsgForm errorMsg={formBookingInputs['bookingName'].error} />
                                 )
                             }
                             <input
                                 onChange={handleChageInput}
                                 type="text"
-                                name="contactName"
+                                name="bookingName"
                                 placeholder="Ingresa tu nombre"
-                                value={formInputs['contactName'].value}
+                                value={formBookingInputs['bookingName'].value}
                                 onBlur={(e) => {
                                     handleBlurValidate(e.target.name);
                                 }}
@@ -366,97 +424,73 @@ const FormContact: React.FC<Props> = ({ formType }) => {
 
                         </div>
                         <div className={`t-input input-contact`}>
-                            <label htmlFor="contactEmail"
+                            <label htmlFor="bookingEmail"
                             ><span>*</span> Correo eléctronico:
                             </label>
 
                             {
-                                formInputs['contactEmail'].error !== '' && (
-                                    <ErrorMsgForm errorMsg={formInputs['contactEmail'].error} />
+                                formBookingInputs['bookingEmail'].error !== '' && (
+                                    <ErrorMsgForm errorMsg={formBookingInputs['bookingEmail'].error} />
                                 )
                             }
                             <input
                                 onChange={handleChageInput}
 
                                 type="text"
-                                name="contactEmail"
+                                name="bookingEmail"
                                 placeholder="example@example.com"
-                                value={formInputs['contactEmail'].value}
+                                value={formBookingInputs['bookingEmail'].value}
                                 onBlur={(e) => {
                                     handleBlurValidate(e.target.name);
                                 }}
                             />
                         </div>
                         <div className={`t-input input-contact`}>
-                            <label htmlFor="contactNumber"
+                            <label htmlFor="bookingNumber"
                             ><span></span> Número teléfonico:
                             </label>
                             {
-                                formInputs['contactNumber'].error !== '' && (
-                                    <ErrorMsgForm errorMsg={formInputs['contactNumber'].error} />
+                                formBookingInputs['bookingNumber'].error !== '' && (
+                                    <ErrorMsgForm errorMsg={formBookingInputs['bookingNumber'].error} />
                                 )
                             }
                             <input
                                 onChange={handleChageInput}
 
                                 type="text"
-                                name="contactNumber"
+                                name="bookingNumber"
                                 placeholder="xxxxxxxxxx"
-                                value={formInputs['contactNumber'].value}
+                                value={formBookingInputs['bookingNumber'].value}
                                 onBlur={(e) => {
                                     handleBlurValidate(e.target.name);
                                 }}
                             />
                         </div>
-                        {/* <div className={`t-input input-contact`}>
-                            <label htmlFor="contactTypeSelect"><span>*</span> ¿En qué podemos ayudarte?:</label>
-                            {
-                                formInputs['contactTypeSelect'].error !== '' && (
-                                    <ErrorMsgForm errorMsg={formInputs['contactTypeSelect'].error} />
-                                )
-                            }
-                            <select name="contactTypeSelect"
-                                value={formInputs['contactTypeSelect'].value}
-                                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-                                    setShowServices(e.target.value == 'pack');
-
-                                    handleChageInput(e);
-                                }}
-                                onBlur={(e) => {
-                                    handleBlurValidate(e.target.name);
-                                }}
-                            >
-                                <option value="general">Información general</option>
-                                <option value="pack">Información de algún paquete</option>
-                                <option value="session">Cotizar sesión personalizada</option>
-                            </select>
-                        </div> */}
-
 
                         {
-                            formInputs['contactServicesSelect'].error !== '' && (
-                                <ErrorMsgForm errorMsg={formInputs['contactServicesSelect'].error} />
+                            formBookingInputs['bookingServicesSelect'].error !== '' && (
+                                <ErrorMsgForm errorMsg={formBookingInputs['bookingServicesSelect'].error} />
                             )
                         }
-                        <ServicesSelect services={allServices} value={formInputs['contactServicesSelect'].value} selectValueElement={handleChageInput} handleBlur={(inputName) => { handleBlurValidate(inputName); }} />
+                        <ServicesSelect services={allServices} value={formBookingInputs['bookingServicesSelect'].value} selectValueElement={handleChageInput} handleBlur={(inputName) => { handleBlurValidate(inputName); }} />
 
                         <div className={`t-input input-contact`}>
-                            <label htmlFor="contactName">
+                            <label htmlFor="bookingDateTime">
                                 <span>*</span> Fecha y Hora:
                             </label>
 
                             {
-                                formInputs['contactName'].error !== '' && (
-                                    <ErrorMsgForm errorMsg={formInputs['contactName'].error} />
+                                formBookingInputs['bookingDateTime'].error !== '' && (
+                                    <ErrorMsgForm errorMsg={formBookingInputs['bookingDateTime'].error} />
                                 )
                             }
 
                             <input
                                 onChange={handleChageInput}
                                 type="datetime-local"
-                                name="contactName"
+                                name="bookingDateTime"
                                 /* Value harcodeado: 24 de Diciembre de 2024 a las 15:30 */
-                                value={formInputs['contactName'].value || "2024-12-24T15:30"}
+                                value={formBookingInputs['bookingDateTime'].value || "2024-12-24T15:30"}
                                 onBlur={(e) => {
                                     handleBlurValidate(e.target.name);
                                 }}
@@ -464,55 +498,53 @@ const FormContact: React.FC<Props> = ({ formType }) => {
                         </div>
 
                         <div className={`t-input input-contact`}>
-                            <label htmlFor="contactEmail"
+                            <label htmlFor="bookingAddress"
                             ><span>*</span> Dirección del sitio:
                             </label>
 
                             {
-                                formInputs['contactEmail'].error !== '' && (
-                                    <ErrorMsgForm errorMsg={formInputs['contactEmail'].error} />
+                                formBookingInputs['bookingAddress'].error !== '' && (
+                                    <ErrorMsgForm errorMsg={formBookingInputs['bookingAddress'].error} />
                                 )
                             }
                             <input
                                 onChange={handleChageInput}
 
                                 type="text"
-                                name="contactEmail"
-                                placeholder="example@example.com"
-                                value={formInputs['contactEmail'].value}
+                                name="bookingAddress"
+                                placeholder="Dirección completa del sitio"
+                                value={formBookingInputs['bookingAddress'].value}
                                 onBlur={(e) => {
                                     handleBlurValidate(e.target.name);
                                 }}
                             />
                         </div>
 
-                        <div className={`t-input input-contact`}>
-                            {/* El label suele envolver o estar junto al input en los checkbox */}
-                            <label htmlFor="contactName" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+
+
+                        <TextAreaForm labelText='Quiero este paquete, pero tengo dudas' value={formBookingInputs['contactComments'].value} handleChangeValue={handleChageInput} handleBlur={(inputName) => { handleBlurValidate(inputName); }} />
+
+                        <div className={`t-input input-contact `}>
+                            <label htmlFor="bookingTerms" className='label-check'>
                                 <input
                                     onChange={handleChageInput}
                                     type="checkbox"
-                                    name="contactName"
-                                    /* Hardcodeado como true (marcado) para que no truene */
-                                    checked={formInputs['contactName'].checked || true}
+                                    name="bookingTerms"
+                                    checked={formBookingInputs['bookingTerms'].checked}
                                     onBlur={(e) => {
                                         handleBlurValidate(e.target.name);
                                     }}
                                     style={{ width: 'auto', cursor: 'pointer' }}
                                 />
-                                <span>He leído los detalles del paquete que deseo solicitar</span>
+                                <span className='check-class'>He leído los detalles del paquete que deseo solicitar</span>
                             </label>
 
                             {
-                                formInputs['contactName'].error !== '' && (
-                                    <ErrorMsgForm errorMsg={formInputs['contactName'].error} />
+                                formBookingInputs['bookingTerms'].error !== '' && (
+                                    <ErrorMsgForm errorMsg={formBookingInputs['bookingTerms'].error} />
                                 )
                             }
                         </div>
-
-
-                        <TextAreaForm labelText='Quiero este paquete, pero tengo dudas' value={formInputs['contactComments'].value} handleChangeValue={handleChageInput} handleBlur={(inputName) => { handleBlurValidate(inputName); }} />
-
 
                         <ButtonsForm />
 

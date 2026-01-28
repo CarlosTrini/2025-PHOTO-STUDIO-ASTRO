@@ -121,8 +121,21 @@
 
 .form-contact-container {
 
+    .label-check {
+        display: flex;
+        align-items: center;
+        gap: .8rem;
+        margin-bottom: 2rem;
+        font-size: 1.6rem;
+    }
 
+    .check-class {
+        /* margin-top: 1rem; */
+        margin-left: .5rem;
+        font-size: 1.4rem;
+        color: var(--color-primary);
 
+    }
 
     h2 {
         text-align: end;
@@ -152,6 +165,7 @@
             font-size: 1.9rem !important;
         }
     }
+
 }
 
 .form-content {

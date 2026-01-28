@@ -21,7 +21,7 @@
 }
 
 .reviews-title-page {
-    color: var(--color-quaternary);
+    color: var(--color-quinary);
     text-shadow: .1rem .1rem 0 var(--color-primary);
     border-bottom: .2rem solid var(--color-primary);
 }
